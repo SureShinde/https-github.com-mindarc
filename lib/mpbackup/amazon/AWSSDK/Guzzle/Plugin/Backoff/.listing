@@ -1,0 +1,15 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  13 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       3145 Feb 24  2015 AbstractBackoffStrategy.php
+-rw-r--r--   1 vpsnettopet psacln       1045 Feb 24  2015 AbstractErrorCodeBackoffStrategy.php
+-rw-r--r--   1 vpsnettopet psacln       2321 Feb 24  2015 BackoffLogger.php
+-rw-r--r--   1 vpsnettopet psacln       4413 Feb 24  2015 BackoffPlugin.php
+-rw-r--r--   1 vpsnettopet psacln        995 Feb 24  2015 BackoffStrategyInterface.php
+-rw-r--r--   1 vpsnettopet psacln       1524 Feb 24  2015 CallbackBackoffStrategy.php
+-rw-r--r--   1 vpsnettopet psacln        903 Feb 24  2015 ConstantBackoffStrategy.php
+-rw-r--r--   1 vpsnettopet psacln        991 Feb 24  2015 CurlBackoffStrategy.php
+-rw-r--r--   1 vpsnettopet psacln        654 Feb 24  2015 ExponentialBackoffStrategy.php
+-rw-r--r--   1 vpsnettopet psacln        902 Feb 24  2015 HttpBackoffStrategy.php
+-rw-r--r--   1 vpsnettopet psacln        909 Feb 24  2015 LinearBackoffStrategy.php
+-rw-r--r--   1 vpsnettopet psacln        686 Feb 24  2015 ReasonPhraseBackoffStrategy.php
+-rw-r--r--   1 vpsnettopet psacln        975 Feb 24  2015 TruncatedBackoffStrategy.php

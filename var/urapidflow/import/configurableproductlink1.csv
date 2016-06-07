@@ -1,0 +1,14 @@
+##CPSA,SKU,ATTRIBUTE CODE,POSITION,LABEL,,
+CPSA,Sciencedietfelinelight,size_dogfood_2x5kg_7kg_13kg,5,Weight,,
+,,,,,,
+##CPSAL,SKU,ATTRIBUTE CODE,STORE,LABEL,,
+CPSAL,Sciencedietfelinelight,size_dogfood_2x5kg_7kg_13kg,default,Weight,,
+,,,,,,
+##CPSAP,SKU,ATTRIBUTE CODE,LABEL,WEBSITE,PRICE,IS_PERCENT
+CPSAP,Sciencedietfelinelight,size_dogfood_2x5kg_7kg_13kg,2kg,0,0,0
+CPSAP,Sciencedietfelinelight,size_dogfood_2x5kg_7kg_13kg,3.5kg,0,12.55,0
+,,,,,,
+,,,,,,
+#CPSI,PARENT SKU,CHILD SKU,,,,
+CPSI,Sciencedietfelinelight,CPS0265,,,,
+CPSI,Sciencedietfelinelight,CPS0285,,,,

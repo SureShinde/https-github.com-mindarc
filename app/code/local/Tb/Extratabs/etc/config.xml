@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tb_Extratabs>
+            <version>0.0.1</version>
+        </Tb_Extratabs>
+    </modules>
+    <global>
+        <helpers>
+            <extratabs>
+                <class>Tb_Extratabs_Helper</class>
+            </extratabs>
+        </helpers>
+        <blocks>
+            <catalog>
+                <rewrite>
+                    <product_view_tabs>
+                        Tb_Extratabs_Block_Product_View_Tabs
+                    </product_view_tabs>
+                </rewrite>
+            </catalog>
+            <extratabs>
+                <class>Tb_Extratabs_Block</class>
+            </extratabs>
+        </blocks>
+        <models>
+            <extratabs_adminhtml>
+                <class>Tb_Extratabs_Adminhtml_Model</class>
+            </extratabs_adminhtml>
+        </models>
+    </global>		
+    <frontend>
+        <layout>
+            <updates>
+                <extratabs>
+                    <file>extratabs.xml</file>
+                </extratabs>
+            </updates>
+        </layout>
+    </frontend>
+
+</config>

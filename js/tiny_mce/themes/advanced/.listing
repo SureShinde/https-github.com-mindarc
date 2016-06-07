@@ -1,0 +1,16 @@
+drwxr-xr-x   6 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       2701 Nov 21  2014 about.htm
+-rw-r--r--   1 vpsnettopet psacln       1167 Nov 21  2014 anchor.htm
+-rw-r--r--   1 vpsnettopet psacln       2251 Nov 21  2014 charmap.htm
+-rw-r--r--   1 vpsnettopet psacln       3198 Nov 21  2014 color_picker.htm
+-rw-r--r--   1 vpsnettopet psacln      25166 Nov 21  2014 editor_template.js
+-rw-r--r--   1 vpsnettopet psacln      39555 Nov 21  2014 editor_template_src.js
+-rw-r--r--   1 vpsnettopet psacln       4038 Nov 21  2014 image.htm
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 img
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 js
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 langs
+-rw-r--r--   1 vpsnettopet psacln       2527 Nov 21  2014 link.htm
+-rw-r--r--   1 vpsnettopet psacln       1732 Nov 21  2014 shortcuts.htm
+drwxr-xr-x   5 root     root         4096 Nov  6 06:06 skins
+-rw-r--r--   1 vpsnettopet psacln       1250 Nov 21  2014 source_editor.htm

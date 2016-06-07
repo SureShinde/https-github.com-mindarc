@@ -1,0 +1,35 @@
+<?php $featured_products = $this->getFeaturedProducts(); ?>
+	<?php shuffle($featured_products); ?>
+	<div class="box recently"> <!-- style="padding-left:15px; padding-right:15px;"> -->
+		<div class="home-latest-products"><h1>FEATURED PRODUCTS</h1></div> 
+		<div class="listing-type-grid  catalog-listing">
+			<?php $_collectionSize = count($featured_products) ?>
+			<ul cellspacing="0" class="recently-list" id="product-list-table">
+				<?php 
+					//$i=0; 
+					foreach ($featured_products as $_res): ?>
+						<?php $_product = Mage::getModel('catalog/product')->load($_res['product_id']); ?>
+						<?php //if ($i++%3==0): ?><?php //endif ?>
+						<li>
+							<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+								<?php $_imgSize = 210; ?>
+								<img class="product-image" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+							</a>
+							<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>)"><?php echo $this->htmlEscape($_product->getName()) ?></a></h2>
+							<?php echo $this->getPriceHtml($_product, true) ?>
+							<?php if($_product->getRatingSummary()): ?>
+							<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+							<?php endif; ?>
+							<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+						</li>
+						<?php //if ($i%3==0 && $i!=$_collectionSize): ?><?php //endif ?>
+					<?php endforeach ?>
+ 
+					<?php //for($i;$i%3!=0;$i++): ?>
+						<!-- <li class="empty-product">&nbsp;</li> -->
+					<?php //endfor ?>
+					<!--<?php //if ($i%3==0): ?>&nbsp;<?php //endif ?>-->
+			</ul>
+			<script type="text/javascript">decorateTable('product-list-table')</script>
+		</div>
+	</div>

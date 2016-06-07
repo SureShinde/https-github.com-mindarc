@@ -1,0 +1,5 @@
+<?php
+class Extendware_EWReviewReminder_Model_Networking_Client_Email extends Extendware_EWCore_Model_Networking_Client_Email
+{
+	
+}

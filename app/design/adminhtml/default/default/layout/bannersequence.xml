@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <bannersequence_adminhtml_bannersequence_index>
+        <reference name="content">
+            <block type="bannersequence/adminhtml_bannersequence" name="bannersequence" />
+        </reference>
+    </bannersequence_adminhtml_bannersequence_index>
+</layout>

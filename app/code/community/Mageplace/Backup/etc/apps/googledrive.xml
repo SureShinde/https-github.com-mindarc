@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<application>
+	<googledrive>
+		<label>Google Drive</label>
+		<auth>1</auth>
+		<chunkupload>1</chunkupload>
+		<settings>
+			<client_id>
+				<label>Client Id</label>
+				<type>text</type>
+				<required>1</required>
+			</client_id>
+			<client_secret>
+				<label>Client Secret</label>
+				<type>text</type>
+				<required>1</required>
+			</client_secret>
+			<description>
+				<text>To get &quot;Client Id&quot; and &quot;Client Secret&quot; create your project and register your application on &lt;a href=&quot;https://cloud.google.com/console#/project&quot; target=&quot;_blank&quot;&gt;Google Console&lt;/a&gt;</text>
+				<type>note</type>
+			</description>
+			<appPath>
+				<label>Google Drive Directory</label>
+				<type>text</type>
+				<required>0</required>
+			</appPath>
+			<filepartmaxsize>
+				<label>Max file size</label>
+				<type>text</type>
+				<required>0</required>
+				<note>Please don't change this setting without explicit instructions from extension developers.</note>
+				<value>0</value>
+			</filepartmaxsize>
+			<filechunksize>
+				<label>Chunk size</label>
+				<type>text</type>
+				<required>0</required>
+				<note>Please don't change this setting without explicit instructions from extension developers.</note>
+				<value>0</value>
+			</filechunksize>
+		</settings>
+	</googledrive>
+</application>

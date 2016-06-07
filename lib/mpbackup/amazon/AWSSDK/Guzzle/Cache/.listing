@@ -1,0 +1,10 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  13 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln        327 Feb 24  2015 AbstractCacheAdapter.php
+-rw-r--r--   1 vpsnettopet psacln       4237 Feb 24  2015 CacheAdapterFactory.php
+-rw-r--r--   1 vpsnettopet psacln       1771 Feb 24  2015 CacheAdapterInterface.php
+-rw-r--r--   1 vpsnettopet psacln       1886 Feb 24  2015 ClosureCacheAdapter.php
+-rw-r--r--   1 vpsnettopet psacln        843 Feb 24  2015 DoctrineCacheAdapter.php
+-rw-r--r--   1 vpsnettopet psacln        538 Feb 24  2015 NullCacheAdapter.php
+-rw-r--r--   1 vpsnettopet psacln       1018 Feb 24  2015 Zf1CacheAdapter.php
+-rw-r--r--   1 vpsnettopet psacln        919 Feb 24  2015 Zf2CacheAdapter.php

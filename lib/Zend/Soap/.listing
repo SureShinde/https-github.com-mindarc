@@ -1,0 +1,10 @@
+drwxr-xr-x   6 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  67 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 AutoDiscover
+-rw-r--r--   1 vpsnettopet psacln      19635 Apr  6  2015 AutoDiscover.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Client
+-rw-r--r--   1 vpsnettopet psacln      29506 Apr  6  2015 Client.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Server
+-rw-r--r--   1 vpsnettopet psacln      27447 Apr  6  2015 Server.php
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 Wsdl
+-rw-r--r--   1 vpsnettopet psacln      23787 Apr  6  2015 Wsdl.php

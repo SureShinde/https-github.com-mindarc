@@ -1,0 +1,510 @@
+/*
+Theme created for use with Sequence.js (http://www.sequencejs.com/)
+
+Theme: Modern Slide In
+Version: 1.3
+Theme Author: Ian Lunn @IanLunn
+Author URL: http://www.ianlunn.co.uk/
+Theme URL: http://www.sequencejs.com/themes/modern-slide-in/
+
+This is a FREE theme and is available under a MIT License:
+http://www.opensource.org/licenses/mit-license.php
+
+Sequence.js and its dependencies are (c) Ian Lunn Design 2012 - 2013 unless otherwise stated.
+*/
+/* CSS RESET - http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 */
+
+
+/* !CSS RESET */
+/* prefix declarations */
+
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url('../fonts/opensans-regular.eot');
+    src: url('../fonts/opensans-regular.eot') format('embedded-opentype'),
+         url('../fonts/opensans-regular.woff') format('woff'),
+         url('../fonts/opensans-regular.ttf') format('truetype'),
+         url('../fonts/opensans-regular.svg#OpenSansRegular') format('svg');
+}
+
+
+@font-face {
+    font-family: 'PoplarStdBold';
+    src: url('../fonts/poplarstd.eot');
+    src: url('../fonts/poplarstd.eot') format('embedded-opentype'),
+         url('../fonts/poplarstd.woff') format('woff'),
+         url('../fonts/poplarstd.ttf') format('truetype'),
+         url('../fonts/poplarstd.svg#PoplarStdBold') format('svg');
+}
+
+
+/* THEME STYLES */
+
+.sequence-theme {
+  /* this container is just to ensure the background color stretches all the way across on bigger screens */
+  background: #D9D9D9;
+}
+#sequence-theme {
+  padding: 15px 0; margin-top: -15px;
+}
+#sequence {
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  color: white;
+  font-size: 0.625em;
+  position: relative;
+}
+#sequence > .sequence-canvas {
+  height: 100%;
+  width: 100%;
+}
+#sequence > .sequence-canvas > li {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top:0;
+}
+#sequence > .sequence-canvas > li img {
+  height: auto;
+}
+#sequence > .sequence-canvas li > * {
+  position: absolute;
+  /* only cause the left and opacity properties to transition */
+  -webkit-transition-property: left, opacity;
+  -moz-transition-property: left, opacity;
+  -ms-transition-property: left, opacity;
+  -o-transition-property: left, opacity;
+  transition-property: left, opacity;
+}
+#sequence-theme .controls a {
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  display: none;
+  text-indent: -9999px;
+  font-weight: normal;
+  background: url("images/arrow-banner7.png") no-repeat 0 0 #e1e1df;
+  position: absolute;
+  top: 47%;
+  z-index: 1000;
+  height: 43px;
+  width: 43px;
+  margin-top: -47px;
+}
+#sequence-theme:hover .controls a { opacity: 1;}
+#sequence-theme .controls a.sequence-next {
+  background-position: 100% 0;
+  right: 90px;
+}
+#sequence-theme .controls a.sequence-prev { left: 90px;}
+  /*.sequence-theme .sequence-next,
+  .sequence-theme .sequence-prev {
+    color: white;
+    cursor: pointer;
+    display: none;
+    text-indent: -9999px;
+    font-weight: normal;
+    background: url("images/arrow-banner7.png") no-repeat 0 0 #aaa;
+    position: absolute;
+    top: 47%;
+    z-index: 1000;
+    height: 43px;
+    width: 43px;
+    margin-top: -47px;
+  }*/
+.sequence-pause {
+  bottom: 0;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1000;
+}
+
+.sequence-paused {
+  opacity: 0.3;
+}
+
+.sequence-prev {
+  left: 3%;
+}
+
+.sequence-next {
+  right: 3%;
+}
+
+.sequence-prev img,
+.sequence-next img {
+  height: 100%;
+  width: auto;
+}
+
+#sequence-preloader {
+  background: #d9d9d9;
+}
+
+.sequence-pagination {
+  bottom: 10px;
+  display: none;
+  position: absolute;
+	right: 0;
+  z-index: 10;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.sequence-pagination li {
+  display: inline-block; margin-right: 3px;
+  *display: inline;
+  /* Hack for IE7 and below as they don't support inline-block */
+
+}
+
+.sequence-pagination li a {
+  height: 11px; width: 11px;
+  display: block; border-radius: 100%; background: #d2d2d2; text-indent: -9999px;
+}
+
+.sequence-pagination li a:hover, .sequence-pagination li.current a { background: #ff6b7c;}
+.sequence-pagination li img {
+  cursor: pointer;
+  opacity: 0.5;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: margin-bottom, opacity;
+  -moz-transition-property: margin-bottom, opacity;
+  -ms-transition-property: margin-bottom, opacity;
+  -o-transition-property: margin-bottom, opacity;
+  transition-property: margin-bottom, opacity;
+}
+.sequence-pagination li img:hover {
+  margin-bottom: 4px;
+  opacity: 0;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.sequence-pagination li.current img {
+  opacity: 1;
+}
+
+
+.sequence-next,
+.sequence-prev {
+  position: absolute;
+  opacity: 0.6;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.sequence-next:hover,
+.sequence-prev:hover {
+  opacity: 1;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.title {
+  font-size: 3.4em;
+  left: -100%;
+  width: auto;
+  top: 50%;
+  margin-top: -120px;
+  z-index: 50;
+  font-size: 36px;
+  font-family: 'PoplarStdBold';
+  text-transform: uppercase;
+  opacity: 0;
+  color: #626262;
+  text-align: left;
+  transition-property: left, opacity;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  -ms-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+
+.animate-in .title {
+  left: 40px;
+  opacity: 1;
+  display:none; /* remove when needed */
+ 
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+
+.animate-out .title {
+  left: -100%;
+  opacity: 0;
+  display: none;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+.subtitle {
+  opacity: 0;
+  font-size: 36px;
+  font-family: 'PoplarStdBold';
+  left: -100%;
+  width: auto;
+  opacity: 0;
+  top: 50%;
+  color: #99d561;
+  margin-top: -95px;
+  z-index:999999;
+  text-transform: uppercase;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.animate-in .subtitle {
+  left: 40px;
+  opacity: 1;
+  display:none; /* remove when needed */
+  
+}
+.animate-out .subtitle {
+  left: -100%;
+  opacity: 0;
+}
+.intro {
+  top: 50%;
+  margin-top: -30px;
+  color: #666;
+  font-family: OpenSansRegular;
+  font-size: 15px;
+  opacity: 0;
+  left: -100%;
+  z-index: 1;
+  width: 360px;
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -ms-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+}
+.animate-in .intro {
+  left: 40px;
+  opacity: 1;
+  display:none; /* remove when needed */
+}
+.animate-out .intro {
+  left: -100%;
+  opacity: 0;
+}
+
+.link {
+  top: 50%;
+  margin-top: 60px;
+  opacity: 0;
+  left: -100%;
+  -webkit-transition-duration: 0.9s;
+  -moz-transition-duration: 0.9s;
+  -ms-transition-duration: 0.9s;
+  -o-transition-duration: 0.9s;
+  transition-duration: 0.9s;
+}
+.animate-in .link {
+  left: 40px;
+  opacity: 1;
+
+
+  
+}
+.animate-out .link {
+  left: -100%;
+  opacity: 0;
+ 
+}
+.link a {
+  color: #fff;
+  padding: 5px 20px;
+  line-height: 28px;
+  display: inline-block;
+  background: #f3af44;
+  text-transform: capitalize;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.link a:hover {
+  background: #ff6b7c;
+  text-decoration: none;
+}
+
+#sequence .title {
+  width: auto;
+}
+.model {
+  left: 120%;
+  margin-left: -70px;
+  top: 0;
+  opacity: 0;
+  position: relative;
+  height: auto !important;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+
+.animate-in .model {
+  left: 0;/* left: 50%; */ /* remove if needed */
+  opacity: 1;
+  margin-left: 0; /* remove if needed */
+  width: 100% /* remove if needed */
+}
+
+.animate-out .model {
+  left: 120%;
+  opacity: 0;
+ 
+}
+/*===============================================slider2======================================*/
+
+.slider-2 .subtitle { color: #33d1f1;} 
+.slider-2 .model { margin-left: -130px; }
+/*===============================================end-slider2======================================*/
+@media only screen and (max-width: 1199px) {
+	.model { height: 100% !important; }
+} 
+@media only screen and (max-width: 992px) {
+  #sequence .title { width: auto;}
+  #sequence-theme { margin-top: 0; }
+}
+
+@media only screen and (max-width: 767px) {
+	.model { margin-left: 0; }
+	.slider-2 .model { margin-left: 0}
+}
+
+@media only screen and (max-width: 680px) {
+	/* .animate-in .model { left: 44%; } */
+	.animate-in .model { left: 0; }
+	
+}
+
+@media only screen and (max-width: 680px) {
+	/* .animate-in .model { left: 25%; } */
+	.animate-in .model { left: 0; }
+}
+
+@media only screen and (max-width: 480px) {
+	.title, .subtitle, .intro, .link { display: none; }
+	#sequence-theme .controls a { display: none !important; }
+}
+
+@media only screen and (max-width: 320px) {
+	#sequence { height: auto; }
+	/* .animate-in .model { left: 11%;} */
+	.animate-in .model { left: 0;}
+}
+/* customer style*/
+ /* #sequence .slider-bg {
+    left: 0%;
+    min-width: 100%;
+    width: 100%;
+	top:50%;
+  }
+  
+  #sequence .animate-in .slider-bg {
+    left: 0%;
+    margin-left: 0%;
+	  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  }
+  
+  #sequence .animate-out .slider-bg {
+    left: 0%;
+    margin-left: 0%;
+  }*/
+
+  .model1 {
+  right: 55%;
+  bottom: -48%;
+  opacity: 0;
+  position: relative;
+  height: auto !important;
+  max-height: 568px !important;
+  width: 30%;
+  min-width: 225px;
+  /* prevents the model from shrinking when the browser is resized */
+  max-width: 266px;
+}
+
+.animate-in .model1 {
+  right: 45%;
+  opacity: 1;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+
+.animate-out .model1 {
+  right: 45%;
+  opacity: 0;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+ .slider-bg {
+  right: 0%;
+  opacity: 0;
+  position: relative;
+  width: 100%;
+  top: 0;
+  min-height:100%;	
+  /* prevents the model from shrinking when the browser is resized */
+}
+
+.animate-in .slider-bg {
+  right: 0%;
+  opacity: 1;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+}
+
+.animate-out .slider-bg {
+  right: 0%;
+  opacity: 0;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+  

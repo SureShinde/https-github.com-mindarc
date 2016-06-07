@@ -1,0 +1,155 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php
+/**
+ * Template for displaying product price in different places (products grid, product view page etc)
+ *
+ * @see Mage_Catalog_Block_Product_Abstract
+ */
+?>
+<?php
+$_product = $this->getProduct();
+
+$_id = $_product->getId();
+$_cpspHelper = $this->helper('configurableproductssimpleprices');
+$lodedProduct = Mage::getModel('catalog/product')->load($_product->getId());
+$_configurableSimple = $_cpspHelper->isEnable($lodedProduct);
+$_controllerName = Mage::app()->getRequest()->getControllerName();
+$_listControllers = array('category','product','result','advanced','index','cart');
+if($lodedProduct->getTypeId() != 'configurable' || !$_configurableSimple || ($_configurableSimple && !in_array($_controllerName, $_listControllers))){
+	echo $this->setTemplate('catalog/product/price.phtml')->toHtml();
+	return;
+}
+$_showLowestPrice = $_cpspHelper->isShowLowestPrice($lodedProduct);
+$_showMaxRegularPrice = $_cpspHelper->isShowMaxRegularPrice($lodedProduct);
+$_coreHelper = $this->helper('core');
+$_taxHelper = $this->helper('tax');
+$_store = $_product->getStore();
+$_simplePricesTax = ($_taxHelper->displayPriceIncludingTax() || $_taxHelper->displayBothPrices());
+$_cpspHelper->setUpStaticData($lodedProduct);
+$class = '';
+	
+if($_showMaxRegularPrice):?>
+	<?php 
+		$class = ' style="clear:both;"';
+		list($maxSpId, $_maximumPriceValue) = $_cpspHelper->getMaximumProductPrice($_id);
+		
+		if(is_array($maxSpId)) $maxSpId = array_shift($maxSpId);
+		if($maxSpId != null && $maxSpId != 0) $_sProductMax = Mage::getModel('catalog/product')->load($maxSpId);
+		
+		if ($_sProductMax && $_maximumPriceValue) {
+			$_maxExclTax = $_taxHelper->getPrice($_sProductMax, $_maximumPriceValue);
+			$_maxInclTax = $_taxHelper->getPrice($_sProductMax, $_maximumPriceValue, true);
+			$maxPrice = $_maximumPriceValue;
+		}
+	?>
+	<?php if ($maxPrice): ?>
+		<div class="price-box">
+			<?php if ($_taxHelper->displayBothPrices()): ?>
+				<span class="price-excluding-tax">
+					<span class="label"><?php echo $this->helper('tax')->__('Excl. Tax:') ?></span>
+					<span class="regular-price"
+						  id="price-excluding-tax-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
+						<span class="price"><?php echo $_coreHelper->formatPrice($_maxExclTax, false) ?></span>
+					</span>
+				</span>
+				<span class="price-including-tax">
+					<span class="label"><?php echo $this->helper('tax')->__('Incl. Tax:') ?></span>
+					<span class="regular-price"
+						  id="price-including-tax-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
+						<span class="price"><?php echo $_coreHelper->formatPrice($_maxInclTax, false) ?></span>
+					</span>
+				</span>
+			<?php else: ?>
+				<?php
+				$_maxShowPrice = $_maxInclTax;
+				if (!$_taxHelper->displayPriceIncludingTax()) {
+					$_maxShowPrice = $_maxExclTax;
+				}
+				?>
+				<span class="regular-price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
+					<span class="price"><?php echo $_coreHelper->formatPrice($_maxShowPrice, false) ?></span>
+				</span>
+			<?php endif; ?>
+		</div>
+    <?php endif; ?>
+<?php elseif($_controllerName == 'product' || $_controllerName == 'cart'):
+	echo $this->setTemplate('catalog/product/price.phtml')->toHtml();
+endif;?>
+
+<?php if($_showLowestPrice):?>
+	<?php 
+		list($spID, $_minimalPriceValue) = $_cpspHelper->getMinimalProductPrice($_id);
+		
+		if(is_array($spID)) $spID = array_shift($spID);
+		if($spID != null && $spID != 0) $_sProduct = Mage::getModel('catalog/product')->load($spID);
+		
+		if ($_sProduct && $_minimalPriceValue) {
+			$_exclTax = $_taxHelper->getPrice($_sProduct, $_minimalPriceValue);
+			$_inclTax = $_taxHelper->getPrice($_sProduct, $_minimalPriceValue, true);
+			$price = $_minimalPriceValue;
+		}
+	?>
+	<?php if ($price): ?>
+        <div class="price-box"<?php echo $class;?>>
+            <p<?php if ($_minimalPriceValue): ?> class="minimal-price"<?php endif ?>>
+                <?php if ($_minimalPriceValue): ?>
+                    <span class="price-label"><?php echo $this->__('Price From:') ?></span>
+                <?php endif ?>
+                <?php if ($_taxHelper->displayBothPrices()): ?>
+                    <span class="price-excluding-tax">
+                        <span class="label"><?php echo $this->helper('tax')->__('Excl. Tax:') ?></span>
+                        <span class="price"
+                              id="price-excluding-tax-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
+                            <?php echo $_coreHelper->formatPrice($_exclTax, false) ?>
+                        </span>
+                    </span>
+                    <span class="price-including-tax">
+                        <span class="label"><?php echo $this->helper('tax')->__('Incl. Tax:') ?></span>
+                        <span class="price"
+                              id="price-including-tax-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
+                            <?php echo $_coreHelper->formatPrice($_inclTax, false) ?>
+                        </span>
+                    </span>
+                <?php else: ?>
+                    <?php
+                    $_showPrice = $_inclTax;
+                    if (!$_taxHelper->displayPriceIncludingTax()) {
+                        $_showPrice = $_exclTax;
+                    }
+                    ?>
+                    <span class="price" id="product-minimal-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
+                    <?php echo $_coreHelper->formatPrice($_showPrice, false) ?>
+                </span>
+                <?php endif; ?>
+            </p>
+        </div>
+    <?php endif; ?>
+<?php elseif($_controllerName != 'product' && $_controllerName != 'cart' && !$_showMaxRegularPrice):
+		echo $this->setTemplate('catalog/product/price.phtml')->toHtml();
+endif;?>

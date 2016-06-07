@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<application>
+	<box>
+		<label>Box</label>
+		<auth>1</auth>
+		<settings>
+			<client_id>
+				<label>Client Id</label>
+				<type>text</type>
+				<required>1</required>
+			</client_id>
+			<client_secret>
+				<label>Client Secret</label>
+				<type>text</type>
+				<required>1</required>
+			</client_secret>
+			<description>
+				<text>To get &quot;Client Id&quot; and &quot;Client Secret&quot; create your application on &lt;a href=&quot;https://app.box.com/developers/services/edit/&quot; target=&quot;_blank&quot;&gt;Create a Box Application&lt;/a&gt;</text>
+				<type>note</type>
+			</description>
+			<appPath>
+				<label>Box Directory</label>
+				<type>text</type>
+				<required>0</required>
+			</appPath>
+			<filepartmaxsize>
+				<label>Max file size</label>
+				<type>text</type>
+				<required>0</required>
+				<note>File size that the backup will be divided into. Default size is 100 Mb.</note>
+				<value>100</value>
+			</filepartmaxsize>
+            <timeout>
+                <label>Connection Timeout</label>
+                <type>text</type>
+                <required>0</required>
+                <note>Value by default - 10 seconds</note>
+            </timeout>
+		</settings>
+	</box>
+</application>

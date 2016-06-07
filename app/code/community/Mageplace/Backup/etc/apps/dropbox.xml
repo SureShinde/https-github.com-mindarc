@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<application>
+	<dropbox>
+		<label>Dropbox</label>
+		<auth>1</auth>
+		<chunkupload>1</chunkupload>
+		<settings>
+			<consumerKey>
+				<label>App key</label>
+				<type>text</type>
+				<required>1</required>
+			</consumerKey>
+			<consumerSecret>
+				<label>App secret</label>
+				<type>text</type>
+				<required>1</required>
+			</consumerSecret>
+			<description>
+				<text>To get &quot;App key&quot; and &quot;App secret&quot; register your application on &lt;a href=&quot;https://www.dropbox.com/developers/apps&quot; target=&quot;_blank&quot;&gt;Dropbox apps&lt;/a&gt;</text>
+				<type>note</type>
+			</description>			
+			<appPath>
+				<label>Dropbox Directory</label>
+				<type>text</type>
+				<required>0</required>
+			</appPath>
+			<connTimeOut>
+				<label>Connection Timeout</label>
+				<type>text</type>
+				<required>0</required>
+				<note>Please don't change this setting without explicit instructions from extension developers.</note>
+			</connTimeOut>
+			<filepartmaxsize>
+				<label>Max file size</label>
+				<type>text</type>
+				<required>0</required>
+				<note>Please don't change this setting without explicit instructions from extension developers.</note>
+				<value>0</value>
+			</filepartmaxsize>
+			<filechunksize>
+				<label>Chunk size</label>
+				<type>text</type>
+				<required>0</required>
+				<note>Please don't change this setting without explicit instructions from extension developers.</note>
+				<value>0</value>
+			</filechunksize>
+		</settings>
+	</dropbox>
+</application>

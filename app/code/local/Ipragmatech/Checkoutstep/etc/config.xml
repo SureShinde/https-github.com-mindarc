@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Ipragmatech_Checkoutstep>
+			<version>0.1.1</version>
+		</Ipragmatech_Checkoutstep>
+	</modules>
+
+	<global>
+		<models>
+			<checkoutstep>
+				<class>Ipragmatech_Checkoutstep_Model</class>
+				<resourceModel>checkoutstep_resource</resourceModel>
+			</checkoutstep>
+
+			<checkoutstep_resource>
+				<class>Ipragmatech_Checkoutstep_Model_Resource</class>
+				<entities>
+					<customerdata>
+						<table>checkoutstep_customer_data</table>
+					</customerdata>
+				</entities>
+			</checkoutstep_resource>
+
+			<checkout>
+				<rewrite>
+					<type_onepage>Ipragmatech_Checkoutstep_Model_Type_Onepage</type_onepage>
+				</rewrite>
+			</checkout>
+		</models>
+
+		<helpers>
+			<checkoutstep>
+				<class>Ipragmatech_Checkoutstep_Helper</class>
+			</checkoutstep>
+		</helpers>
+
+		<blocks>
+			<checkout>
+				<rewrite>
+					<onepage>Ipragmatech_Checkoutstep_Block_Onepage</onepage>
+				</rewrite>
+			</checkout>
+
+			<checkoutstep>
+				<class>Ipragmatech_Checkoutstep_Block</class>
+			</checkoutstep>
+
+			<checkoutsteponepage>
+				<class>Ipragmatech_Checkoutstep_Block_Onepage</class>
+			</checkoutsteponepage>
+			
+		</blocks>
+
+		<rewrite>
+			<ipragmatech_checkoutstep_onepage>
+				<from><![CDATA[#^/checkout/onepage/#]]></from>
+				<to>/checkoutstep/onepage/</to>
+			</ipragmatech_checkoutstep_onepage>
+		</rewrite>
+		<resources>
+            <checkoutstep_setup>
+                <setup>
+                    <module>Ipragmatech_Checkoutstep</module>
+                </setup>
+            </checkoutstep_setup>
+        </resources>  	
+        </global>
+
+	<frontend>
+		<routers>
+			<ipragmatech_checkoutstep>
+				<use>standard</use>
+				<args>
+					<module>Ipragmatech_Checkoutstep</module>
+					<frontName>checkoutstep</frontName>
+				</args>
+			</ipragmatech_checkoutstep>
+
+		</routers>
+
+		<events>
+			<checkout_onepage_controller_success_action>
+				<observers>
+					<hooksystem_order_success>
+						<type>singleton</type>
+						<class>checkoutstep/observer</class>
+						<method>hookToOrderSaveEvent</method>
+					</hooksystem_order_success>
+				</observers>
+			</checkout_onepage_controller_success_action>
+		</events>
+
+		<layout>
+			<updates>
+				<checkoutstep>
+					<file>checkoutstep.xml</file>
+				</checkoutstep>
+			</updates>
+		</layout>
+	</frontend>
+	
+	<admin>
+		<routers>
+			<ipragmatech_checkoutstep>
+				<use>admin</use>
+				<args>
+					<module>Ipragmatech_Checkoutstep</module>
+					<frontName>checkoutstep</frontName>
+				</args>
+			</ipragmatech_checkoutstep>
+
+		</routers>
+	</admin>
+	<adminhtml>
+        <menu>
+            <checkoutstep module="checkoutstep">
+                <title>iPragmatech</title>
+                <sort_order>71</sort_order>              
+                <children>
+                    <exportdata translate="title" module="checkoutstep">
+                        <title>Export Data</title>
+                        <sort_order>1</sort_order>
+                    	<action>checkoutstep/adminhtml_exportdata</action>
+                    </exportdata>
+                </children>
+            </checkoutstep>
+        </menu>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+	                    <checkoutstep translate="title" module="checkoutstep">
+	                        <title>iPragmatech</title>
+	                        <sort_order>70</sort_order>
+	                        <children>
+	                            <exportdata translate="title">
+	                                <title>Export Data</title>
+				                    <sort_order>10</sort_order>
+	                            </exportdata>
+	                        </children>
+	                    </checkoutstep>
+                    </children>
+                </admin>
+                
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <checkoutstep translate="title">
+                                        <title>Custom Checkout Step</title>
+                                    </checkoutstep>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

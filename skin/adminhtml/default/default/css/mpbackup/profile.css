@@ -1,0 +1,56 @@
+/**
+ * Mageplace Backup
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2013 Mageplace. (http://www.mageplace.com)
+ * @license     http://www.mageplace.com/disclaimer.html
+ */
+
+.tableSpaceButton {
+	float: right;
+	margin-right: 500px;
+	color: #EA7601;
+	text-decoration: underline;
+}
+
+button.tableSpaceButton {
+	margin-right: 495px;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.tableSpaceButton:hover {
+	cursor: pointer;
+}
+
+.tableSize {
+	float: right;
+	margin-right: 30px;
+}
+
+.fileSpaceButton {
+	float: right;
+	margin-right: 20px;
+	color: #EA7601;
+	text-decoration: underline;
+}
+
+button.fileSpaceButton {
+	margin-right: 15px;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.fileSpaceButton:hover {
+	cursor: pointer;
+}
+
+.fileSize {
+	float: right;
+	margin-right: 30px;
+}
+
+.mp-row-0 {
+	background-color: #ddd;
+}

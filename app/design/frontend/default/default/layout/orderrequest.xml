@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--<layout version="0.1.0">
+    <default>
+    </default>
+    <orderrequest_index_index>
+        <reference name="content">
+            <block type="orderrequest/orderrequest" name="orderrequest" template="orderrequest/orderrequest.phtml" />
+        </reference>
+    </orderrequest_index_index>
+</layout>-->
+
+<layout version="0.1.0">
+    <checkout_onepage_index>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>orderrequest/css/orderrequest.css</name><params/></action>
+        </reference>
+
+        <reference name="checkout.onepage.review">
+            <action method="setTemplate" ifconfig="orderrequest/orderrequest_general/enabled">
+                <template>orderrequest/checkout/onepage/review.phtml</template>
+            </action>
+        </reference>
+    </checkout_onepage_index>
+
+    <checkout_onepage_review>
+        <reference name="checkout.onepage.review.info.items.after">
+            <block type="orderrequest/orderrequest" name="order.request" as="orderrequest" template="orderrequest/checkout/onepage/orderrequest.phtml"/>
+        </reference>
+    </checkout_onepage_review>
+
+    <checkout_multishipping_overview translate="label">
+         <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>orderrequest/css/orderrequest.css</name><params/></action>
+        </reference>
+        <reference name="checkout_overview">
+            <action method="setTemplate" ifconfig="orderrequest/orderrequest_general/enabled">
+                <template>orderrequest/checkout/multishipping/overview.phtml</template>
+            </action>
+        </reference>
+    </checkout_multishipping_overview>
+
+    <sales_order_view>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>orderrequest/css/orderrequest.css</name><params/></action>
+        </reference>
+    </sales_order_view>
+    
+    <orderrequest_email_information>
+        <block type="orderrequest/email_info" name="orderrequest_email_info" template="orderrequest/email/info.phtml"/>
+    </orderrequest_email_information>
+    
+</layout>

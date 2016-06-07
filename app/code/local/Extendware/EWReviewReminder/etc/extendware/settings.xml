@@ -1,0 +1,452 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+        <Extendware_EWReviewReminder>
+        	<extendware>
+	        	<settings>
+	        		<scopes>
+		        		<main>
+		        			<tabs>
+						        <main translate="label comment ewhelp" module="ewcore">
+						            <label>Review Reminder</label>
+						            <sort_order>100</sort_order>
+						        </main>
+						    </tabs>
+							<sections>
+								<ewreviewreminder translate="label comment ewhelp" module="ewreviewreminder">
+									<class>separator-top</class>
+									<label>General</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>10</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+						            <groups>
+						                <general translate="label comment ewhelp" module="ewreviewreminder">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>100</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<status translate="label comment ewhelp">
+						                            <label>Status</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>1</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Disabling will disable order reminder for the store. Currently queued items will be deleted at their send time instead of sent.]]></comment>
+						                        </status>
+						                    	<num_reminders translate="label comment ewhelp">
+						                            <label>Number of reminders</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment><![CDATA[Maximum number of reminders. Must be a number greater than 0. Please remember to configure reminders if you change this number]]></comment>
+						                        </num_reminders>
+						                        <stop_after_visit translate="label comment ewhelp">
+						                            <label>Stop After Visiting</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[If set to "Enabled", no more reminders will be sent if the customer clicks a link in the reminder e-mail]]></comment>
+						                        </stop_after_visit>
+						                    </fields>
+						                </general>
+						                <generation translate="label comment ewhelp" module="ewreviewreminder">
+						                    <label>Generation</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>200</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <status translate="label comment ewhelp">
+						                            <label>Auto Generation</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[If set to "Disabled", reminders will not be automatically generated (manual generation is still possible)]]></comment>
+						                        </status>
+						                        <disabled_customer_groups translate="label comment ewhelp">
+						                            <label>Disabled Customer Groups</label>
+						                            <frontend_type>multiselect</frontend_type>
+						                            <source_model>ewreviewreminder/adminhtml_config_data_option_customergroup</source_model>
+						                            <sort_order>44</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <can_be_empty>1</can_be_empty>
+						                            <comment><![CDATA[Customers in these groups will NOT have reminders generated.]]></comment>
+						                        </disabled_customer_groups>
+						                        <reminder_protection_period translate="label comment ewhelp">
+						                            <label>Reminder Protection</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>50</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_double</model>
+						                            		<options>
+						                            			<min_value>0</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                            <comment><![CDATA[The minimum numbers of days to wait from the last reminder stream until a customer / email can trigger a new reminder stream. Enter 0 to disable protection.]]></comment>
+						                            <ewhelp><![CDATA[This is useful to prevent customers from always receiving a reminder. <b>Example: </b>If you set this to 10 days, then a customers' order reminders will be ignored until 10 days after the last reminder stream was created.]]></ewhelp>
+						                        </reminder_protection_period>
+						                    </fields>
+						                </generation>
+						                <email translate="label comment ewhelp" module="ewreviewreminder">
+						                    <label>E-mail</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>300</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<status translate="label comment ewhelp">
+						                            <label>Auto Send</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[If set to "Disabled", reminders will not be automatically sent (manual sending is still possible)]]></comment>
+						                        </status>
+						                        <sender_identity translate="label comment ewhelp">
+						                            <label>Email Sender</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                        </sender_identity>
+						                        <default_customer_name translate="label comment ewhelp">
+						                            <label>Default Customer Name</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_length</model>
+						                            		<options>
+						                            			<min_length>1</min_length>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <comment><![CDATA[Default customer name if customer did not supply name]]></comment>
+						                        </default_customer_name>
+						                        <bcc translate="label comment ewhelp">
+						                            <label>BCC</label>
+						                            <frontend_model>ewreviewreminder/adminhtml_config_form_field_bcc</frontend_model>
+                            						<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                    		<show_in_store>1</show_in_store>>
+						                            <validator>
+						                            		<model>ewcore/data_validator_serialized_array</model>
+						                            		<options>
+						                            			<splittable_min_items>1</splittable_min_items>
+						                            			<splittable_max_items>1</splittable_max_items>
+						                            			<splittable_item_types>string</splittable_item_types>
+						                            			<splittable_item_min_length>1</splittable_item_min_length>
+						                            		</options>
+						                            	</validator>
+						                            <comment><![CDATA[Send a copy of the reminder to these e-mails.]]></comment>
+						                        </bcc>
+						                    </fields>
+						                </email>
+						                <advanced translate="label comment ewhelp" module="ewreviewreminder">
+						                    <label>Advanced</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>400</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <magento_cron_enabled translate="label comment ewhelp">
+						                            <label>Use Magento Cron</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>50</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[If set to Disabled you must manually set up the cronjobs at [Magento root]/shell/extendware/ewreviewreminder/]]></comment>
+						                        </magento_cron_enabled>
+						                    </fields>
+						                </advanced>
+						            </groups>
+						        </ewreviewreminder>
+							</sections>
+						</main>
+					</scopes>
+					<templates>
+		       			<ewreviewreminder_reminder translate="label comment ewhelp" module="ewreviewreminder">
+							<class>separator-top</class>
+							<label>Reminder</label>
+							<tab>main</tab>
+							<frontend_type>text</frontend_type>
+							<sort_order>1000</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+				            <groups>
+				                <email translate="label comment ewhelp" module="ewreviewreminder">
+				                    <label>E-mail</label>
+				                    <frontend_type>text</frontend_type>
+				                    <sort_order>10</sort_order>
+				                    <show_in_default>1</show_in_default>
+				                    <show_in_website>1</show_in_website>
+				                    <show_in_store>1</show_in_store>
+				                    <fields>
+				                        <template translate="label comment ewhelp">
+				                            <label>E-mail Template</label>
+				                            <frontend_type>select</frontend_type>
+				                            <source_model>ewreviewreminder/adminhtml_config_data_option_email_template</source_model>
+				                            <sort_order>20</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <default_value>ewreviewreminder_reminder_email_template</default_value>
+				                            <comment><![CDATA[Select the template of the e-mail. You can create your own in System -> Transactional Emails]]></comment>
+				                        </template> 
+				                        <delay_magnitude translate="label comment ewhelp">
+				                            <label>Delay Magnitude</label>
+				                            <frontend_type>text</frontend_type>
+				                            <sort_order>30</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <validators>
+				                            	<validator>
+				                            		<model>ewcore/data_validator_integer</model>
+				                            		<options>
+				                            			<min_value>0</min_value>
+				                            		</options>
+				                            	</validator>
+				                            </validators>
+				                            <validate>required-entry validate-zero-or-greater</validate>
+				                            <comment><![CDATA[How long to wait in days since the delay reference until a reminder is sent]]></comment>
+				                            <default_value>20</default_value>
+				                        </delay_magnitude>
+				                        <delay_reference translate="label comment ewhelp">
+				                            <label>Delay Reference</label>
+				                            <frontend_type>select</frontend_type>
+				                            <source_model>ewreviewreminder/adminhtml_config_data_option_delay_reference</source_model>
+				                            <sort_order>50</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <comment><![CDATA[Delay = current time - the delay reference. If the delay is greater than the delay you have set, then a reminder will be sent. For followup reminders, "Last Reminded Time" is highly recommended]]></comment>
+				                            <default_value>abandoned_at</default_value>
+				                            <default_value2>last_reminded_at</default_value2>
+				                        </delay_reference>
+				                        <tracking_params translate="label comment ewhelp">
+				                            <label>Google Tracking Params</label>
+				                            <frontend_type>text</frontend_type>
+				                            <sort_order>60</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <comment><![CDATA[Enter url parameters you want to add to the link in the email. They can be any parameters and are not google specific.]]></comment>
+				                            <default_value><![CDATA[utm_source=reminder_email&utm_medium=email&utm_campaign=Order%20Reminder]]></default_value>
+				                        </tracking_params>
+				                    </fields>
+				                </email>
+				                <coupon translate="label comment ewhelp" module="ewreviewreminder">
+				                    <label>Coupon</label>
+				                    <frontend_type>text</frontend_type>
+				                    <sort_order>20</sort_order>
+				                    <show_in_default>1</show_in_default>
+				                    <show_in_website>1</show_in_website>
+				                    <show_in_store>1</show_in_store>
+				                    <fields>
+				                    	<status translate="label comment ewhelp">
+				                            <label>Status</label>
+				                            <frontend_type>select</frontend_type>
+				                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+				                            <sort_order>10</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <comment><![CDATA[If set to "Disabled", a coupon will not be generated]]></comment>
+				                        	<default_value>1</default_value>
+				                        </status>
+				                        <generation_mode translate="label comment ewhelp">
+				                            <label>Generation Mode</label>
+				                            <frontend_type>select</frontend_type>
+				                            <source_model>ewreviewreminder/adminhtml_config_data_option_coupon_generationmode</source_model>
+				                            <sort_order>11</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <depends><status>1</status></depends>
+				                            <comment><![CDATA[The mode used to create the coupon. Copy requires you to create a coupon in Promotions -> Shopping Cart Price Rules which enables you to use advanced rules and conditions.]]></comment>
+				                            <ewhelp><![CDATA[To use the "Copy" mode, create a coupon in Promotions -> Shopping Cart Price Rules. Coupons will be created based on this coupon. This allows you to use advanced rules and conditions.]]></ewhelp>
+				                        	<default_value>create</default_value>
+				                        </generation_mode>
+				                        <base_sales_rule_id translate="label comment ewhelp">
+				                            <label>Sales Rule ID</label>
+				                            <frontend_type>text</frontend_type>
+				                            <sort_order>12</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <validators>
+				                            	<validator>
+				                            		<model>ewreviewreminder/data_validator_sales_rule_id</model>
+				                            		<options>
+				                            			<min_value>0</min_value>
+				                            		</options>
+				                            	</validator>
+				                            </validators>
+				                            <validate>required-entry validate-greater-than-zero</validate>
+				                            <depends><status>1</status><generation_mode>copy</generation_mode></depends>
+				                            <comment><![CDATA[The ID of the sales rule that will be copied. This can be found in Promotions -> Shopping Cart Price Rules.]]></comment>
+				                            <default_value></default_value>
+				                        </base_sales_rule_id>
+				                        <type translate="label comment ewhelp">
+				                            <label>Coupon Type</label>
+				                            <frontend_type>select</frontend_type>
+				                            <source_model>ewreviewreminder/adminhtml_config_data_option_coupon_type</source_model>
+				                            <sort_order>12</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <depends><status>1</status><generation_mode>create</generation_mode></depends>
+				                            <default_value>by_percent</default_value>
+				                        </type>
+				                        <amount translate="label comment ewhelp">
+				                            <label>Coupon Amount</label>
+				                            <frontend_type>text</frontend_type>
+				                            <sort_order>20</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <validators>
+				                            	<validator>
+				                            		<model>ewcore/data_validator_double</model>
+				                            		<options>
+				                            			<min_value>0</min_value>
+				                            		</options>
+				                            	</validator>
+				                            </validators>
+				                            <validate>required-entry validate-greater-than-zero</validate>
+				                            <depends><status>1</status><generation_mode>create</generation_mode></depends>
+				                            <comment><![CDATA[Only enter numbers. If using a percentage off, then the whole number represents the percent off (20 = 20% discount). For fixed amounts it represents the dollar amount (20 = $20).]]></comment>
+				                            <default_value>10</default_value>
+				                        </amount>
+				                        <min_base_subtotal translate="label comment ewhelp">
+				                            <label>Min Subtotal</label>
+				                            <frontend_type>text</frontend_type>
+				                            <sort_order>21</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <validators>
+				                            	<validator>
+				                            		<model>ewcore/data_validator_double</model>
+				                            		<options>
+				                            			<min_value>0</min_value>
+				                            		</options>
+				                            	</validator>
+				                            </validators>
+				                            <validate>required-entry validate-zero-or-greater</validate>
+				                            <depends><status>1</status><generation_mode>create</generation_mode></depends>
+				                            <comment><![CDATA[Only enter numbers. This is the minimum value the customer must add to their cart for the coupon to be valid.]]></comment>
+				                            <default_value>0</default_value>
+				                        </min_base_subtotal>
+				                        <expiry_magnitude translate="label comment ewhelp">
+				                            <label>Expiry (days)</label>
+				                            <frontend_type>text</frontend_type>
+				                            <sort_order>30</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <comment><![CDATA[Enter expiry (in days). Entering "0" means no expiry.]]></comment>
+				                            <default_value>5</default_value>
+				                            <depends><status>1</status></depends>
+				                            <validators>
+				                            	<validator>
+				                            		<model>ewcore/data_validator_integer</model>
+				                            		<options>
+				                            			<min_value>1</min_value>
+				                            		</options>
+				                            	</validator>
+				                            </validators>
+				                            <validate>required-entry validate-greater-than-zero</validate>
+				                        </expiry_magnitude> 
+				                        <stop_rules_processing translate="label comment ewhelp">
+				                            <label>Stop Rules Processing</label>
+				                            <frontend_type>select</frontend_type>
+				                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+				                            <sort_order>39</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <depends><status>1</status><generation_mode>create</generation_mode></depends>
+				                            <comment>If enabled then other rules will not be processed after this coupon is processed.</comment>
+				                            <default_value>1</default_value>
+				                        </stop_rules_processing>
+				                        <priority translate="label comment ewhelp">
+				                            <label>Priority</label>
+				                            <frontend_type>text</frontend_type>
+				                            <sort_order>40</sort_order>
+				                            <show_in_default>1</show_in_default>
+				                            <show_in_website>1</show_in_website>
+				                            <show_in_store>1</show_in_store>
+				                            <validators>
+				                            	<validator>
+				                            		<model>ewcore/data_validator_integer</model>
+				                            		<options>
+				                            			<min_value>0</min_value>
+				                            		</options>
+				                            	</validator>
+				                            </validators>
+				                            <validate>required-entry validate-greater-than-zero</validate>
+				                            <default_value>5</default_value>
+				                            <depends><status>1</status></depends>
+				                            <comment><![CDATA[The priority of the coupon. Useful if you have other shopping cart rules that need to be processed before this coupon.]]></comment>
+				                        	<ewhelp><![CDATA[For example, if you have a store wide cart rule that allows for discounts in certain conditions (orders > $500, 10% off if you buy 2 or more products, etc), then you need to set the priority of the reminder coupons to be greater than the priority of those cart rules or else the reminder coupon will prevent those rules from processing.]]></ewhelp>
+				                        </priority>
+									</fields>
+								</coupon>
+				            </groups>
+				        </ewreviewreminder_reminder>
+		       		</templates>
+				</settings>
+			</extendware>
+		</Extendware_EWReviewReminder>
+	</modules>
+</config>

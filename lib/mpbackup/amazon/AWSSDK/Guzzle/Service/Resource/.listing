@@ -1,0 +1,11 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   7 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1045 Feb 24  2015 AbstractResourceIteratorFactory.php
+-rw-r--r--   1 vpsnettopet psacln       1775 Feb 24  2015 CompositeResourceIteratorFactory.php
+-rw-r--r--   1 vpsnettopet psacln        904 Feb 24  2015 MapResourceIteratorFactory.php
+-rw-r--r--   1 vpsnettopet psacln       2062 Feb 24  2015 Model.php
+-rw-r--r--   1 vpsnettopet psacln       7516 Feb 24  2015 ResourceIterator.php
+-rw-r--r--   1 vpsnettopet psacln       3411 Feb 24  2015 ResourceIteratorApplyBatched.php
+-rw-r--r--   1 vpsnettopet psacln       1992 Feb 24  2015 ResourceIteratorClassFactory.php
+-rw-r--r--   1 vpsnettopet psacln        789 Feb 24  2015 ResourceIteratorFactoryInterface.php
+-rw-r--r--   1 vpsnettopet psacln       1795 Feb 24  2015 ResourceIteratorInterface.php

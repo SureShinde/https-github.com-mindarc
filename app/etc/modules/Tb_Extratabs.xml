@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+  <modules>
+    <Tb_Extratabs>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Tb_Extratabs>
+  </modules>
+</config>

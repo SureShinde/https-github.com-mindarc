@@ -1,0 +1,6 @@
+drwxr-xr-x   4 vpsnettopet psacln       4096 Nov  6 06:06 .
+drwxr-xr-x  12 vpsnettopet psacln       4096 Nov  6 06:06 ..
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 Stopword
+-rw-r--r--   1 vpsnettopet psacln       6343 Mar 12  2015 Stopword.php
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 Synonym
+-rw-r--r--   1 vpsnettopet psacln       6279 Mar 12  2015 Synonym.php

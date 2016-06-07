@@ -1,0 +1,43 @@
+<?php 
+$_category = Mage::getModel('catalog/category')->load(42);
+$_subcategories = $_category->getChildrenCategories();
+?>
+<div id="sidr">
+	<?php if(count($_subcategories) > 0): ?>
+		<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/topmenu/renderer_mobile.phtml')->setLevelTree(0)->setNavCategory($_category)->toHtml(); ?>
+	<?php endif; ?>
+
+	<p>Call us Monday - Friday from 9am - 5pm on </br>
+		<span class="sidr-number">1300 783 873</span></p>
+	<p class="sidr-copy">Copyright &copy; 2015 Net To Pet</p>
+</div>
+<script type="text/javascript">
+	jQuery.noConflict($);
+	jQuery(document).ready(function($) {
+		$('#simple-menu').sidr();
+		$('.navbar-default').click(function() {
+			$(this).toggleClass('active');
+		});
+		// Active Tab Colouring
+		// $('.sidr .menu-item--has-children>a').click(function() {
+		// 	$('.sidr .menu-item--has-children a').not(this).removeClass('active');
+		// 	$(this).toggleClass('active');
+		// });
+		// Dropdowns
+		// $('.menu-item--has-children').click(function() {
+		// 	$('.menu-item--has-children').not(this).find('.submenu').slideUp();
+		// 	$(this).find('.submenu').slideToggle();
+		// });
+		$('.ext-nav-child').click(function(){
+			var parent = $(this).parent();
+			if(parent.hasClass('active')){ 
+				parent.removeClass('active');
+				$(this).next('.sub-main-nav').slideUp(200);
+			}
+			else{
+				parent.addClass('active');
+				$(this).next('.sub-main-nav').slideDown(200);
+			}
+		});
+	});
+</script>

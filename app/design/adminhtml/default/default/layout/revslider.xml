@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <revslider_adminhtml_revslider_index>
+        <reference name="content">
+            <block type="revslider/adminhtml_revslider" name="revslider" />
+        </reference>
+    </revslider_adminhtml_revslider_index>
+	  <revslider_adminhtml_revslider_slide>
+		<reference name="content">
+            <block type="revslider/adminhtml_revslider_slide_slide" name="slide" />
+        </reference>
+     </revslider_adminhtml_revslider_slide>
+	  <revslider_adminhtml_revslider_media>
+		 <reference name="head">
+			  <action method="addJs">
+				  <script>magentothem/revslider/js/jquery-1.8.3.min.js</script>
+			  </action>
+		 </reference>
+		  <reference name="content">
+            <block type="revslider/adminhtml_revslider_slide_media" name="revslider_media" template ="revslider/media.phtml"  />
+        </reference>
+	  </revslider_adminhtml_revslider_media>
+	   <revslider_adminhtml_revslider_edit>
+	   		<reference name ="head">
+			  <action method="addJs">
+				  <script>magentothem/revslider/js/jquery-1.8.3.min.js</script>
+			  </action>
+			  <action method="addJs">
+				  <script>magentothem/revslider/js/edit_form.js</script>
+			  </action>
+			  <action method="addJs">
+				  <script>magentothem/revslider/mColorPicker.js</script>
+			  </action>
+			</reference>
+	   </revslider_adminhtml_revslider_edit>
+	   <revslider_adminhtml_revslider_editbanner>
+		<reference name ="head">
+				<action method="addItem">
+					<type>skin_css</type>
+					<name>magentothem/revslider/jquery-ui.css</name>
+				</action>
+				<action method="addItem">
+					<type>skin_css</type>
+					<name>magentothem/revslider/codemirror.css</name>
+				</action>
+				 <action method="addItem">
+					<type>skin_css</type>
+					<name>magentothem/revslider/admin.css</name>
+				</action>
+				<action method="addItem">
+					<type>skin_css</type>
+					<name>magentothem/revslider/botstrap.min.css</name>
+				</action>
+				<action method="addItem">
+					<type>skin_css</type>
+					<name>magentothem/revslider/colors.min.css</name>
+				</action>
+				<!-- <action method="addItem">
+					<type>skin_css</type>
+					<name>revslider/captions.css</name>
+					<stylesheet>media="all" id="rs-plugin-captions"</stylesheet>
+				</action> -->
+				<action method="addItem">
+					<type>skin_css</type>
+					<name>magentothem/revslider/edit_layers.css</name>
+					<stylesheet>media="all" id="edit_layers"</stylesheet>
+				</action>
+				<action method="addItem">
+					<type>skin_css</type>
+					<name>magentothem/revslider/thickbox.css</name>
+				</action>
+				<action method="addItem">
+					<type>skin_css</type>
+					<name>magentothem/revslider/tipsy.css</name>
+				</action>
+				<action method="addItem">
+					<type>skin_css</type>
+					<name>magentothem/revslider/settings.css</name>
+					<stylesheet>media="all" id="rs-plugin-settings"</stylesheet>
+				</action>
+				 <action method="addItem">
+					<type>js_css</type>
+					<name>magentothem/revslider/fancybox/jquery.fancybox.css?v=2.1.4</name>
+					<params/>
+				</action>
+		
+			  <action method="addJs">
+				  <script>magentothem/revslider/js/jquery-1.8.3.min.js</script>
+			  </action>
+				<action method="addJs">
+					<script>magentothem/revslider/js/jquery-ui/jquery-ui-1.10.3.custom.js</script>
+			  </action>
+			   <action method="addJs">
+				  <script>magentothem/revslider/js/settings.js</script>
+			  </action>   	
+			  <action method="addJs">
+				  <script>magentothem/revslider/js/farbtastic/farbtastic.js</script>
+			  </action>
+			  <action method="addJs">
+				  <script>magentothem/revslider/js/admin.js</script>
+			  </action>
+			   <action method="addJs">
+				  <script>magentothem/revslider/js/jquery.tipsy.js</script>
+			  </action>
+		 			
+			
+			   
+			 <action method="addJs">
+				  <script>magentothem/revslider/js/codemirror/codemirror.js</script>
+			  </action> 
+			 <action method="addJs">
+				  <script>magentothem/revslider/js/codemirror/css.js</script>
+			  </action> 
+ 			  <action method="addJs">
+				  <script>magentothem/revslider/js/dropdownchecklist/ui.dropdownchecklist-1.4-min.js</script>
+			  </action>
+			  <action method="addJs">
+				  <script>magentothem/revslider/js/edit_layers.js</script>
+			  </action>
+			  <action method="addJs">
+				  <script>magentothem/revslider/js/css_editor.js</script>
+			  </action>
+			  <action method="addJs">
+				  <script>magentothem/revslider/js/rev_admin.js</script>
+			  </action>
+			   <action method="addJs">
+				  <script>magentothem/revslider/js/thickbox.js</script>
+			  </action> 
+			  <action method="addJs">
+				  <script>magentothem/revslider/rs-plugin/js/jquery.themepunch.plugins.min.js</script>
+			  </action> 
+			   <action method="addJs">
+					<script>magentothem/revslider/fancybox/jquery.fancybox.js?v=2.1.4</script>
+			   </action>
+		</reference>
+     </revslider_adminhtml_revslider_editbanner>
+</layout>

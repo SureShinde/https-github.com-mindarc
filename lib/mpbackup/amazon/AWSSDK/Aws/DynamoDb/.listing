@@ -1,0 +1,12 @@
+drwxr-xr-x   8 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  47 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1921 Feb 24  2015 Crc32ErrorChecker.php
+-rw-r--r--   1 vpsnettopet psacln       8706 Feb 24  2015 DynamoDbClient.php
+-rw-r--r--   1 vpsnettopet psacln       3011 Feb 24  2015 DynamoDbCommand.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Enum
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Exception
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Iterator
+-rw-r--r--   1 vpsnettopet psacln       5610 Feb 24  2015 Marshaler.php
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 Model
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Resources
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 Session

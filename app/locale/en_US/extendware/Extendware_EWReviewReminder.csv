@@ -1,0 +1,156 @@
+Action,Action
+"Add after","Add after"
+"Add Blacklist Item","Add Blacklist Item"
+"Add E-mail","Add E-mail"
+Advanced,Advanced
+"All order reminders have been added to queue","All order reminders have been added to queue"
+"Are you sure you want to reset any changes to the email subject / body?","Are you sure you want to reset any changes to the email subject / body?"
+"Are you sure?","Are you sure?"
+"Are you sure? It is NOT recommended to manually delete history.","Are you sure? It is NOT recommended to manually delete history."
+"Auto Generation","Auto Generation"
+"Auto Send","Auto Send"
+BCC,BCC
+Blacklist,Blacklist
+"Blacklist Item","Blacklist Item"
+"Blacklist item has been deleted","Blacklist item has been deleted"
+"Blacklist item has been successfully saved","Blacklist item has been successfully saved"
+"Blacklisted Emails","Blacklisted Emails"
+"Blacklisted Item","Blacklisted Item"
+"Carts Reminders","Carts Reminders"
+Configuration,Configuration
+Copy,Copy
+"Could not reset template.","Could not reset template."
+"Could not send reminder #%d. E-mailing may be disabled on the server, the reminder might not have a subject / body, or sending may be disabled due to products all being out of stock.","Could not send reminder #%d. E-mailing may be disabled on the server, the reminder might not have a subject / body, or sending may be disabled due to products all being out of stock."
+"Could not successfully send reminder email","Could not successfully send reminder email"
+Coupon,Coupon
+"Coupon Amount","Coupon Amount"
+"Coupon Code","Coupon Code"
+"Coupon Redeemed","Coupon Redeemed"
+"Coupon Type","Coupon Type"
+Create,Create
+Created,Created
+CSV,CSV
+"Customer E-mail","Customer E-mail"
+"Customer First Name","Customer First Name"
+"Customer Last Name","Customer Last Name"
+"Customer Name","Customer Name"
+"Customers in these groups will NOT have reminders generated.","Customers in these groups will NOT have reminders generated."
+"Custromer Name","Custromer Name"
+"Date Created","Date Created"
+"Date Recovered","Date Recovered"
+"Date Scheduled","Date Scheduled"
+"Date Sent","Date Sent"
+Day(s),Day(s)
+day(s),day(s)
+"Default Customer Name","Default Customer Name"
+"Default customer name if customer did not supply name","Default customer name if customer did not supply name"
+"Delay = current time - the delay reference. If the delay is greater than the delay you have set, then a reminder will be sent. For followup reminders, ""Last Reminded Time"" is highly recommended","Delay = current time - the delay reference. If the delay is greater than the delay you have set, then a reminder will be sent. For followup reminders, ""Last Reminded Time"" is highly recommended"
+"Delay Magnitude","Delay Magnitude"
+"Delay Reference","Delay Reference"
+Delete,Delete
+Disabled,Disabled
+"Disabled Customer Groups","Disabled Customer Groups"
+"Disabling will disable order reminder for the store. Currently queued items will be deleted at their send time instead of sent.","Disabling will disable order reminder for the store. Currently queued items will be deleted at their send time instead of sent."
+E-mail,E-mail
+"E-mail Template","E-mail Template"
+Edit,Edit
+"Email Address","Email Address"
+"Email Body","Email Body"
+"Email Sender","Email Sender"
+"Email Subject","Email Subject"
+"Enter expiry (in days). Entering ""0"" means no expiry.","Enter expiry (in days). Entering ""0"" means no expiry."
+"Enter url parameters you want to add to the link in the email. They can be any parameters and are not google specific.","Enter url parameters you want to add to the link in the email. They can be any parameters and are not google specific."
+"Expiry (days)","Expiry (days)"
+Extendware,Extendware
+"First Name","First Name"
+"Fixed amount discount for whole cart","Fixed amount discount for whole cart"
+"Fixed amount discount per product","Fixed amount discount per product"
+"For example, if you have a store wide cart rule that allows for discounts in certain conditions (orders > $500, 10% off if you buy 2 or more products, etc), then you need to set the priority of the reminder coupons to be greater than the priority of those cart rules or else the reminder coupon will prevent those rules from processing.","For example, if you have a store wide cart rule that allows for discounts in certain conditions (orders > $500, 10% off if you buy 2 or more products, etc), then you need to set the priority of the reminder coupons to be greater than the priority of those cart rules or else the reminder coupon will prevent those rules from processing."
+General,General
+"General Information","General Information"
+"Generate Reminders","Generate Reminders"
+Generation,Generation
+"Generation Mode","Generation Mode"
+"Google Tracking Params","Google Tracking Params"
+History,History
+Hour(s),Hour(s)
+"How long to wait in days since the delay reference until a reminder is sent","How long to wait in days since the delay reference until a reminder is sent"
+ID,ID
+"If enabled then other rules will not be processed after this coupon is processed.","If enabled then other rules will not be processed after this coupon is processed."
+"If set to ""Disabled"", a coupon will not be generated","If set to ""Disabled"", a coupon will not be generated"
+"If set to ""Disabled"", reminders will not be automatically generated (manual generation is still possible)","If set to ""Disabled"", reminders will not be automatically generated (manual generation is still possible)"
+"If set to ""Disabled"", reminders will not be automatically sent (manual sending is still possible)","If set to ""Disabled"", reminders will not be automatically sent (manual sending is still possible)"
+"If set to ""Enabled"", no more reminders will be sent if the customer clicks a link in the reminder e-mail","If set to ""Enabled"", no more reminders will be sent if the customer clicks a link in the reminder e-mail"
+"If set to Disabled you must manually set up the cronjobs at [Magento root]/shell/extendware/ewreviewreminder/","If set to Disabled you must manually set up the cronjobs at [Magento root]/shell/extendware/ewreviewreminder/"
+Invalid,Invalid
+"Item does not exist","Item does not exist"
+"Last Name","Last Name"
+"Last Ordered","Last Ordered"
+"Last Ordered Time","Last Ordered Time"
+"Last Reminded Time (recommended)","Last Reminded Time (recommended)"
+Main,Main
+"Manage Blacklisted Emails","Manage Blacklisted Emails"
+"Maximum number of reminders. Must be a number greater than 0. Please remember to configure reminders if you change this number","Maximum number of reminders. Must be a number greater than 0. Please remember to configure reminders if you change this number"
+"Min Subtotal","Min Subtotal"
+Minute(s),Minute(s)
+"Missing data for item","Missing data for item"
+No,No
+"Number of reminders","Number of reminders"
+"Only enter numbers. If using a percentage off, then the whole number represents the percent off (20 = 20% discount). For fixed amounts it represents the dollar amount (20 = $20).","Only enter numbers. If using a percentage off, then the whole number represents the percent off (20 = 20% discount). For fixed amounts it represents the dollar amount (20 = $20)."
+"Only enter numbers. This is the minimum value the customer must add to their cart for the coupon to be valid.","Only enter numbers. This is the minimum value the customer must add to their cart for the coupon to be valid."
+Pending,Pending
+"Percent discount per product","Percent discount per product"
+"Please <u>read the help descriptions, field descriptions, fieldset descriptions, and user guides</u> so you may configure this extension to suit your needs.","Please <u>read the help descriptions, field descriptions, fieldset descriptions, and user guides</u> so you may configure this extension to suit your needs."
+"Please select an item(s) before submitting to the mass processor","Please select an item(s) before submitting to the mass processor"
+"Please select reminder(s)","Please select reminder(s)"
+Priority,Priority
+Queue,Queue
+Reminder,Reminder
+"Reminder #%s","Reminder #%s"
+"Reminder email body and subject have been reset to default.","Reminder email body and subject have been reset to default."
+"Reminder followup number allowed based on store configuration. Reminder has been deleted","Reminder followup number allowed based on store configuration. Reminder has been deleted"
+"Reminder has been deleted","Reminder has been deleted"
+"Reminder has been successfully saved","Reminder has been successfully saved"
+"Reminder has been successfully sent and deleted","Reminder has been successfully sent and deleted"
+"Reminder ID","Reminder ID"
+"Reminder Number","Reminder Number"
+"Reminder Protection","Reminder Protection"
+"Reminder Queue","Reminder Queue"
+"Reminder with the same recovery code already exists","Reminder with the same recovery code already exists"
+Reminders,Reminders
+"Reset Template","Reset Template"
+"Review Reminder","Review Reminder"
+"Review Reminder (extendware)","Review Reminder (extendware)"
+"Sales Rule ID","Sales Rule ID"
+Save,Save
+"Save and Send","Save and Send"
+Second(s),Second(s)
+"Select the template of the e-mail. You can create your own in System -> Transactional Emails","Select the template of the e-mail. You can create your own in System -> Transactional Emails"
+"Selected item(s) (%d) have been mass processed by the %s processor","Selected item(s) (%d) have been mass processed by the %s processor"
+"Selected item(s) (%d) have failed to be mass processed by the %s processor","Selected item(s) (%d) have failed to be mass processed by the %s processor"
+Send,Send
+"Send a copy of the reminder to these e-mails.","Send a copy of the reminder to these e-mails."
+"Sending is disabled on the development server.","Sending is disabled on the development server."
+"Sent Reminder","Sent Reminder"
+"Sent Reminders","Sent Reminders"
+Settings,Settings
+Status,Status
+"Stop After Visiting","Stop After Visiting"
+"Stop Rules Processing","Stop Rules Processing"
+"Store View","Store View"
+"The ID of the sales rule that will be copied. This can be found in Promotions -> Shopping Cart Price Rules.","The ID of the sales rule that will be copied. This can be found in Promotions -> Shopping Cart Price Rules."
+"The minimum numbers of days to wait from the last reminder stream until a customer / email can trigger a new reminder stream. Enter 0 to disable protection.","The minimum numbers of days to wait from the last reminder stream until a customer / email can trigger a new reminder stream. Enter 0 to disable protection."
+"The mode used to create the coupon. Copy requires you to create a coupon in Promotions -> Shopping Cart Price Rules which enables you to use advanced rules and conditions.","The mode used to create the coupon. Copy requires you to create a coupon in Promotions -> Shopping Cart Price Rules which enables you to use advanced rules and conditions."
+"The order reminder unsubscribe URL will only work after the reminder has been sent.","The order reminder unsubscribe URL will only work after the reminder has been sent."
+"The priority of the coupon. Useful if you have other shopping cart rules that need to be processed before this coupon.","The priority of the coupon. Useful if you have other shopping cart rules that need to be processed before this coupon."
+"This email address already exists","This email address already exists"
+"This is useful to prevent customers from always receiving a reminder. <b>Example: </b>If you set this to 10 days, then a customers' order reminders will be ignored until 10 days after the last reminder stream was created.","This is useful to prevent customers from always receiving a reminder. <b>Example: </b>If you set this to 10 days, then a customers' order reminders will be ignored until 10 days after the last reminder stream was created."
+"To use the ""Copy"" mode, create a coupon in Promotions -> Shopping Cart Price Rules. Coupons will be created based on this coupon. This allows you to use advanced rules and conditions.","To use the ""Copy"" mode, create a coupon in Promotions -> Shopping Cart Price Rules. Coupons will be created based on this coupon. This allows you to use advanced rules and conditions."
+"Total of %d email(s) have been successfully sent","Total of %d email(s) have been successfully sent"
+"Unable to generate reminders","Unable to generate reminders"
+Updated,Updated
+"Use Magento Cron","Use Magento Cron"
+"Valued Customer","Valued Customer"
+XML,XML
+Yes,Yes
+"You will no longer receive any more order reminder e-mails","You will no longer receive any more order reminder e-mails"

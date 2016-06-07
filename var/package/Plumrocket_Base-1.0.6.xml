@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+    <name>Plumrocket_Base</name>
+    <version>1.0.6</version>
+    <stability>stable</stability>
+    <license uri="http://wiki.plumrocket.net/wiki/EULA">End-user License Agreement</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>This PlumrocketBase module is a useful tool for syncing important information between Plumrocket extensions installed on your online store and Plumrocket database.</summary>
+    <description>This PlumrocketBase module is a useful tool for syncing important information between Plumrocket extensions installed on your online store and Plumrocket database.&#xD;
+It will notify you about the new changes, fixes and updates using notifications popup at your magento backend and will let you be on track with the recent modifications.</description>
+    <notes>Improvements for PHP versions 5.4+</notes>
+    <authors><author><name>Plumrocket Team</name><user>plumrocket</user><email>support@plumrocket.com</email></author></authors>
+    <date>2015-05-25</date>
+    <time>13:25:16</time>
+    <contents><target name="magecommunity"><dir name="Plumrocket"><dir name="Base"><dir name="Block"><dir name="System"><dir name="Config"><dir name="Form"><file name="Field.php" hash="79c9f4af420639ba3136457007714797"/></dir><file name="Version.php" hash="4823969de9c895aa16feb015686bc71b"/></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="f8a4d9d735479fc86e90b55c46dcfa29"/><file name="Main.php" hash="5f311ab21647ca01d5e50a07c18700bb"/></dir><dir name="Model"><file name="CronChecker.php" hash="fe64f5cf4432127043cd6cf0374b52de"/><file name="Feed.php" hash="819cc8d8ebd053da6a88411811251d43"/><dir name="Mysql4"><dir name="Product"><file name="Collection.php" hash="24a6e4554f03b528be55a321e0204603"/></dir><file name="Product.php" hash="64a5f2af1455b4f11cc7c7836b657a54"/></dir><file name="Observer.php" hash="15b4655f0c0b1e5b00dd02c951a19ffe"/><file name="Product.php" hash="382b24117a126f20b0bfa0d4f92d4a48"/></dir><dir name="etc"><file name="config.xml" hash="968207312d8cc466c5715d21ef8cec84"/></dir><dir name="sql"><dir name="base_setup"><file name="mysql4-upgrade-1.0.2-1.0.3.php" hash="206149fc03911af4ea5b2ace60b455f3"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Plumrocket_Base.xml" hash="e1576a5c29d6c4ecf966d331eced1198"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

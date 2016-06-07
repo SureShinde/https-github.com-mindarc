@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <orderrequest_adminhtml_orderrequest_index>
+        <reference name="content">
+            <block type="orderrequest/adminhtml_orderrequest" name="orderrequest" />
+        </reference>
+    </orderrequest_adminhtml_orderrequest_index>
+    
+    <orderrequest_adminhtml_orderrequest_edit>
+        <reference name="content">
+            <block type="orderrequest/adminhtml_orderrequest" name="orderrequest" template="orderrequest/orderrequest.phtml" />
+        </reference>
+    </orderrequest_adminhtml_orderrequest_edit>
+</layout>

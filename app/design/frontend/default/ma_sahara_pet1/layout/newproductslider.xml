@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <cms_index_index>
+        <reference name="head">
+			<action method="addCss" ifconfig="newproductslider/newproductslider_config/enabled"><stylesheet>magentothem/css/ma.newslider.css</stylesheet></action>
+			<action method="addJs" ifconfig="featuredproductslider/featuredproductslider_config/enabled"><script>magentothem/ma.bxslider.min.js</script></action>          
+		</reference>
+        <reference name="brand_slider">
+            <block type="newproductslider/newproductslider" name="newproductslider" template="magentothem/newproductslider/newproductslider.phtml" before="-" />
+        </reference>
+    </cms_index_index>
+</layout> 

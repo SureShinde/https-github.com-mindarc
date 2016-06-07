@@ -1,0 +1,29 @@
+<?php 
+$levelTree = $this->getLevelTree();
+$_category =  $this->getNavCategory();
+$_categories = $_category->getChildrenCategories();
+//$_categories = Mage::getModel('catalog/category')->getCategories($parentId);
+?>
+<ul class="menu-list nav-ul-lv<?php echo $levelTree; ?><?php if($levelTree>0){ ?> submenu<?php } ?>">
+<?php if($levelTree == 1){ ?>
+	<li class="menu-item main-menu__item">
+		<a href="<?php echo $_category->getUrl() ?>" title="<?php echo $this->escapeHtml($_category->getName()) ?>" class="menu-item__link"><?php echo $this->__('View All') ?></a>
+	</li>
+<?php } ?>
+<?php foreach($_categories as $_category):
+		$_subcategories = $_category->getChildrenCategories();
+?>
+	<li class="menu-item main-menu__item <?php if($subnav){ ?>menu-item--has-children<?php } ?>">
+		<a href="<?php echo ($levelTree > 0)?$_category->getUrl():'#' ?>" title="<?php echo $this->escapeHtml($_category->getName()) ?>" class="menu-item__link"><?php echo $this->escapeHtml($_category->getName()) ?></a>
+		<?php if(count($_subcategories) > 0): ?>
+			<span class="ext-nav-child" ><i class="fa fa-angle-down"></i></span>
+			<div class="sub-main-nav sub-nav-lv<?php echo $levelTree; ?>" style="display: none;">
+			<?php 
+			$levelTree++;
+			echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/topmenu/renderer_mobile.phtml')->setLevelTree($levelTree)->setNavCategory($_category)->toHtml(); ?>
+			</div>
+		<?php endif; ?>
+
+	</li>
+<?php endforeach; ?>
+</ul>

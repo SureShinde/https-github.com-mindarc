@@ -1,0 +1,12 @@
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 .
+drwxr-xr-x   6 vpsnettopet psacln       4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1839 Nov 21  2014 breadcrumbs.phtml
+-rw-r--r--   1 vpsnettopet psacln       2190 Nov 21  2014 cookienotice.phtml
+-rw-r--r--   1 vpsnettopet psacln       1448 Nov 21  2014 footer.phtml
+-rw-r--r--   1 vpsnettopet psacln       1981 Nov 21  2014 head.phtml
+-rw-r--r--   1 vpsnettopet psacln       2161 Nov 21  2014 header.phtml
+-rw-r--r--   1 vpsnettopet psacln       1837 Nov 21  2014 notices.phtml
+-rw-r--r--   1 vpsnettopet psacln       4875 Nov 21  2014 pager.phtml
+-rw-r--r--   1 vpsnettopet psacln       1596 Nov 21  2014 top.links.phtml
+-rw-r--r--   1 vpsnettopet psacln       1225 Nov 21  2014 topmenu.phtml
+-rw-r--r--   1 vpsnettopet psacln       1754 Nov 21  2014 wrapper.phtml

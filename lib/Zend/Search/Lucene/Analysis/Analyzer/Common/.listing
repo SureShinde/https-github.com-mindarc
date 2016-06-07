@@ -1,0 +1,10 @@
+drwxr-xr-x   6 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Text
+-rw-r--r--   1 vpsnettopet psacln       2697 Apr  6  2015 Text.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 TextNum
+-rw-r--r--   1 vpsnettopet psacln       2705 Apr  6  2015 TextNum.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Utf8
+-rw-r--r--   1 vpsnettopet psacln       3999 Apr  6  2015 Utf8.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Utf8Num
+-rw-r--r--   1 vpsnettopet psacln       4013 Apr  6  2015 Utf8Num.php

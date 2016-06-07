@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<config>
+	<extendware>
+		<quickaccess>
+			<ewreviewreminder>
+                <resource>extendware/ewreviewreminder</resource>
+				<inherit>menu/newsletter/children/ewreviewreminder</inherit>
+				<title/>
+			</ewreviewreminder>
+		</quickaccess>
+	</extendware>
+    <menu>
+	    <newsletter>
+	        <children>
+	            <ewreviewreminder translate="title" module="ewreviewreminder">
+	                <title>Review Reminder</title>
+	                <sort_order>100</sort_order>
+	                <resource>extendware/ewreviewreminder</resource>
+	                <children>
+	                    <reminders translate="title" module="ewreviewreminder">
+	                        <title>Queue</title>
+	                        <action>extendware_ewreviewreminder/adminhtml_reminder</action>
+	                        <resource>extendware/ewreviewreminder/reminder</resource>
+	                    </reminders>
+	                    <history translate="title" module="ewreviewreminder">
+	                        <title>History</title>
+	                        <action>extendware_ewreviewreminder/adminhtml_history</action>
+	                        <resource>extendware/ewreviewreminder/history</resource>
+	                    </history>
+	                    <blacklist translate="title" module="ewreviewreminder">
+							<title>Blacklist</title>
+							<sort_order>3</sort_order>
+							<action>extendware_ewreviewreminder/adminhtml_blacklist</action>
+							<resource>extendware/ewreviewreminder/blacklist</resource>
+						</blacklist>
+	                </children>
+	            </ewreviewreminder>
+	        </children>
+	    </newsletter>
+	</menu>
+	<acl>
+		<resources>
+            <admin>
+                <children>
+                    <extendware>
+                        <children>
+                        	<ewreviewreminder translate="title" module="ewreviewreminder">
+                        		<title>Review Reminder</title>
+                        		<children>
+                        			<reminder translate="title">
+                        				<title>Queue</title>
+			            			</reminder>
+			            			<history translate="title">
+                        				<title>History</title>
+			            			</history>
+                        			<settings translate="title">
+                        				<title>Settings</title>
+                        				<children>
+				                            <main translate="title">
+				                                <title>Main</title>
+				                                <children>
+					                                <ewreviewreminder translate="title">
+						                                <title>General</title>
+						                            </ewreviewreminder>
+						                            <ewreviewreminder_reminder translate="title">
+						                                <title>Reminders</title>
+						                            </ewreviewreminder_reminder>
+					                            </children>
+				                            </main>
+			                            </children>
+			            			</settings>
+			            		</children>
+			            	</ewreviewreminder>
+                        </children>
+                    </extendware>
+                </children>
+            </admin>
+        </resources>
+	</acl>
+</config>

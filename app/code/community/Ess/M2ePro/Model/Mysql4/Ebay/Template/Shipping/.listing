@@ -1,0 +1,7 @@
+drwxr-xr-x   4 vpsnettopet psacln       4096 Nov  6 06:06 .
+drwxr-xr-x  10 vpsnettopet psacln       4096 Nov  6 06:06 ..
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 Calculated
+-rw-r--r--   1 vpsnettopet psacln        513 Aug 28  2015 Calculated.php
+-rw-r--r--   1 vpsnettopet psacln        430 Aug 28  2015 Collection.php
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 Service
+-rw-r--r--   1 vpsnettopet psacln        399 Aug 28  2015 Service.php

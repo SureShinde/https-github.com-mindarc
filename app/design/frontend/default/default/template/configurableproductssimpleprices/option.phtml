@@ -1,0 +1,62 @@
+<?php 
+$_product    = $this->getProduct();
+$_configurableSimple = Mage::helper('configurableproductssimpleprices')->isEnable($_product);
+$_option = $this->getProduct()->getOptions();
+$_opJsArr = array();
+?>
+<?php if ($_product->isSaleable() && count($_option) && $_configurableSimple):?>
+<?php foreach($_option as $option){
+	if ($option->getGroupByType() == Mage_Catalog_Model_Product_Option::OPTION_GROUP_SELECT) {
+		foreach ($option->getValues() as $value) {
+			$_opJsArr[$option->getId()][$value->getId()] = 1*$value->getPrice(true);
+		}
+	} else {
+		$_opJsArr[$option->getId()] = 1*$option->getPrice(true);
+	}
+}?>
+<input type="hidden" id="customoptionprice" name="customoptionprice"/>
+<script type="text/javascript">
+if(typeof spConfig != 'undefined'){
+	var priceConfig = <?php echo Mage::helper('core')->jsonEncode($_opJsArr);?>;
+	$$('#product-options-wrapper .product-custom-option, #product-options-wrapper .super-attribute-select').each(function(ele){
+		ele.observe('change',function(){
+			var price = 0;
+			$$('#product-options-wrapper .product-custom-option').each(function(element){
+				var optionId = 0;
+				element.name.sub(/[0-9]+/, function(match){
+					optionId = parseInt(match[0], 10);
+				});
+				if (element.type == 'checkbox' || element.type == 'radio') {
+					if (element.checked) {
+						if(priceConfig[optionId][element.value]) price += (1*priceConfig[optionId][element.value]);
+					}
+				} else if(element.hasClassName('datetime-picker') && !skipIds.include(optionId)) {
+					var dateSelected = true;
+					$$('.product-custom-option[id^="options_' + optionId + '"]').each(function(dt){
+						if (dt.getValue() == '') {
+							dateSelected = false;
+						}
+					});
+					if (dateSelected) {
+						if(priceConfig[optionId]) price += (1*priceConfig[optionId]);
+					}
+				} else if(element.type == 'select-one' || element.type == 'select-multiple') {
+					if ('options' in element) {
+						$A(element.options).each(function(selectOption){
+							if ('selected' in selectOption && selectOption.selected) {
+								if(priceConfig[optionId][selectOption.value]) price += (1*priceConfig[optionId][selectOption.value]);
+							}
+						});
+					}
+				} else {
+					if (element.getValue().strip() != '' && opConfig.config[optionId]) {
+						price += (1*opConfig.config[optionId].excludeTax);
+					}
+				}
+			});
+			if($('customoptionprice')) $('customoptionprice').value = price;
+		});
+	});
+}
+</script>
+<?php endif;?>

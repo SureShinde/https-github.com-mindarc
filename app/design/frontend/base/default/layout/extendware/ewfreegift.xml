@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<checkout_cart_index>
+		<update handle="ewfreegift_display_handle" />
+		<reference name="checkout.cart.form.before">
+			<block type="ewfreegift/gift_selection" name="ewfreegift.gift_selection" template="extendware/ewfreegift/gift/selection.phtml" />
+		</reference>
+	</checkout_cart_index>
+
+	<checkout_onepage_index>
+		<update handle="ewfreegift_display_handle" />
+		<reference name="content">
+			<block type="ewfreegift/gift_selection" name="ewfreegift.gift_selection" template="extendware/ewfreegift/gift/selection.phtml" before="-"/>
+		</reference>
+	</checkout_onepage_index>
+
+	<ewfreegift_display_handle>
+		<reference name="head">
+			<action method="addCss"><name>extendware/ewfreegift/css/general.css</name></action>
+			<action method="addJs"><script>extendware/ewfreegift/general.js</script></action>
+			
+			<action method="addJs"><script>varien/product.js</script></action>
+			<action method="addJs"><script>varien/configurable.js</script></action>
+			<action method="addItem"><type>skin_js</type><name>js/bundle.js</name></action>
+			<action method="addJs"><script>calendar/calendar.js</script></action>
+		</reference>
+	</ewfreegift_display_handle>
+</layout>

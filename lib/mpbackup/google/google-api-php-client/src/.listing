@@ -1,0 +1,10 @@
+drwxr-xr-x   8 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln      14018 Jul  1  2014 Google_Client.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 auth
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 cache
+-rw-r--r--   1 vpsnettopet psacln       3285 Jul  1  2014 config.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 contrib
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 external
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 io
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 service

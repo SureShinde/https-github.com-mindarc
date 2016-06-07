@@ -1,0 +1,10 @@
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  13 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1195 Feb 24  2015 AbstractHasDispatcher.php
+-rw-r--r--   1 vpsnettopet psacln      11534 Feb 24  2015 Collection.php
+-rw-r--r--   1 vpsnettopet psacln       1064 Feb 24  2015 Event.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Exception
+-rw-r--r--   1 vpsnettopet psacln        487 Feb 24  2015 FromConfigInterface.php
+-rw-r--r--   1 vpsnettopet psacln       1358 Feb 24  2015 HasDispatcherInterface.php
+-rw-r--r--   1 vpsnettopet psacln        245 Feb 24  2015 ToArrayInterface.php
+-rw-r--r--   1 vpsnettopet psacln        641 Feb 24  2015 Version.php

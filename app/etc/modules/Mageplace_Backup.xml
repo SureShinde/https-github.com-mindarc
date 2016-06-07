@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mageplace_Backup>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Mageplace_Backup>
+    </modules>
+</config> 

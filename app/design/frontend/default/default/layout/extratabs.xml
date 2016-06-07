@@ -1,0 +1,33 @@
+<layout version="0.1.0">
+
+    <catalog_product_view>
+        <reference name="head">
+            <action ifconfig="extratabsset/general_settings/enable" method="addCss"><stylesheet>css/extratabs.css</stylesheet></action>
+        </reference>
+        <reference name="product.info">
+            <action method="unsetChild" ifconfig="extratabsset/general_settings/upsell"><name>upsell_products</name></action>
+            <action method="unSetChild" ifconfig="extratabsset/general_settings/description">
+                <name>description</name>
+            </action>
+            <action method="unSetChild" ifconfig="extratabsset/general_settings/additional">
+                <name>additional</name>
+            </action>
+
+        </reference>
+        <reference name="product.info.additional">
+            <action method="unsetChild" ifconfig="extratabsset/general_settings/tags"><name>product_tag_list</name></action>
+            <block type="extratabs/product_view_tabs" name="ext.tabs" as="ext-tabs" before="-">
+                <action ifconfig="extratabsset/general_settings/enable" method="setTemplate">
+                    <template>extratabs/tabs.phtml</template>
+                </action>
+            </block>
+        </reference>
+
+        <reference name="right">
+            <action method="unsetChild" ifconfig="extratabsset/general_settings/related"><name>catalog.product.related</name></action>
+        </reference>
+
+      </catalog_product_view>
+
+</layout>
+

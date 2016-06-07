@@ -1,0 +1,14 @@
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   8 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln      10501 Apr  6  2015 DictionaryLoader.php
+-rw-r--r--   1 vpsnettopet psacln       2267 Apr  6  2015 DocsFilter.php
+-rw-r--r--   1 vpsnettopet psacln       1633 Apr  6  2015 FieldInfo.php
+-rw-r--r--   1 vpsnettopet psacln      74834 Apr  6  2015 SegmentInfo.php
+-rw-r--r--   1 vpsnettopet psacln       9108 Apr  6  2015 SegmentMerger.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 SegmentWriter
+-rw-r--r--   1 vpsnettopet psacln      20447 Apr  6  2015 SegmentWriter.php
+-rw-r--r--   1 vpsnettopet psacln       3734 Apr  6  2015 Term.php
+-rw-r--r--   1 vpsnettopet psacln       2121 Apr  6  2015 TermInfo.php
+-rw-r--r--   1 vpsnettopet psacln       1627 Apr  6  2015 TermsPriorityQueue.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 TermsStream
+-rw-r--r--   1 vpsnettopet psacln      33645 Apr  6  2015 Writer.php

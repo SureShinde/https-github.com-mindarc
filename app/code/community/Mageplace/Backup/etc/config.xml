@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplace Backup
+ *
+ * @category   Mageplace
+ * @package    Mageplace_Backup
+ * @copyright  Copyright (c) 2014 Mageplace. (http://www.mageplace.com)
+ * @license    http://www.mageplace.com/disclaimer.html
+ */
+-->
+<config>
+	<modules>
+		<Mageplace_Backup>
+			<version>2.0.11</version>
+		</Mageplace_Backup>
+	</modules>
+
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<mpbackup before="Mage_Adminhtml">Mageplace_Backup_Adminhtml</mpbackup>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+
+	<frontend>
+		<routers>
+			<mpbackup>
+				<use>mpbackup</use>
+				<args>
+					<module>Mageplace_Backup</module>
+					<frontName>mpbackup</frontName>
+				</args>
+			</mpbackup>
+		</routers>
+
+		<translate>
+			<modules>
+				<Mageplace_Backup>
+					<files>
+						<default>Mageplace_Backup.csv</default>
+					</files>
+				</Mageplace_Backup>
+			</modules>
+		</translate>
+	</frontend>
+
+	<global>
+		<resources>
+			<mpbackup_setup>
+				<setup>
+					<module>Mageplace_Backup</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</mpbackup_setup>
+			<mpbackup_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</mpbackup_write>
+			<mpbackup_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</mpbackup_read>
+		</resources>
+
+		<models>
+			<mpbackup>
+				<class>Mageplace_Backup_Model</class>
+				<resourceModel>mpbackup_mysql4</resourceModel>
+			</mpbackup>
+			<mpbackup_mysql4>
+				<class>Mageplace_Backup_Model_Mysql4</class>
+				<entities>
+					<profile>
+						<table>mpbackup_profile</table>
+					</profile>
+					<backup>
+						<table>mpbackup_backup</table>
+					</backup>
+					<backuplog>
+						<table>mpbackup_backuplog</table>
+					</backuplog>
+					<config>
+						<table>mpbackup_config</table>
+					</config>
+					<cron_schedule>
+						<table>mpbackup_cron_schedule</table>
+					</cron_schedule>
+					<temp>
+						<table>mpbackup_temp</table>
+					</temp>
+				</entities>
+			</mpbackup_mysql4>
+		</models>
+
+		<blocks>
+			<mpbackup>
+				<class>Mageplace_Backup_Block</class>
+			</mpbackup>
+		</blocks>
+
+		<helpers>
+			<mpbackup>
+				<class>Mageplace_Backup_Helper</class>
+			</mpbackup>
+		</helpers>
+
+		<events>
+			<controller_action_predispatch>
+				<observers>
+					<mpbackup>
+						<class>mpbackup/observer</class>
+						<method>processControllerActionPredispatch</method>
+					</mpbackup>
+				</observers>
+			</controller_action_predispatch>
+		</events>
+
+		<template>
+			<email>
+				<mpbackup_error_email_template translate="label" module="mpbackup">
+					<label>Mageplace Backup Cron Warnings</label>
+					<file>mpbackup/cron_warning.html</file>
+					<type>text</type>
+				</mpbackup_error_email_template>
+
+				<mpbackup_success_email_template translate="label" module="mpbackup">
+					<label>Mageplace Backup Cron Success</label>
+					<file>mpbackup/cron_success.html</file>
+					<type>text</type>
+				</mpbackup_success_email_template>
+
+				<mpbackup_success_delete_email_template translate="label" module="mpbackup">
+					<label>Mageplace Backup Cron Delete Success</label>
+					<file>mpbackup/delete_success.html</file>
+					<type>text</type>
+				</mpbackup_success_delete_email_template>
+
+				<mpbackup_error_delete_email_template translate="label" module="mpbackup">
+					<label>Mageplace Backup Cron Delete Warnings</label>
+					<file>mpbackup/delete_warning.html</file>
+					<type>text</type>
+				</mpbackup_error_delete_email_template>
+			</email>
+		</template>
+	</global>
+
+	<adminhtml>
+		<layout>
+			<updates>
+				<mpbackup>
+					<file>mageplace/mpbackup.xml</file>
+				</mpbackup>
+			</updates>
+		</layout>
+
+		<translate>
+			<modules>
+				<Mageplace_Backup>
+					<files>
+						<default>Mageplace_Backup.csv</default>
+					</files>
+				</Mageplace_Backup>
+			</modules>
+		</translate>
+
+		<events>
+			<controller_action_predispatch>
+				<observers>
+					<mpbackup>
+						<type>singelton</type>
+						<class>mpbackup/feed</class>
+						<method>check</method>
+					</mpbackup>
+				</observers>
+			</controller_action_predispatch>
+		</events>
+	</adminhtml>
+
+	<crontab>
+		<jobs>
+			<mpbackup>
+				<schedule>
+					<cron_expr>*/5 * * * *</cron_expr>
+				</schedule>
+				<run>
+					<model>mpbackup/cron::run</model>
+				</run>
+			</mpbackup>
+		</jobs>
+	</crontab>
+
+	<default>
+		<web>
+			<routers>
+				<mpbackup>
+					<area>frontend</area>
+					<class>Mageplace_Backup_Controller_Varien_Router_Standard</class>
+				</mpbackup>
+			</routers>
+		</web>
+
+		<mpbackup>
+			<feed>
+				<url>www.mageplace.com/index.php?option=com_extensionfeed&amp;view=feed&amp;extension=cloudbackup&amp;format=feed</url>
+				<use_https>0</use_https>
+				<check_frequency>24</check_frequency>
+				<enabled>1</enabled>
+			</feed>
+			<cron>
+				<expr_delete>*/5 * * * *</expr_delete>
+				<check_running>*/5 * * * *</check_running>
+			</cron>
+		</mpbackup>
+
+
+	</default>
+</config>

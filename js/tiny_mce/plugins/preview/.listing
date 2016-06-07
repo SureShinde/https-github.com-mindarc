@@ -1,0 +1,7 @@
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  40 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1051 Nov 21  2014 editor_plugin.js
+-rw-r--r--   1 vpsnettopet psacln       1589 Nov 21  2014 editor_plugin_src.js
+-rw-r--r--   1 vpsnettopet psacln        731 Nov 21  2014 example.html
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 jscripts
+-rw-r--r--   1 vpsnettopet psacln        630 Nov 21  2014 preview.html

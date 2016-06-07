@@ -1,0 +1,30 @@
+<?php
+/**
+ * Mageplace Backup
+ *
+ * @category   Mageplace
+ * @package    Mageplace_Backup
+ * @copyright  Copyright (c) 2014 Mageplace. (http://www.mageplace.com)
+ * @license    http://www.mageplace.com/disclaimer.html
+ */
+
+/** @var Mageplace_Backup_Block_Adminhtml_Backup_Js_Loglevel $this */
+
+$_iterator = $this->getLogLevels();
+?>
+<script>
+    MP.Backup.LogLevels = {
+        <?php while($_iterator->valid()) : ?>
+        <?php $methodName = ucfirst(strtolower($_iterator->key())); ?>
+
+        get<?php echo $methodName; ?>: function (value) {
+            return '<?php echo $_iterator->current(); ?>';
+        },
+
+        is<?php echo $methodName; ?>: function (value) {
+            return (value + '').toUpperCase() == '<?php echo $_iterator->current(); ?>';
+        }<?php $_iterator->next(); if($_iterator->valid()) echo ","; ?>
+
+        <?php endwhile; ?>
+    };
+</script>

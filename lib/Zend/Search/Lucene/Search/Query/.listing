@@ -1,0 +1,13 @@
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   7 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln      27654 Apr  6  2015 Boolean.php
+-rw-r--r--   1 vpsnettopet psacln       3763 Apr  6  2015 Empty.php
+-rw-r--r--   1 vpsnettopet psacln      19631 Apr  6  2015 Fuzzy.php
+-rw-r--r--   1 vpsnettopet psacln       3818 Apr  6  2015 Insignificant.php
+-rw-r--r--   1 vpsnettopet psacln      20352 Apr  6  2015 MultiTerm.php
+-rw-r--r--   1 vpsnettopet psacln      18283 Apr  6  2015 Phrase.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Preprocessing
+-rw-r--r--   1 vpsnettopet psacln       4094 Apr  6  2015 Preprocessing.php
+-rw-r--r--   1 vpsnettopet psacln      12342 Apr  6  2015 Range.php
+-rw-r--r--   1 vpsnettopet psacln       6323 Apr  6  2015 Term.php
+-rw-r--r--   1 vpsnettopet psacln      12044 Apr  6  2015 Wildcard.php

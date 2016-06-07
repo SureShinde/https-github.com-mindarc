@@ -1,0 +1,9 @@
+drwxr-xr-x   6 vpsnettopet psacln       4096 Nov  6 06:06 .
+drwxr-xr-x   6 vpsnettopet psacln       4096 Nov  6 06:06 ..
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 compare
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 list
+-rw-r--r--   1 vpsnettopet psacln      11321 Nov 21  2014 list.phtml
+-rw-r--r--   1 vpsnettopet psacln       3788 Nov 21  2014 new.phtml
+drwxr-xr-x   3 vpsnettopet psacln       4096 Nov  6 06:06 view
+-rw-r--r--   1 vpsnettopet psacln       8074 Nov 21  2014 view.phtml
+drwxr-xr-x   3 vpsnettopet psacln       4096 Nov  6 06:06 widget

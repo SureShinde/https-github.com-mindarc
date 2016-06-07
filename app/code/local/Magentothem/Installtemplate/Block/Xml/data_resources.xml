@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<pet1>
+    <resources>
+        <resource>
+            <title>Sahara Pet1 Home page</title>
+            <identifier>pet1_home</identifier>
+            <root_template>one_column</root_template>
+            <content><![CDATA[<div class="home-content">{{block type="featuredproductslider/featuredproductslider" name="featuredproductslider" template="magentothem/featuredproductslider/featuredproductslider.phtml"}}</div>]]></content>
+            <sort_order>1</sort_order>
+            <is_active>1</is_active>
+        </resource>
+    </resources>
+</pet1>

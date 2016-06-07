@@ -1,0 +1,10 @@
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   6 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 Adapter
+-rw-r--r--   1 vpsnettopet psacln       5212 Apr  6  2015 Adapter.php
+-rw-r--r--   1 vpsnettopet psacln       5833 Apr  6  2015 Document.php
+-rw-r--r--   1 vpsnettopet psacln       1794 Apr  6  2015 DocumentSet.php
+-rw-r--r--   1 vpsnettopet psacln       1113 Apr  6  2015 Exception.php
+-rw-r--r--   1 vpsnettopet psacln       2468 Apr  6  2015 Factory.php
+-rw-r--r--   1 vpsnettopet psacln       5652 Apr  6  2015 Query.php
+-rw-r--r--   1 vpsnettopet psacln       3478 Apr  6  2015 QueryAdapter.php

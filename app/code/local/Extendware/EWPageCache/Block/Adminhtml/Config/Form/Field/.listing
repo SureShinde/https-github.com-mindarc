@@ -1,0 +1,15 @@
+drwxr-xr-x   3 vpsnettopet psacln       4096 Nov  6 06:06 .
+drwxr-xr-x   3 vpsnettopet psacln       4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       4980 Nov 22  2014 Adminuridisqualifiers.php
+-rw-r--r--   1 vpsnettopet psacln       5272 Nov 22  2014 Blocktags.php
+-rw-r--r--   1 vpsnettopet psacln       4956 Nov 22  2014 Contentdisqualifiers.php
+-rw-r--r--   1 vpsnettopet psacln       4588 Nov 22  2014 Cookiedisqualifiers.php
+-rw-r--r--   1 vpsnettopet psacln       5948 Nov 22  2014 Customtags.php
+-rw-r--r--   1 vpsnettopet psacln       4552 Nov 22  2014 Ignoredparameters.php
+-rw-r--r--   1 vpsnettopet psacln       5768 Nov 22  2014 Injectors.php
+-rw-r--r--   1 vpsnettopet psacln       4712 Nov 22  2014 Ipaddress.php
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 Segmentable
+-rw-r--r--   1 vpsnettopet psacln       4920 Nov 22  2014 Servers.php
+-rw-r--r--   1 vpsnettopet psacln       4952 Nov 22  2014 Translatedcustomergroups.php
+-rw-r--r--   1 vpsnettopet psacln       4868 Nov 22  2014 Urlfilters.php
+-rw-r--r--   1 vpsnettopet psacln       5168 Nov 22  2014 Useragentdisqualifiers.php

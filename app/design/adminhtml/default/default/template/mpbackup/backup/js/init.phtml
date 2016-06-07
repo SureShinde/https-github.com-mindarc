@@ -1,0 +1,40 @@
+<?php
+/**
+ * Mageplace Backup
+ *
+ * @category   Mageplace
+ * @package    Mageplace_Backup
+ * @copyright  Copyright (c) 2014 Mageplace. (http://www.mageplace.com)
+ * @license    http://www.mageplace.com/disclaimer.html
+ */
+
+/**
+ * @var Mageplace_Backup_Block_Adminhtml_Backup_Js_Init $this
+ */
+
+?>
+<script>
+    var mpbackupFormId = '<?php echo $this->getFormId(); ?>';
+
+    editForm = new varienForm(mpbackupFormId, '');
+
+    MP.Backup.InitData = {
+        'editFormId': mpbackupFormId,
+        'isMultiStep': <?php echo $this->isMultiStep() ? 1 : 0; ?>,
+        'isLogDisabled': <?php echo $this->isLogDisable() ? 1 : 0; ?>,
+        'processRequestPeriod': <?php echo $this->getProcessRequestPeriod(); ?>,
+        'progressAreaName': '<?php echo $this->getProgressAreaName(); ?>',
+        'startBackupUrl': '<?php echo $this->getStartBackupUrl(); ?>',
+        'changeProfileUrl': '<?php echo $this->getChangeProfileUrl(); ?>',
+        'stepBackupUrl': '<?php echo $this->getStepBackupUrl(); ?>',
+        'finishBackupUrl': '<?php echo $this->getFinishBackupUrl(); ?>',
+        'criticalFinishBackupUrl': '<?php echo $this->getFinishBackupUrl(); ?>',
+        'cancelBackupUrl': '<?php echo $this->getCancelBackupUrl(); ?>',
+        'startProgressBackupUrl': '<?php echo $this->getStartBackupProgressUrl(); ?>',
+        'progressBackupUrl': '<?php echo $this->getProgressBackupUrl(); ?>'
+    };
+
+    <?php echo $this->getTranslatorScript(); ?>
+
+    <?php echo $this->getChildHtml(); ?>
+</script>

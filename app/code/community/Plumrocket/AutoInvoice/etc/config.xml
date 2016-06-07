@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Plumrocket_AutoInvoice>
+			<version>1.0.7</version>
+		</Plumrocket_AutoInvoice>
+	</modules>
+	<global>
+		<helpers>
+			<autoinvoice>
+				<class>Plumrocket_AutoInvoice_Helper</class>
+			</autoinvoice>
+		</helpers>
+		<blocks>
+			<autoinvoice>
+				<class>Plumrocket_AutoInvoice_Block</class>
+			</autoinvoice>
+		</blocks>
+		<models>
+			<autoinvoice>
+			<class>Plumrocket_AutoInvoice_Model</class>
+			<resourceModel>autoinvoice_mysql4</resourceModel>
+			</autoinvoice>
+		</models>
+		<events>
+	      <sales_order_shipment_save_after>
+	        <observers>
+	          <autoinvoice_sales_order_shipment_save_after>
+	            <type>singleton</type>
+	            <class>autoinvoice/observer</class>
+	            <method>shipmentSaveAfter</method>
+	          </autoinvoice_sales_order_shipment_save_after>
+	        </observers>
+	      </sales_order_shipment_save_after>
+	    </events>
+	</global>
+	<crontab>
+        <jobs>
+            <autoinvoice_job>
+                <schedule><cron_expr>0,5,10,15,20,25,30,35,40,45,50,55 * * * *</cron_expr></schedule>
+                <run><model>autoinvoice/observer::run</model></run>
+            </autoinvoice_job>
+        </jobs>
+    </crontab>
+</config> 

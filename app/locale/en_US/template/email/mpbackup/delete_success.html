@@ -1,0 +1,14 @@
+<!--@subject Delete Backups @-->
+<!--@vars
+{"var profile_id":"Profile Id",
+"var profile_name":"Profile Name",
+"var backups":"Backup Names"
+"var errors":"Errors"}
+@-->
+Finished deleting old backup files for profile "{{var profile_name}}" (ID#{{var profile_id}})!
+
+Backups that were deleted:
+{{var backups}}
+
+Errors during delete process:
+{{var errors}}

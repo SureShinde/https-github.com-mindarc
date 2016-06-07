@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<application>
+	<amazons3>
+		<label>Amazon S3</label>
+		<chunkupload>1</chunkupload>
+		<settings>
+			<accessKey>
+				<label>Access Key</label>
+				<type>text</type>
+				<required>1</required>
+				<note>Your Amazon S3 Access Key</note>
+			</accessKey>
+			<secretKey>
+				<label>Secret Key</label>
+				<type>text</type>
+				<required>1</required>
+				<note>Your Amazon S3 Secret Key</note>
+			</secretKey>
+			<bucketPath>
+				<label>Bucket Path</label>
+				<type>text</type>
+				<required>1</required>
+				<note>Location of the bucket</note>
+			</bucketPath>
+            <region>
+                <label>Region</label>
+                <type>select</type>
+                <source_model>mpbackup/source_amazonS3Regions</source_model>
+                <required>1</required>
+            </region>
+			<appPath>
+				<label>Bucket Directory</label>
+				<type>text</type>
+				<required>1</required>
+			</appPath>
+			<connTimeOut>
+				<label>Connection Timeout</label>
+				<type>text</type>
+				<required>0</required>
+				<note>Please don't change this setting without explicit instructions from extension developers.</note>
+			</connTimeOut>
+			<filepartmaxsize>
+				<label>Max file size</label>
+				<type>text</type>
+				<required>0</required>
+				<note>Please don't change this setting without explicit instructions from extension developers.</note>
+				<value>0</value>
+			</filepartmaxsize>
+            <filechunksize>
+                <label>Chunk size</label>
+                <type>text</type>
+                <required>0</required>
+                <note>Please don't change this setting without explicit instructions from extension developers.</note>
+                <value>0</value>
+            </filechunksize>
+		</settings>
+	</amazons3>
+</application>

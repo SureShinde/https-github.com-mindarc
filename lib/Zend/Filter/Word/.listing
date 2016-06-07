@@ -1,0 +1,15 @@
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   6 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1306 Apr  6  2015 CamelCaseToDash.php
+-rw-r--r--   1 vpsnettopet psacln       1760 Apr  6  2015 CamelCaseToSeparator.php
+-rw-r--r--   1 vpsnettopet psacln       1329 Apr  6  2015 CamelCaseToUnderscore.php
+-rw-r--r--   1 vpsnettopet psacln       1306 Apr  6  2015 DashToCamelCase.php
+-rw-r--r--   1 vpsnettopet psacln       1338 Apr  6  2015 DashToSeparator.php
+-rw-r--r--   1 vpsnettopet psacln       1364 Apr  6  2015 DashToUnderscore.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Separator
+-rw-r--r--   1 vpsnettopet psacln       1862 Apr  6  2015 SeparatorToCamelCase.php
+-rw-r--r--   1 vpsnettopet psacln       1429 Apr  6  2015 SeparatorToDash.php
+-rw-r--r--   1 vpsnettopet psacln       3673 Apr  6  2015 SeparatorToSeparator.php
+-rw-r--r--   1 vpsnettopet psacln       1318 Apr  6  2015 UnderscoreToCamelCase.php
+-rw-r--r--   1 vpsnettopet psacln       1364 Apr  6  2015 UnderscoreToDash.php
+-rw-r--r--   1 vpsnettopet psacln       1420 Apr  6  2015 UnderscoreToSeparator.php

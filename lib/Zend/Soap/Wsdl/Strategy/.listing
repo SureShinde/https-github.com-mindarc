@@ -1,0 +1,9 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1800 Apr  6  2015 Abstract.php
+-rw-r--r--   1 vpsnettopet psacln       1610 Apr  6  2015 AnyType.php
+-rw-r--r--   1 vpsnettopet psacln       4921 Apr  6  2015 ArrayOfTypeComplex.php
+-rw-r--r--   1 vpsnettopet psacln       5257 Apr  6  2015 ArrayOfTypeSequence.php
+-rw-r--r--   1 vpsnettopet psacln       5700 Apr  6  2015 Composite.php
+-rw-r--r--   1 vpsnettopet psacln       3378 Apr  6  2015 DefaultComplexType.php
+-rw-r--r--   1 vpsnettopet psacln       1437 Apr  6  2015 Interface.php

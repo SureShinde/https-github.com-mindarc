@@ -1,0 +1,9 @@
+<?php 
+    $_order        = $this->getOrder();
+    $order_comment = $_order->getVisibleStatusHistory();
+    $_history      = array_reverse($order_comment);
+    foreach($_history as $orderrequest){
+        echo nl2br(html_entity_decode($this->escapeHtml($orderrequest->getComment())));
+        break;
+    }
+?>

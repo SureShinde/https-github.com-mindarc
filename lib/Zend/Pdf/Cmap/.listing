@@ -1,0 +1,6 @@
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  16 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 ByteEncoding
+-rw-r--r--   1 vpsnettopet psacln      22849 Apr  6  2015 ByteEncoding.php
+-rw-r--r--   1 vpsnettopet psacln      15174 Apr  6  2015 SegmentToDelta.php
+-rw-r--r--   1 vpsnettopet psacln       7885 Apr  6  2015 TrimmedTable.php

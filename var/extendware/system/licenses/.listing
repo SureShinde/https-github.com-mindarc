@@ -1,0 +1,13 @@
+drwxr-xr-x   3 vpsnettopet psacln       4096 Mar 25 17:38 .
+drwxr-xr-x   4 vpsnettopet psacln       4096 Nov 22  2014 ..
+-rw-rw-rw-   1 vpsnettopet psacln       1224 Mar 25 17:38 Extendware_EWCore.serialized
+-rw-rw-rw-   1 vpsnettopet psacln       1469 Mar 25 17:38 Extendware_EWFreeGift.serialized
+-rw-rw-rw-   1 vpsnettopet psacln       1465 Mar 25 17:38 Extendware_EWImageOpt.serialized
+-rw-rw-rw-   1 vpsnettopet psacln       1465 Mar  5 19:47 Extendware_EWMPAction.serialized
+-rw-rw-rw-   1 vpsnettopet psacln       1465 Mar 25 17:38 Extendware_EWMinify.serialized
+-rw-rw-rw-   1 vpsnettopet psacln       1615 Mar 25 17:38 Extendware_EWPageCache.serialized
+-rw-rw-rw-   1 vpsnettopet psacln       1465 Mar 25 17:38 Extendware_EWReviewReminder.serialized
+-rw-rw-rw-   1 vpsnettopet psacln       1465 Mar  9 22:22 Extendware_EWSphinx.serialized
+-rw-rw-rw-   1 vpsnettopet psacln      12023 Mar 25 17:38 combined.php
+-rw-rw-rw-   1 vpsnettopet psacln      12094 Mar 25 17:38 combined.serialized
+drwxr-xr-x   2 vpsnettopet psacln       4096 Mar 25 17:38 encoder

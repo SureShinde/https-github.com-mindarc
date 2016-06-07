@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* @category   Biztech
+* @package    Biztech_Auspost
+* @author     ModuleCreator
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+-->
+<config>
+    <modules>
+        <Biztech_Auspost>
+            <version>0.1.4</version>
+        </Biztech_Auspost>
+    </modules>
+    <frontend>
+        <routers>
+            <auspost>
+                <use>standard</use>
+                <args>
+                    <module>Biztech_Auspost</module>
+                    <frontName>auspost</frontName>
+                </args>
+            </auspost>
+        </routers>
+        <layout>
+            <updates>
+                <auspost>
+                    <file>auspost.xml</file>
+                </auspost>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <Biztech_Auspost>
+                            <title>Australian Post Module</title>
+                            <sort_order>10</sort_order>
+                        </Biztech_Auspost>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <auspost>
+                                            <title>Australian Post</title>
+                                        </auspost>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <auspost>
+                    <file>auspost.xml</file>
+                </auspost>
+            </updates>
+        </layout>
+
+        <events>
+            <admin_system_config_changed_section_auspost>
+                <observers>
+                    <auspost>
+                        <type>model</type>
+                        <class>auspost/observer</class>
+                        <method>checkKey</method>
+                    </auspost>
+                </observers>
+            </admin_system_config_changed_section_auspost>
+        </events>
+    </adminhtml>   
+    <global>
+        <models>
+            <auspost>
+                <class>Biztech_Auspost_Model</class>
+                <resourceModel>auspost_mysql4</resourceModel>
+            </auspost>
+            <auspost_mysql4>
+                <class>Biztech_Auspost_Model_Mysql4</class>
+                <entities>
+                    <auspost>
+                        <table>auspost</table>
+                    </auspost>
+                </entities>
+            </auspost_mysql4>
+        </models>
+        <resources>
+            <auspost_setup>
+                <setup>
+                    <module>Biztech_Auspost</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </auspost_setup>
+            <auspost_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </auspost_write>
+            <auspost_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </auspost_read>
+        </resources>
+        <blocks>
+            <auspost>
+                <class>Biztech_Auspost_Block</class>
+            </auspost>
+        </blocks>
+        <helpers>
+            <auspost>
+                <class>Biztech_Auspost_Helper</class>
+            </auspost>
+        </helpers>
+      
+    </global>
+    <default>
+        <carriers>
+            <auspost>
+                <active>0</active>
+                <title>Australia Post</title>
+                <method>Australia Post</method>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <model>auspost/carrier_auspost</model>
+            </auspost>
+        </carriers>
+    </default>
+</config>

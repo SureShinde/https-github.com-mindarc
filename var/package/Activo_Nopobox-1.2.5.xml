@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+    <name>Activo_Nopobox</name>
+    <version>1.2.5</version>
+    <stability>stable</stability>
+    <license uri="http://extensions.activo.com/license_professional">Commercial</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Easily prevent buyers from using a PO Box for shipping and/or billing addresses at checkout with customizable error messages.</summary>
+    <description>The No P.O. Box Address Magento extension allows store owners to easily prevent Magento from accepting P.O. Boxes for Billing and/or Shipping addresses at the checkout process. It has separate switches for Shipping and Billing addresses.&#xD;
+&#xD;
+You can also customize the error message that will be shown to the users when they try to use the P.O. Box in their address.&#xD;
+&#xD;
+Unlike other similar tools, this extension uses Magento's own validation mechanism for increased compatibility and reliability; and therefore should not cause any issues at the checkout process. It also does not alter the looks of the checkout page in any way.</description>
+    <notes>Extension is now fully compatible with various themes and Magento CE ver 1.9 &amp; Magento EE ver 1.14</notes>
+    <authors><author><name>Activo Extensions</name><user>activo</user><email>extensions@activo.com</email></author></authors>
+    <date>2014-06-06</date>
+    <time>15:26:13</time>
+    <contents><target name="magecommunity"><dir name="Activo"><dir name="Nopobox"><dir><dir name="Block"><file name="Message.php" hash="979f5f2a1ae58c05e7f2600a2b90dd95"/></dir><dir name="Helper"><file name="Data.php" hash="3a6654c4a72e7e0ba521527dd97733fa"/><file name="Directory.php" hash="6000ac903670af01b4b8bf6517ef31fe"/></dir><dir name="Model"><file name="Feed.php" hash="b2238d3eb82fe217a603d4664cf37e3c"/></dir><dir name="etc"><file name="config.xml" hash="b318379e93509678b6a6a141f98767a6"/><file name="system.xml" hash="e082e32d7edc1eeb78eb3058b3e29d44"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Activo_Nopobox.xml" hash="b02fbadcf63ce9784a9816d0ef3f4058"/></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir name="activo"><file name="nopobox.xml" hash="57d485be3137772740aa439046a3c8de"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>8.0.0</max></php></required></dependencies>
+</package>

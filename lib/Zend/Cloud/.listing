@@ -1,0 +1,9 @@
+drwxr-xr-x   6 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  67 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1943 Apr  6  2015 AbstractFactory.php
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 DocumentService
+-rw-r--r--   1 vpsnettopet psacln       1435 Apr  6  2015 Exception.php
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 Infrastructure
+-rw-r--r--   1 vpsnettopet psacln       1036 Apr  6  2015 OperationNotAvailableException.php
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 QueueService
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 StorageService

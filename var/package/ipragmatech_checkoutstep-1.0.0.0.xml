@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>ipragmatech_checkoutstep</name>
+    <version>1.0.0.0</version>
+    <stability>stable</stability>
+    <license>GNU General Public Licence (GPL)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Added the custom Form in Checkout process. Also added the admin setting to export the data of custom table.</summary>
+    <description>Added the custom Form in Checkout process. Also added the admin setting to export the data of custom table.</description>
+    <notes>Added the custom Form in Checkout process. Also added the admin setting to export the data of custom table.</notes>
+    <authors><author><name>iPragmatech</name><user>iPragmatech</user><email>info@ipragmatech.com</email></author></authors>
+    <date>2014-12-09</date>
+    <time>11:54:18</time>
+    <contents><target name="magelocal"><dir name="Ipragmatech"><dir name="Checkoutstep"><dir name="Block"><dir name="Adminhtml"><file name="Exportdata.php" hash="5346a20a62d6b5dd35010c39b7cef63e"/></dir><dir name="Onepage"><file name="Checkoutstep.php" hash="044631e3b20a01c94495290b9515b9e7"/></dir><file name="Onepage.php" hash="a80f985cc938c3740d1b7a3cbe742a7c"/></dir><dir name="Controller"><file name="Observer.php" hash="772168d115c0c7b07c7e8fdaf321ff1a"/></dir><dir name="Helper"><file name="Data.php" hash="24ce90a5c83e4fa0afcaf442737f1e00"/></dir><dir name="Model"><file name="Customerdata.php" hash="19008e5500e4ed8fbee32ee9deff4b6c"/><dir name="Observer"><file name="Customer.php" hash="7a0315ce217368cd886136f2d4c08f6a"/></dir><file name="Observer.php" hash="f8c49a3523a9e745108b79682c96c1cf"/><dir name="Resource"><dir name="Customerdata"><file name="Collection.php" hash="eca38737153eafbb62770998e6d5b784"/></dir><file name="Customerdata.php" hash="6dab5c6117b4ba514c2dba032698d4c7"/></dir><dir name="Type"><file name="Onepage.php" hash="9c71c56525370e81937c705a37a7caea"/></dir></dir><dir name="controllers"><dir name="Adminhtml"><file name="ExportdataController.php" hash="49aeb8b6064bc438a5e35a58ffe7cb80"/></dir><file name="OnepageController.php" hash="66c0603ec668888927bddda1753fae6b"/></dir><dir name="etc"><file name="config.xml" hash="037c97b9c3f10b25aaaa4f19c939a6d9"/><file name="system.xml" hash="f2b45dcf218cce19d2bce1e22516a0d4"/></dir><dir name="sql"><dir name="checkoutstep_setup"><file name="mysql4-install-0.1.1.php" hash="9409b24c9ede74c30d6091cbb9fee6ce"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Ipragmatech_Checkoutstep.xml" hash="16590e306e569a9119c8d4a348b7517e"/></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="checkoutstep"><file name="exportdata.phtml" hash="a65ef6bce3e02ecbc07971d84c3c5ab3"/></dir></dir></dir></dir></dir><dir name="frontend"><dir name="rwd"><dir name="default"><dir name="template"><dir name="checkout"><dir name="onepage"><file name="checkoutstep.phtml" hash="8d7f5ad94f556c6255e20c777b98f5d5"/></dir></dir></dir><dir name="layout"><file name="checkoutstep.xml" hash="eeb26262856da4f4f243395e8f6bd967"/></dir></dir></dir><dir name="base"><dir name="default"><dir name="template"><dir name="checkout"><dir name="onepage"><file name="checkoutstep.phtml" hash="8d7f5ad94f556c6255e20c777b98f5d5"/></dir></dir></dir><dir name="layout"><file name="checkoutstep.xml" hash="eeb26262856da4f4f243395e8f6bd967"/></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.3.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

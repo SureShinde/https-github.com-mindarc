@@ -1,0 +1,113 @@
+<h2>Upload Image</h2>
+
+<?php  $urlSave = $this->getUrl('revslider/adminhtml_revslider/saveimage'); ?>
+<div id="upload">
+    <form id ="upload_image" action ="<?php echo $urlSave; ?>" method ="post" enctype="multipart/form-data"  >
+        <?php
+        $formKey = Mage::getSingleton('core/session')->getFormKey();
+        ?>
+        <input name="form_key" value="<?php echo $formKey; ?>" type="hidden">
+        <input id="page_layer_image" name="filename" value="" title="Layer Image"   type="file">
+        <input type ="submit" id ="upload_file1" value ="Upload" />
+    </form>
+    <div id ="media_image">
+
+        <?php
+        $dir = Mage::getBaseDir('media') . DS . 'magentothem/revslider';
+         if (!is_dir($dir)) {
+            mkdir($dir);         
+        }
+        $dh = opendir($dir);
+        $filesarr = array();
+        while (($file = readdir($dh)) !== false) {
+
+            if ($file[0] != ".")
+                $filesarr[] = $file;
+            $ext = pathinfo($file, PATHINFO_EXTENSION);
+            if (strtolower($ext) == 'jpg' || strtolower($ext) == 'png') {
+                $url_image = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/magentothem/revslider/' . $file;
+                $pathImage = 'magentothem/revslider/' . $file;
+                echo '<div class ="item_image" url_image ="' . $pathImage . '"><img src = "' . $url_image . '" width=100 height=100/></div>';
+            }
+        }
+        closedir($dh);
+        ?>
+
+    </div>
+
+    <div id ="upload_media">
+        <table class="properties">
+            <tbody><tr>
+                    <td><label for="image_url_upload">Image URL</label></td>
+                    <td><input  type="text"  value="" id="image_url_upload"></td>
+                </tr>
+            </tbody></table>
+        <div class="fltrt">
+            <button onclick="window.parent.InsertImageFromPoupup(jQuery('#image_url_upload').attr('value'),'image_url_upload'); parent.jQuery.fancybox.close();" type="button">Insert</button>
+            <button onclick=" parent.jQuery.fancybox.close(); " type="button">Cancel</button>
+        </div>
+    </div>
+
+    <script type ="text/javascript">
+   
+        jQuery(document).ready(function(){
+            jQuery('.item_image').click(function(){
+                jQuery('#image_url_upload').val(jQuery(this).attr('url_image'));
+				jQuery('#image_url_upload').attr('link',jQuery(this).attr('url_image'));
+                jQuery(this).toggleClass('active_image');
+                return false;
+        
+            });
+    
+    
+            jQuery('.header').html('');
+            jQuery('.notification-global').html('');
+            jQuery('.notification-global').removeClass('notification-global');
+            jQuery('.footer').remove();
+            jQuery('#upload_file').click(function(){
+         
+                var url = "<?php echo $urlSave; ?>"; // the script where you handle the form input.
+
+                jQuery.ajax({
+                    type: "POST",
+                    url: url,
+                    data: jQuery("#upload_image").serialize(), // serializes the form's elements.
+                    success: function(data)
+                    {
+                        alert(data); // show response from the php script.
+                    }
+                });
+
+            });
+        });
+    </script>  
+    <style type ="text/css">
+        #media_image{
+            margin-top:10px;
+            width:100%;
+            height: auto;
+            position:relative;
+
+        }
+        #media_image .item_image {
+            float:left;
+            margin-left:10px;
+        }
+        #upload_media{
+            margin-top:10px;
+            clear:both;
+        }
+
+        .properties input {
+            width:400px;
+        }
+        .fltrt {
+            position:absolute;
+            width:auto;
+            height:auto;
+            margin-top: 20px;
+        }
+        .active_image {
+
+        }
+    </style>

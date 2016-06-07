@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<config>
+	<extendware>
+		<quickaccess>
+			<ewfreegift>
+                <resource>extendware/ewfreegift</resource>
+				<children>
+					<promo_quote translate="title" module="ewfreegift">
+						<title>Shopping Cart Price Rules</title>
+						<action>adminhtml/promo_quote/</action>
+						<resource>promo/quote</resource>
+						<sort_order>1</sort_order>
+					</promo_quote>
+				</children>
+				<title/>
+			</ewfreegift>
+		</quickaccess>
+	</extendware>
+	<acl>
+		<resources>
+            <admin>
+                <children>
+                    <extendware translate="title" module="ewfreegift">
+                    	<title>Extendware</title>
+                    	<sort_order>0</sort_order>
+                        <children>
+                        	<ewfreegift translate="title" module="ewfreegift">
+                        		<title>Free Gift</title>
+                        		<children>
+                        			<settings translate="title">
+                        				<title>Settings</title>
+                        				<children>
+				                            <main translate="title">
+				                                <title>Main</title>
+				                                <children>
+					                                <ewfreegift translate="title">
+						                                <title>General</title>
+						                            </ewfreegift>
+					                            </children>
+				                            </main>
+			                            </children>
+			            			</settings>
+			            		</children>
+			            	</ewfreegift>
+                        </children>
+                    </extendware>
+                </children>
+            </admin>
+        </resources>
+	</acl>
+</config>

@@ -1,0 +1,257 @@
+<?php
+/**
+ * Mageplace Backup
+ *
+ * @category	Mageplace
+ * @package		Mageplace_Backup
+ * @copyright	Copyright (c) 2011 Mageplace. (http://www.mageplace.com)
+ * @license		http://www.mageplace.com/disclaimer.html
+ */
+?>
+
+<?php
+/**
+ * @see Mageplace_Backup_Block_Adminhtml_Profile_Edit_Tab_Files
+ */
+?>
+
+<div class="entry-edit">
+	<div class="entry-edit-head">
+		<h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->getTabLabel(); ?></h4>
+	</div>
+
+	<fieldset id="<?php echo $this->getPathAreaId(); ?>">
+		<?php echo $this->getFilesAreaHtml(); ?>
+	</fieldset>
+</div>
+
+<script type="text/javascript">
+var current_path = '';
+function excludeAll()
+{
+	var paths = new Array;
+	$$('input[name="dir"]').each(function(el) {
+		paths.push(el.value);
+	});
+	
+	$$('input[name="file"]').each(function(el) {
+		paths.push(el.value);
+	});
+    
+	new Ajax.Request('<?php echo $this->getUrl('*/*/excludeAll'); ?>', {
+		method: 'post',			
+		parameters: {paths: paths.join('`'), session_id:$('session_id').value},
+		onSuccess: function(response) {
+            $$('input[name="dir"]').each(function(el) {
+				el.checked = true;
+				$('selected-items').insert('<div><input type="checkbox" name="excluded" value="'+el.value+'" />'+el.value+'</div>');
+			});
+            $$('input[name="file"]').each(function(el) {
+				el.checked = true;
+				$('selected-items').insert('<div><input type="checkbox" name="excluded" value="'+el.value+'" />'+el.value+'</div>');
+			});
+		}
+	});
+}
+
+function excludeItem(el)
+{
+	var param = {path: el.value, checked: (el.checked ? 1 : 0), session_id:$('session_id').value};
+	new Ajax.Request(
+		'<?php echo $this->getUrl('*/*/excludePath'); ?>',
+		{
+			method: 'post',
+			loaderArea: false,
+			parameters: param,
+			onSuccess: function(response) {
+				if(el.checked) {
+					$('selected-items').insert('<div><input type="checkbox" name="excluded" value="'+el.value+'" />'+el.value+'</div>');
+				} else {
+					$$('input[name="excluded"]').each(function(elExcluded) {
+						if(elExcluded.value == el.value) {
+							var parent = elExcluded.up();
+							parent.remove();
+						}
+					});
+				}
+			}
+		}
+	);
+}
+
+function includeAll()
+{
+	if(!confirm("<?php echo Mage::helper('mpbackup')->__("Are you sure you want to remove all items?"); ?>")) {
+		return;
+	}
+	
+	var param = {all:1, session_id:$('session_id').value};
+	new Ajax.Request(
+		'<?php echo $this->getUrl('*/*/excludePath'); ?>',
+		{
+			method: 'post',
+			loaderArea: true,
+			parameters: param,
+			onSuccess: function(response) {
+				getDirContent(current_path);
+			}
+		}
+	); 
+}
+
+function includeItems()
+{
+	var checkedItems = new Array();
+	var excluded = $$('input[name="excluded"]');
+	excluded.each(function(el) {
+		if(el.checked) {
+			checkedItems.push(el.value);
+		}
+	});
+
+	if(!checkedItems.length) {
+		alert("<?php echo Mage::helper('mpbackup')->__("There are no items selected"); ?>");
+		return;
+	}
+
+	var param = {'path[]': checkedItems, session_id:$('session_id').value};
+	new Ajax.Request(
+		'<?php echo $this->getUrl('*/*/excludePath'); ?>',
+		{
+			method: 'post',
+			loaderArea: true,
+			parameters: param,
+			onSuccess: function(response) {
+				excluded.each(function(el) {
+					if(el.checked) {
+						var parent = el.up();
+						parent.remove();
+					}
+				});
+
+				$$('input[name="dir"]', 'input[name="file"]').each(function(el) {
+					if(el.checked) {
+						checkedItems.each(function(el2) {
+							if(el.value == el2) {
+								el.checked = false;
+								return;
+							}
+						});
+					}
+				});
+			}
+		}
+	); 
+}
+
+function getDirContent(dir, up)
+{
+	var param = {path: dir, up: up, session_id:$('session_id').value};
+	new Ajax.Updater(
+		'<?php echo $this->getPathAreaId(); ?>', '<?php echo $this->getUrl('*/*/path'); ?>',
+		{
+			method: 'post',
+			loaderArea: true,
+			parameters: param
+		}
+	); 	
+}
+
+function calculateFileSpace(filepath, obj, filename)
+{ 
+    var param = {filepath: filepath, session_id:$('session_id').value};
+    new Ajax.Request(
+		'<?php echo $this->getUrl('*/*/getfilesize'); ?>',
+		{
+			method: 'post',			
+			parameters: param,
+			onSuccess: function(response) {
+			    if ($('sizeOf'+filename)){
+                    $('sizeOf'+filename).remove();
+                }                                 
+                var size = document.createElement('span');  
+                size.id = 'sizeOf'+filename;
+                size.className = 'fileSize'
+                size.appendChild(document.createTextNode('\t\t['+response.responseText+']'));                                
+                
+                $(filename).insert({'after' : size});
+			}
+		}
+	);
+}
+
+function calculateDirSpace(dirpath, obj, dirid)
+{ 
+    var param = {path: dirpath, session_id:$('session_id').value};    
+    new Ajax.Request(
+		'<?php echo $this->getUrl('*/*/getdirsize'); ?>',
+		{
+			method: 'post',			
+			parameters: param,
+			onSuccess: function(response) {
+			    if ($('sizeOf'+dirid)){
+                    $('sizeOf'+dirid).remove();
+                }                                 
+                var size = document.createElement('span');  
+                size.id = 'sizeOf'+dirid;
+                size.className = 'fileSize'
+                size.appendChild(document.createTextNode('\t\t['+response.responseText+']'));                                
+                
+                $(dirid).insert({'after' : size});
+			}
+		}
+	);
+}
+
+function calculateAllFilesSpace()
+{
+	var dirs = new Array;
+	$$('input[name="dir"]').each(function(el) {
+		dirs.push(el.value);
+	});
+	
+	var files = new Array;
+	$$('input[name="file"]').each(function(el) {
+		files.push(el.value);
+	});
+	
+    new Ajax.Request('<?php echo $this->getUrl('*/*/getSize'); ?>', {
+		method: 'post',			
+		parameters: {dirs: dirs.join('`'), files: files.join('`'), session_id:$('session_id').value},
+		onSuccess: function(response) {
+            var json = response.responseText.evalJSON();
+			if(!json) {
+				return;
+			}
+			
+			try {
+				for (dirname in json['dirs']) {
+					if ($('sizeOf'+dirname)){
+						$('sizeOf'+dirname).remove();
+					}                                 
+					var size = document.createElement('span');  
+					size.id = 'sizeOf'+dirname;
+					size.className = 'fileSize'
+					size.appendChild(document.createTextNode('\t\t['+json['dirs'][dirname]+']'));                                
+					
+					$(dirname).insert({'after' : size});
+				}
+			} catch(e) {}
+			    
+			try {
+				for (filename in json['files']) {
+					if ($('sizeOf'+filename)){
+						$('sizeOf'+filename).remove();
+					}                                 
+					var size = document.createElement('span');  
+					size.id = 'sizeOf'+filename;
+					size.className = 'fileSize'
+					size.appendChild(document.createTextNode('\t\t['+json['files'][filename]+']'));                                
+					
+					$(filename).insert({'after' : size});
+				}
+			} catch(e) {}
+		}
+	});
+}
+</script>

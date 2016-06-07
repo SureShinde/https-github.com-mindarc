@@ -1,0 +1,10 @@
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  18 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   6 root     root         4096 Nov  6 06:06 adminhtml
+-rw-r--r--   1 vpsnettopet psacln       3093 Nov 21  2014 captcha.js
+-rw-r--r--   1 vpsnettopet psacln       3315 Nov 21  2014 centinel.js
+-rw-r--r--   1 vpsnettopet psacln       2615 Nov 21  2014 cookies.js
+-rw-r--r--   1 vpsnettopet psacln      15246 Nov 21  2014 directpost.js
+-rw-r--r--   1 vpsnettopet psacln       1597 Nov 21  2014 translate.js
+-rw-r--r--   1 vpsnettopet psacln       1870 Nov 21  2014 translate_inline.css
+-rw-r--r--   1 vpsnettopet psacln       8210 Nov 21  2014 translate_inline.js

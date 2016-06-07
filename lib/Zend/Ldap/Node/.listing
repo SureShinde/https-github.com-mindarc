@@ -1,0 +1,9 @@
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   7 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln      11977 Apr  6  2015 Abstract.php
+-rw-r--r--   1 vpsnettopet psacln       4568 Apr  6  2015 ChildrenIterator.php
+-rw-r--r--   1 vpsnettopet psacln       1856 Apr  6  2015 Collection.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 RootDse
+-rw-r--r--   1 vpsnettopet psacln       4527 Apr  6  2015 RootDse.php
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 Schema
+-rw-r--r--   1 vpsnettopet psacln       3602 Apr  6  2015 Schema.php

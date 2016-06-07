@@ -1,0 +1,15 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   9 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       2788 Apr  6  2015 AffinityGroupInstance.php
+-rw-r--r--   1 vpsnettopet psacln       2300 Apr  6  2015 CertificateInstance.php
+-rw-r--r--   1 vpsnettopet psacln     107035 Apr  6  2015 Client.php
+-rw-r--r--   1 vpsnettopet psacln       5804 Apr  6  2015 DeploymentInstance.php
+-rw-r--r--   1 vpsnettopet psacln       1214 Apr  6  2015 Exception.php
+-rw-r--r--   1 vpsnettopet psacln       3112 Apr  6  2015 HostedServiceInstance.php
+-rw-r--r--   1 vpsnettopet psacln       1585 Apr  6  2015 LocationInstance.php
+-rw-r--r--   1 vpsnettopet psacln       2768 Apr  6  2015 OperatingSystemFamilyInstance.php
+-rw-r--r--   1 vpsnettopet psacln       4710 Apr  6  2015 OperatingSystemInstance.php
+-rw-r--r--   1 vpsnettopet psacln       2564 Apr  6  2015 OperationStatusInstance.php
+-rw-r--r--   1 vpsnettopet psacln       2150 Apr  6  2015 ServiceEntityAbstract.php
+-rw-r--r--   1 vpsnettopet psacln       2918 Apr  6  2015 StorageServiceInstance.php
+-rw-r--r--   1 vpsnettopet psacln       3189 Apr  6  2015 SubscriptionOperationInstance.php

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <cms_index_index>
+        <reference name="head">
+			<action method="addJs" ifconfig="featuredproductslider/featuredproductslider_config/enabled"><script>magentothem/ma.bxslider.min.js</script></action>     
+		</reference>
+        <!--<reference name="content">
+            <block type="featuredproductslider/featuredproductslider" after="banner_static_center" name="featuredproductslider" template="magentothem/featuredproductslider/featuredproductslider.phtml" />
+        </reference>-->
+    </cms_index_index>
+</layout> 

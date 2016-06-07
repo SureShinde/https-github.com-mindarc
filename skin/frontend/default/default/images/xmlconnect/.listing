@@ -1,0 +1,10 @@
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   5 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 catalog
+-rw-r--r--   1 vpsnettopet psacln       1296 Nov 21  2014 tab_account.png
+-rw-r--r--   1 vpsnettopet psacln        555 Nov 21  2014 tab_cart.png
+-rw-r--r--   1 vpsnettopet psacln        535 Nov 21  2014 tab_home.png
+-rw-r--r--   1 vpsnettopet psacln        258 Nov 21  2014 tab_more.png
+-rw-r--r--   1 vpsnettopet psacln        395 Nov 21  2014 tab_page.png
+-rw-r--r--   1 vpsnettopet psacln        796 Nov 21  2014 tab_search.png
+-rw-r--r--   1 vpsnettopet psacln        669 Nov 21  2014 tab_shop.png

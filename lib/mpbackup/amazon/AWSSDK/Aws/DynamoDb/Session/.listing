@@ -1,0 +1,6 @@
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   8 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 LockingStrategy
+-rw-r--r--   1 vpsnettopet psacln      16145 Feb 24  2015 SessionHandler.php
+-rw-r--r--   1 vpsnettopet psacln       2602 Feb 24  2015 SessionHandlerConfig.php
+-rw-r--r--   1 vpsnettopet psacln        568 Feb 24  2015 SessionHandlerInterface.php

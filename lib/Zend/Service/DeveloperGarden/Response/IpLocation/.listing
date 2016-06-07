@@ -1,0 +1,8 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  10 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1875 Apr  6  2015 CityType.php
+-rw-r--r--   1 vpsnettopet psacln       1729 Apr  6  2015 GeoCoordinatesType.php
+-rw-r--r--   1 vpsnettopet psacln       3635 Apr  6  2015 IPAddressLocationType.php
+-rw-r--r--   1 vpsnettopet psacln       3224 Apr  6  2015 LocateIPResponse.php
+-rw-r--r--   1 vpsnettopet psacln       1551 Apr  6  2015 LocateIPResponseType.php
+-rw-r--r--   1 vpsnettopet psacln       1949 Apr  6  2015 RegionType.php

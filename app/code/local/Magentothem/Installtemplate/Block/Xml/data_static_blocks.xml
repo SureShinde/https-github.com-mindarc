@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<pet1>
+    <blocks>
+        <block>
+            <title>block header</title>
+            <identifier>block_header</identifier>
+            <content>
+                    <![CDATA[<div class="block-header"><span>Call us: +48 500-312-312</span></div>]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+
+        <block>
+            <title>Banner Static 3</title>
+            <identifier>banner_static</identifier>
+            <content>
+                      <![CDATA[
+                            <div class="banner-static">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-sms-4 col-smb-12">
+<div class="banner-box banner-box1"><a href="#"><img src="{{media url="wysiwyg/banner_staitc4.jpg"}}" alt="" /></a></div>
+</div>
+<div class="col-xs-12 col-sm-4 col-sms-4 col-smb-12">
+<div class="banner-box banner-box2"><a href="#"><img src="{{media url="wysiwyg/banner_staitc5.jpg"}}" alt="" /></a></div>
+</div>
+<div class="col-xs-12 col-sm-4 col-sms-4 col-smb-12">
+<div class="banner-box banner-box3"><a href="#"><img src="{{media url="wysiwyg/banner_staitc6.jpg"}}" alt="" /></a></div>
+</div>
+</div>
+</div>
+</div>
+                        ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+
+
+        <block>
+            <title>Footer Static 2</title>
+            <identifier>footer_static_2</identifier>
+            <content>
+                      <![CDATA[
+					  <div class="footer-static-2">
+<div class="row">
+<div class="col-sm-3 col-sms-6 col-smb-12">
+<div class="f-col f-col1">
+<div class="footer-title">
+<h2>about us</h2>
+</div>
+<div class="footer-content">
+<div class="footer-logo"><a href="#"><img src="{{media url="wysiwyg/logo.png"}}" alt="" /></a></div>
+<p>It has survived not only five centuries but also the leap into electronic typesetting remaining essentially unchanged.</p>
+</div>
+</div>
+</div>
+<div class="col-sm-3 col-sms-6 col-smb-12">
+<div class="f-col f-col2">
+<div class="footer-title">
+<h2>contact us</h2>
+</div>
+<div class="footer-content">
+<div class="phone">
+<p>Phone: (+800) 1234 5678 90</p>
+<p>Fax: (+800) 1234 567 891</p>
+</div>
+<div class="email">
+<p>Email: Support@plazathemes.com</p>
+<p>Support2@plazathems.com</p>
+</div>
+<div class="skype">
+<p>Skype:Plaza.themes</p>
+<p>UST.Plazathemes</p>
+</div>
+</div>
+</div>
+</div>
+<div class="col-sm-3 col-sms-6 col-smb-12">
+<div class="f-col f-col3">
+<div class="footer-title">
+<h2>Latest Tweet</h2>
+</div>
+<div class="footer-content">{{block type="core/template" after="-" name="lastesttweet" template="magentothem/lastesttweet/lastesttweet.phtml"}}</div>
+</div>
+</div>
+<div class="col-sm-3 col-sms-6 col-smb-12">
+<div class="f-col f-col4">
+<div class="footer-title">
+<h2>Newsletter</h2>
+</div>
+<div class="footer-content">{{block type="newsletter/subscribe" name="left.newsletter" template="newsletter/subscribe.phtml"}}</div>
+</div>
+</div>
+</div>
+</div>]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+
+
+
+
+        <block>
+            <title>Footer Static</title>
+            <identifier>footer_static</identifier>
+            <content>
+                   <![CDATA[
+				  <div class="footer-static">
+<div class="row">
+<div class="col-sm-3 col-sms-6 col-smb-12">
+<div class="f-col f-col1">
+<div class="footer-title">
+<h2>information</h2>
+</div>
+<div class="footer-content">
+<ul>
+<li class="first"><a href="{{store direct_url="sales/order/history/"}}">order history</a></li>
+<li><a href="{{store direct_url="sales/guest/form/"}}">returns</a></li>
+<li><a href="#">linero sed</a></li>
+<li class="last"><a href="#">venenatis qugue tellus</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-sm-3 col-sms-6 col-smb-12">
+<div class="f-col f-col2">
+<div class="footer-title">
+<h2>our services</h2>
+</div>
+<div class="footer-content">
+<ul>
+<li class="first"><a href="{{store direct_url="about-magento-demo-store"}}">About us</a></li>
+<li><a href="{{store direct_url="customer-service"}}">customer service</a></li>
+<li><a href="{{store direct_url="privacy-policy-cookie-restriction-mode"}}">privacy policy</a></li>
+<li class="last"><a href="{{store direct_url="catalog/seo_sitemap/category/"}}">site map</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-sm-3 col-sms-6 col-smb-12">
+<div class="f-col f-col3">
+<div class="footer-title">
+<h2>Why Buy From Us</h2>
+</div>
+<div class="footer-content">
+<ul>
+<li class="first"><a href="{{store direct_url="sales/order/history/"}}">order history</a></li>
+<li><a href="{{store direct_url="sales/guest/form/"}}">returns</a></li>
+<li><a href="#">linero sed</a></li>
+<li class="last"><a href="#">venenatis qugue tellus</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-sm-3 col-sms-6 col-smb-12">
+<div class="f-col f-col4">
+<div class="footer-title">
+<h2>My Account</h2>
+</div>
+<div class="footer-content">
+<ul>
+<li class="first"><a href="#">My addresses</a></li>
+<li><a href="{{store direct_url="sales/order/history/"}}">My orders</a></li>
+<li><a href="{{store direct_url="contacts/"}}">Contact Us</a></li>
+<li class="last"><a href="#">My personal info</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+				   ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+
+
+
+        <block>
+            <title>Payment</title>
+            <identifier>pay_ment</identifier>
+            <content>
+                 <![CDATA[<div class="payment"><img src="{{media url="wysiwyg/payment.png"}}" alt="" /></div>]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		<block>
+            <title>Static Sub Menu Bottom</title>
+            <identifier>pt_menu_idcat_3</identifier>
+            <content>
+                 <![CDATA[<div class="custom-menu-bottom">
+<div class="row">
+<div class="col-md-6"><a href="{{store direct_url="men.html"}}"><img src="{{media url="wysiwyg/banner_menu1.png"}}" alt="" /></a></div>
+<div class="col-md-6"><a href="{{store direct_url="jewelry.html"}}"><img src="{{media url="wysiwyg/banner_menu2.png"}}" alt="" /></a></div>
+</div>
+</div>]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		<block>
+            <title>Block Sequence</title>
+            <identifier>block_sequence</identifier>
+            <content>
+                 <![CDATA[
+				 <div class="block-sequence">
+<div class="block1 block-inner"><a href="{{store direct_url="dog.html"}}"><img src="{{media url="wysiwyg/block_sequence1.png"}}" alt="" /></a>
+<div class="des">
+<h2>DOG ACCESSORIES</h2>
+<p>Sed ut perspiciatis unde omnis iste natus error sittium</p>
+</div>
+</div>
+<div class="block2 block-inner"><a href="{{store direct_url="cat.html"}}"><img src="{{media url="wysiwyg/block_sequence2.png"}}" alt="" /></a>
+<div class="des">
+<h2>CAT CLOTHING</h2>
+<p>Sed ut perspiciatis unde omnis iste natus error sittium</p>
+</div>
+</div>
+<div class="block3 block-inner"><a href="{{store direct_url="rabbit.html"}}"><img src="{{media url="wysiwyg/block_sequence3.png"}}" alt="" /></a>
+<div class="des">
+<h2>REPTILE PET</h2>
+<p>Sed ut perspiciatis unde omnis iste natus error sittium</p>
+</div>
+</div>
+</div>
+				 ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		<block>
+            <title>menu links</title>
+            <identifier>pt_menu_links</identifier>
+            <content>
+                 <![CDATA[
+				 <ul>
+<li><a href="{{store url="bestsellerproductlist"}}">bestseller</a></li>
+</ul>
+				 ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		
+    </blocks>
+
+</pet1>
+

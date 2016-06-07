@@ -1,0 +1,7 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   9 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln      40253 Apr  6  2015 mime.php
+-rw-r--r--   1 vpsnettopet psacln      31213 Apr  6  2015 mimeDecode.php
+-rw-r--r--   1 vpsnettopet psacln      15995 Apr  6  2015 mimePart.php
+-rw-r--r--   1 vpsnettopet psacln        566 Apr  6  2015 xmail.dtd
+-rw-r--r--   1 vpsnettopet psacln       2135 Apr  6  2015 xmail.xsl

@@ -1,0 +1,15 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  11 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       3322 Apr  6  2015 IPLocation.wsdl
+-rw-r--r--   1 vpsnettopet psacln       3378 Apr  6  2015 IPLocation.xsd
+-rw-r--r--   1 vpsnettopet psacln       3579 Apr  6  2015 ODGBaseUserService.wsdl
+-rw-r--r--   1 vpsnettopet psacln       2485 Apr  6  2015 ODGBaseUserService.xsd
+-rw-r--r--   1 vpsnettopet psacln       4732 Apr  6  2015 SmsService.wsdl
+-rw-r--r--   1 vpsnettopet psacln       7340 Apr  6  2015 SmsValidationUserService.wsdl
+-rw-r--r--   1 vpsnettopet psacln      13281 Apr  6  2015 TokenService.wsdl
+-rw-r--r--   1 vpsnettopet psacln       5614 Apr  6  2015 VoiceButlerService.wsdl
+-rw-r--r--   1 vpsnettopet psacln       9184 Apr  6  2015 VoiceButlerService.xsd
+-rw-r--r--   1 vpsnettopet psacln      18595 Apr  6  2015 ccsPort.wsdl
+-rw-r--r--   1 vpsnettopet psacln      25358 Apr  6  2015 ccsPort.xsd
+-rw-r--r--   1 vpsnettopet psacln       3334 Apr  6  2015 localsearch.wsdl
+-rw-r--r--   1 vpsnettopet psacln       1609 Apr  6  2015 localsearch.xsd

@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<config>
+	<menu>
+		<mpbackup translate="title" module="mpbackup">
+			<title>Amasty Backup</title>
+			<sort_order>90</sort_order>               
+			<children>
+				<profile translate="title" module="mpbackup">
+					<title>Profiles</title>
+					<action>adminhtml/mpbackup_profile</action>
+					<sort_order>1</sort_order>
+				</profile>                    
+
+				<backup translate="title" module="mpbackup">
+					<title>Backups</title>
+					<action>adminhtml/mpbackup_backup</action>
+					<sort_order>2</sort_order>
+				</backup>                    
+			</children>
+		</mpbackup>
+	</menu>
+
+	<acl>
+		<resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<mpbackup>
+										<title>Amasty Backup</title>
+									</mpbackup>
+								</children>
+							</config>
+						</children>
+					</system>
+
+					<mpbackup>
+						<title>Amasty Backup</title>
+						<sort_order>10</sort_order>
+						<children>
+							<profile translate="title">
+								<title>Profiles</title>
+								<sort_order>1</sort_order>
+								<children>
+									<profile_new translate="title">
+										<title>Add New Profile</title>
+										<sort_order>1</sort_order>
+									</profile_new>
+
+									<profile_edit translate="title">
+										<title>Edit Profile</title>
+										<sort_order>2</sort_order>
+									</profile_edit>
+
+									<profile_delete translate="title">
+										<title>Delete Profile</title>
+										<sort_order>3</sort_order>
+									</profile_delete>
+								</children>	
+							</profile>
+
+							<backup translate="title">
+								<title>Backups</title>
+								<sort_order>2</sort_order>
+								<children>
+									<backup_create translate="title">
+										<title>Create Backup</title>
+										<sort_order>1</sort_order>
+									</backup_create>
+
+									<backup_edit translate="title">
+										<title>Edit Backup</title>
+										<sort_order>2</sort_order>
+									</backup_edit>
+
+									<backup_delete translate="title">
+										<title>Delete Backup</title>
+										<sort_order>3</sort_order>
+									</backup_delete>
+								</children>	
+							</backup>
+						</children>	
+					</mpbackup>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

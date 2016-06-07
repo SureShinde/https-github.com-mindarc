@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+        <Extendware_EWFreeGift>
+        	<extendware>
+	        	<settings>
+	        		<scopes>
+		        		<main>
+							<tabs>
+						        <main translate="label comment ewhelp" module="ewfreegift">
+						            <label>Free Gift</label>
+						            <sort_order>100</sort_order>
+						        </main>
+						    </tabs>
+							<sections>
+								<ewfreegift translate="label comment ewhelp" module="ewfreegift">
+									<class>separator-top</class>
+									<label>General</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>100</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+										<general translate="label comment ewhelp" module="ewfreegift">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>1</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<free_shipping_enabled translate="label comment ewhelp">
+													<label>Free Shipping Status</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_enabledisable</source_model>
+													<sort_order>30</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>Enable if the free products should also receive free shipping</comment>
+												</free_shipping_enabled>
+												<auto_add_enabled translate="label comment ewhelp">
+													<label>Auto Add</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_enabledisable</source_model>
+													<sort_order>40</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>Enable to automatically add free products to cart if possible. Configurable products or products with required options will not be auto-added. Products where 1 of many must be selected will not be auto-added either.</comment>
+												</auto_add_enabled>
+						                        <product_sort_by translate="label comment ewhelp">
+													<label>Product Sort By</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewfreegift/adminhtml_config_data_option_sortby</source_model>
+													<sort_order>50</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Bestselling / popularity requires <a href="http://www.extendware.com/magento-sorting.html"><b>Product Sorting</b></a>]]></comment>
+												</product_sort_by>
+											</fields>
+										</general>
+										<messages translate="label comment ewhelp" module="ewfreegift">
+						                    <label>Messages</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>10</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+												<custom_cart_message translate="label comment ewhelp">
+						                            <label>Custom Cart Message</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[The custom message added to the free products]]></comment>
+						                        </custom_cart_message>
+						                        <add_to_cart_message translate="label comment ewhelp">
+						                            <label>Add To Cart Message</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[The notice that is displayed when a free product is added to cart.]]></comment>
+						                        </add_to_cart_message>
+						                        <unclaimed_gifts_message translate="label comment ewhelp">
+						                            <label>Unclaimed Gifts Message</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[The message that is shown in the cart / checkout pages when the customer has free gifts available for selection.]]></comment>
+						                        </unclaimed_gifts_message>
+											</fields>
+										</messages>
+									</groups>
+								</ewfreegift>
+							</sections>
+						</main>
+					</scopes>
+				</settings>
+			</extendware>
+		</Extendware_EWFreeGift>
+	</modules>
+</config>

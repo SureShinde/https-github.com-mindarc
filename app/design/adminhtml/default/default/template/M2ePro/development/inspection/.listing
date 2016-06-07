@@ -1,0 +1,10 @@
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 .
+drwxr-xr-x   5 vpsnettopet psacln       4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       3876 Aug 28  2015 caches.phtml
+-rw-r--r--   1 vpsnettopet psacln       1766 Aug 28  2015 conflictedModules.phtml
+-rw-r--r--   1 vpsnettopet psacln       4432 Aug 28  2015 cron.phtml
+-rw-r--r--   1 vpsnettopet psacln       1212 Aug 28  2015 databaseBrokenTables.phtml
+-rw-r--r--   1 vpsnettopet psacln        891 Aug 28  2015 installation.phtml
+-rw-r--r--   1 vpsnettopet psacln        443 Aug 28  2015 magento.phtml
+-rw-r--r--   1 vpsnettopet psacln       1266 Aug 28  2015 otherIssues.phtml
+-rw-r--r--   1 vpsnettopet psacln       2181 Aug 28  2015 requirements.phtml

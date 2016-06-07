@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+       <cms_index_index>
+         <reference name ="head">
+            <action method="addCss" ><stylesheet>magentothem/bannersequence/css/bannersequence.css</stylesheet></action>
+
+            <action method="addJs" ><script>magentothem/bannersequence/jquery.sequence-min.js</script></action>    
+        </reference>
+        <reference name="ma_banner">
+            <block type="bannersequence/bannersequence" name="bannersequence" template="magentothem/bannersequence/bannersequence.phtml" before="-"/>
+        </reference>
+      </cms_index_index>
+</layout> 

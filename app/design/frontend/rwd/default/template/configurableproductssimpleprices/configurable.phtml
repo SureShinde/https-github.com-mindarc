@@ -1,0 +1,398 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php
+$_product    = $this->getProduct();
+$_coreHelper = Mage::helper('core');
+$_configurableSimple = Mage::helper('configurableproductssimpleprices')->isEnable($_product);
+$_showLowestPrice = Mage::helper('configurableproductssimpleprices')->isShowLowestPrice($_product);
+$_cpsppriceFormate = Mage::helper('configurableproductssimpleprices')->getCpspPriceFormate();
+$_attributes = $_coreHelper->decorateArray($this->getAllowAttributes());
+
+$taxHelper  = Mage::helper('tax');
+//$_simplePricesTax = Mage::getSingleton('tax/config')->priceIncludesTax();
+$taxCalculation = Mage::getSingleton('tax/calculation');
+if (!$taxCalculation->getCustomer() && Mage::registry('current_customer')) {
+	$taxCalculation->setCustomer(Mage::registry('current_customer'));
+}
+
+if($_showLowestPrice){
+	Mage::helper('configurableproductssimpleprices')->setUpStaticData($_product);
+	list($spID, $_minimalPriceValue) = Mage::helper('configurableproductssimpleprices')->getMinimalProductPrice($_product->getId());
+	if(is_array($spID)) $spID = $spID[0];
+	
+}
+?>
+<?php if ($_product->isSaleable() && count($_attributes) && $_configurableSimple):?>
+    <?php 
+		$colls = Mage::getModel('catalog/product_type_configurable')->getChildrenIds($_product->getId());
+		$_expandShowPrices = Mage::helper('configurableproductssimpleprices')->isShowPrices($_product);
+		$arrSimple = array();
+		foreach($colls[0] as $spd){
+			$confSimleProduct = Mage::getModel('catalog/product')->load($spd);
+			$finalTaxIncludedPrice = $taxHelper->getPrice($confSimleProduct, $confSimleProduct->getFinalPrice());
+			$arrSimple[$spd]['orig_price'] = $confSimleProduct->getFinalPrice();
+			$arrSimple[$spd]['price'] = $_coreHelper->currency($finalTaxIncludedPrice,false,false);
+			$arrSimple[$spd]['oldPrice'] = $_coreHelper->currency($taxHelper->getPrice($confSimleProduct, $confSimleProduct->getPrice()),false,false);
+			$tierPrice = $confSimleProduct->getTierPrice();
+			$tierArr = array();
+			if(count($tierPrice)){
+				foreach($tierPrice as $tier){
+					$tierArr[(int)$tier['price_qty']]['orig_price'] = $_coreHelper->currency($tier['price'],false,false);
+					$tierArr[(int)$tier['price_qty']]['price'] = $_coreHelper->currency($taxHelper->getPrice($confSimleProduct, $tier['price']),false,false);
+				}
+			}
+			$arrSimple[$spd]['tier'] = $tierArr;
+			$arrSimple[$spd]['tier_qty'] = array_keys($tierArr);
+			
+			$_request = $taxCalculation->getRateRequest(false, false, false);
+			$_request->setProductClassId($confSimleProduct->getTaxClassId());
+			$defaultTax = $taxCalculation->getRate($_request);
+	
+			$_request = $taxCalculation->getRateRequest();
+			$_request->setProductClassId($confSimleProduct->getTaxClassId());
+			$currentTax = $taxCalculation->getRate($_request);
+			
+			$taxConfig = array(
+				'includeTax'        => $taxHelper->priceIncludesTax(),
+				'showIncludeTax'    => $taxHelper->displayPriceIncludingTax(),
+				'showBothPrices'    => $taxHelper->displayBothPrices(),
+				'defaultTax'        => $defaultTax,
+				'currentTax'        => $currentTax,
+				'inclTaxTitle'      => Mage::helper('catalog')->__('Incl. Tax')
+			);
+			
+			$arrSimple[$spd]['taxConfig'] = $taxConfig;
+			
+			$_confOfSimpleProduct = array();
+			if($_showLowestPrice){
+				foreach($_attributes as $_attrB){
+					$_confOfSimpleProduct[$_attrB->getAttributeId()] = $confSimleProduct->getData($_attrB->getProductAttribute()->getAttributeCode());
+				}
+			}
+			$arrSimple[$spd]['simpleConfig'] = $_confOfSimpleProduct;
+		}
+    ?>
+    <input type="hidden" id="customprice" name="customprice"/>
+    <script type="text/javascript">    
+        var simpleProducts  = <?php echo json_encode($arrSimple);?>, defOP = {};
+		defOP.productPrice = optionsPrice.productPrice;
+		defOP.productOldPrice = optionsPrice.productOldPrice;
+		defOP.priceInclTax = optionsPrice.priceInclTax;
+		defOP.priceExclTax = optionsPrice.priceExclTax;
+		defOP.defaultTax = optionsPrice.defaultTax;
+		defOP.currentTax = optionsPrice.currentTax;
+		optionsPrice.priceFormat.precision = '<?php echo $_cpsppriceFormate['precision'];?>';
+		optionsPrice.priceFormat.requiredPrecision = '<?php echo $_cpsppriceFormate['requiredPrecision'];?>';
+		optionsPrice.priceFormat.decimalSymbol = '<?php echo $_cpsppriceFormate['decimalSymbol'];?>';
+		optionsPrice.priceFormat.groupSymbol = '<?php echo $_cpsppriceFormate['groupSymbol'];?>';
+		optionsPrice.priceFormat.groupLength = '<?php echo $_cpsppriceFormate['groupLength'];?>';
+        
+		<?php if($_expandShowPrices):?>
+		Product.Config.prototype.configureElement  = Product.Config.prototype.configureElement.wrap(
+            function(parentMethod,element)
+			{
+				if(element.value){
+					this.state[element.config.id] = element.value;
+					if(element.nextSetting){
+						for(var k=this.settings.length-1;k>this.settings.indexOf(element);k--) this.state[this.settings[k].config.id] = false;
+						element.nextSetting.disabled = false;
+						this.fillSelect(element.nextSetting);
+						this.resetChildren(element.nextSetting);
+					}
+				}
+				else {
+					this.resetChildren(element);
+				}
+				this.reloadPrice();
+			}
+        );
+		
+		Product.Config.prototype.formatPrice  = Product.Config.prototype.formatPrice.wrap(
+            function(parentMethod, price, showSign)
+			{
+				var str = '';
+				price = parseFloat(price);
+				if(showSign){
+					if(price<0){
+						str+= '-';
+						price = -price;
+					}
+					else{
+						str+= '+';
+					}
+				}
+		
+				var roundedPrice = (Math.round(price*100)/100).toString();
+		
+				if (this.prices && this.prices[roundedPrice]) {
+					str+= this.prices[roundedPrice];
+				}
+				else {
+					str+= formatCurrency(price, optionsPrice.priceFormat);
+				}
+				return str;
+			}
+        );
+		
+		Product.Config.prototype.getOptionLabel  = Product.Config.prototype.getOptionLabel.wrap(
+            function(parentMethod,option, price)
+			{
+				var str = option.label;
+				var selPrds = option.products, arrPrices = [];
+				for(var i in this.state)
+				{
+					if(isNaN(parseInt(i))) break;
+					if(this.state[i] != false){
+						var tsStPrdsArr = this.config.attributes[i].options;
+						for(var j=0;j<tsStPrdsArr.length;j++){
+							if(tsStPrdsArr[j].id == this.state[i]){
+								selPrds = selPrds.intersect(tsStPrdsArr[j].products);
+								break;
+							}
+						}
+					}
+				}
+				var highest = lowest = 0;
+				var highestIndex = lowestIndex = 0;
+				for(var i=0;i<selPrds.length;i++){
+					var selPrd = parseInt(selPrds[i]);
+					if(typeof simpleProducts[selPrd] != 'undefined'){
+						var tempPrice = this.calcSimpleTierPrice(simpleProducts[selPrd]);
+						arrPrices.push(tempPrice);
+						if(i == 0) {
+							highest = lowest = tempPrice;
+							highestIndex = lowestIndex = selPrd;
+							continue;
+						}
+						if(tempPrice > highest) {
+							highest = tempPrice;
+							highestIndex = selPrd;
+						}
+						if(tempPrice < lowest) {
+							lowest = tempPrice;
+							lowestIndex = selPrd;
+						}
+					}
+				}
+
+				if(arrPrices.length > 1){
+					var maxPrice = highest;
+					var minPrice = lowest;
+					str += ' ['+this.applyMyTaxToPrice(minPrice, simpleProducts[lowestIndex])+' -'+this.applyMyTaxToPrice(maxPrice, simpleProducts[highestIndex])+']';
+				} else if(arrPrices.length == 1){
+					var price = arrPrices[0];
+					str += ' ['+this.applyMyTaxToPrice(price, simpleProducts[highestIndex])+']';
+				}
+				return str;
+				
+            }
+        );
+		<?php endif;?>
+		
+		Product.Config.prototype.reloadPrice  = Product.Config.prototype.reloadPrice.wrap(
+            function(parentMethod){
+                if (this.config.disablePriceReload) {
+                    return;
+                }
+                var price    = 0;
+                var oldPrice = 0;
+				var resultSame = [];
+                for(var i=this.settings.length-1;i>=0;i--){
+                    var selected = this.settings[i].options[this.settings[i].selectedIndex], arrPrices = [];
+					if(selected.config){
+						if(resultSame.length == 0) resultSame = selected.config.products;
+						else resultSame = resultSame.intersect(selected.config.products);
+						price    += parseFloat(selected.config.price);
+						oldPrice += parseFloat(selected.config.oldPrice);
+					}
+                }
+				if(resultSame.length==1)
+				{
+					oldPrice = parseFloat(simpleProducts[parseInt(resultSame[0])].oldPrice);
+					simpleProductId = parseInt(resultSame[0]);
+					price = parseFloat(this.calcSimpleTierPrice(simpleProducts[parseInt(resultSame[0])]));
+					if(simpleProducts[parseInt(resultSame[0])].taxConfig.currentTax > 0){
+						price = parseFloat(this.calcSimpleTierPrice(simpleProducts[parseInt(resultSame[0])], true));
+					}
+					if($('customprice')) $('customprice').value = simpleProducts[parseInt(resultSame[0])].orig_price;
+					optionsPrice.productPrice = price;
+					optionsPrice.productOldPrice = oldPrice;
+					optionsPrice.defaultTax = simpleProducts[parseInt(resultSame[0])].taxConfig.defaultTax;
+					optionsPrice.currentTax = simpleProducts[parseInt(resultSame[0])].taxConfig.currentTax;
+					
+					if (simpleProducts[parseInt(resultSame[0])].taxConfig.includeTax) {
+						var tax = price / (100 + simpleProducts[parseInt(resultSame[0])].taxConfig.defaultTax) * simpleProducts[parseInt(resultSame[0])].taxConfig.defaultTax;
+						optionsPrice.priceExclTax = price - tax;
+						optionsPrice.priceInclTax = price;
+					} else {
+						var tax = price * (simpleProducts[parseInt(resultSame[0])].taxConfig.currentTax / 100);
+						optionsPrice.priceExclTax = price;
+						optionsPrice.priceInclTax = price + tax;
+					}
+					if(simpleProductId){
+						url = '<?php echo $this->getUrl('configurableproductssimpleprices/index/simpleproducttireprice'); ?>';
+						new Ajax.Request(url, {
+							method:'get',
+							parameters: {
+								simpleproductid: simpleProductId ,
+								configproductId: <?php echo $_product->getId(); ?> 
+							},
+							requestHeaders: {Accept: 'application/json'},
+							onSuccess: function(transport) {
+								retjson = transport.responseText.evalJSON();
+								   var elm = $$('.tier-prices'); 
+								   if(retjson.resp != '') {
+									if(elm.length == 0) $$('.product-shop .price-box').first().insert({after:'<ul class="tier-prices product-pricing"></ul>'});
+									$$('.tier-prices').first().update(retjson.resp).show();
+								   }
+								   else elm[0].hide(); 
+							}
+						});
+					}
+				} else {
+					optionsPrice.productPrice = defOP.productPrice;
+					optionsPrice.productOldPrice = defOP.productOldPrice;
+					optionsPrice.priceInclTax = defOP.priceInclTax;
+					optionsPrice.priceExclTax = defOP.priceExclTax;
+					optionsPrice.defaultTax = defOP.defaultTax;
+					optionsPrice.currentTax = defOP.currentTax;
+					$$('.tier-prices').each(function(eleT) {
+						eleT.hide();
+					});
+				}
+				
+				optionsPrice.reload();
+				if (this.taxConfig.showIncludeTax || this.taxConfig.showBothPrices) {
+					price = optionsPrice.priceInclTax;
+				} else {
+					price = optionsPrice.priceExclTax;
+				}
+                return price;
+        
+                if($('product-price-'+this.config.productId)){
+                    $('product-price-'+this.config.productId).innerHTML = price;
+                }
+                this.reloadOldPrice();
+            }
+        );
+		
+		Product.Config.addMethods({
+			applyMyTaxToPrice: function(price, product){
+				var price = parseFloat(price);
+				if(product.taxConfig.currentTax > 0) price = this.calcSimpleTierPrice(product, true);
+				if (this.taxConfig.includeTax) {
+					var tax = price / (100 + product.taxConfig.defaultTax) * product.taxConfig.defaultTax;
+					var excl = price - tax;
+					var incl = excl*(1+(product.taxConfig.currentTax/100));
+				} else {
+					var tax = price * (product.taxConfig.currentTax / 100);
+					var excl = price;
+					var incl = excl + tax;
+				}
+		
+				if (this.taxConfig.showIncludeTax || this.taxConfig.showBothPrices) {
+					price = incl;
+				} else {
+					price = excl;
+				}
+		
+				var str='';
+				if(price){
+					if (this.taxConfig.showBothPrices) {
+						str+= ' ' + this.formatPrice(excl, false) + ' (' + this.formatPrice(price, false) + ' ' + this.taxConfig.inclTaxTitle + ')';
+					} else {
+						str+= ' ' + this.formatPrice(price, false);
+					}
+				}
+				return str;
+			},
+			
+			calcSimpleTierPrice: function(product, tex){
+				var unitPriceTier = product.price;
+				if(tex){
+					unitPriceTier = product.orig_price;	
+				}
+				var $qty = $('qty');
+				if($qty == null) return unitPriceTier;
+				
+				var tierPriceMatrix = product.tier;
+				var tirQty = product.tier_qty;
+				
+				if(product.tier_qty.length > 0){
+					tirQty = tirQty.sort(function(a, b){return b-a});
+					for(var i=0;i<tirQty.length;i++)
+					{
+						if($qty.value >= tirQty[i]){
+							if(tex){
+								unitPriceTier = tierPriceMatrix[tirQty[i]].orig_price;
+							} else {
+								unitPriceTier = tierPriceMatrix[tirQty[i]].price;
+							}
+							break;	
+						}
+					}
+				}
+				return unitPriceTier;
+			}
+		});
+		
+		<?php if(Mage::app()->getRequest()->getControllerName() == 'product' && $_showLowestPrice && $arrSimple[$spID]['simpleConfig']):?>
+		document.observe("dom:loaded", function(){
+			if (!spConfig.values) {
+                spConfig.values = {};
+            }
+			<?php foreach($arrSimple[$spID]['simpleConfig'] as $lAttrId => $lAttrVal):?>
+			spConfig.values[<?php echo $lAttrId;?>] = <?php echo $lAttrVal;?>;
+			<?php endforeach;?>
+		});
+		<?php endif;?>
+		
+		window.onload = function(){
+			$('qty').observe('keyup',function(ele){
+				<?php if($_expandShowPrices):?>
+				var rememberValues = [];
+				for(var k=spConfig.settings.length-1;k>=0;k--){
+					rememberValues[spConfig.settings[k].attributeId] = spConfig.settings[k].value;
+					spConfig.settings[k].value = '';
+					spConfig.state[spConfig.settings[k].config.id] = false;
+				}
+				spConfig.settings.each(function(element){
+					if(rememberValues[element.attributeId]) {
+						spConfig.configureElement(element);
+						spConfig.fillSelect(element);
+						element.value = rememberValues[element.attributeId];
+						spConfig.state[element.attributeId] = rememberValues[element.attributeId];
+						element.disabled = false;
+					}
+				});
+				<?php endif;?>
+				spConfig.reloadPrice();
+			});
+		} 
+	</script>
+<?php endif;?>

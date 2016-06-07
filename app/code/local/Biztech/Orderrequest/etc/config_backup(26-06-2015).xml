@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* @category   Biztech
+* @package    Biztech_Orderrequest
+* @author     ModuleCreator
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+-->
+<config>
+    <modules>
+        <Biztech_Orderrequest>
+            <version>0.1.0</version>
+        </Biztech_Orderrequest>
+    </modules>
+
+    <frontend>
+        <routers>
+            <orderrequest>
+                <use>standard</use>
+                <args>
+                    <module>Biztech_Orderrequest</module>
+                    <frontName>orderrequest</frontName>
+                </args>
+            </orderrequest>		
+        </routers>
+        <layout>
+            <updates>
+                <orderrequest>
+                    <file>orderrequest.xml</file>
+                </orderrequest>
+            </updates>
+        </layout>
+        <events>
+            <checkout_type_onepage_save_order>
+                <observers>
+                    <orderrequest>
+                        <type>singleton</type>
+                        <class>orderrequest/observer</class>
+                        <method>addCustomerRequestToOrder</method>
+                    </orderrequest>
+                </observers>
+            </checkout_type_onepage_save_order>
+            
+            <sales_order_save_before>
+                 <observers>
+                    <orderrequest>
+                        <type>singleton</type>
+                        <class>orderrequest/observer</class>
+                        <method>multiShipOrderCustomerRequest</method>
+                    </orderrequest>
+                </observers>
+            </sales_order_save_before>
+        </events>
+    </frontend> 
+
+    <global>
+        <models>
+            <orderrequest>
+                <class>Biztech_Orderrequest_Model</class>
+                <resourceModel>orderrequest_mysql4</resourceModel>
+            </orderrequest>
+            <sales>                 
+                <rewrite>
+                    <order_api>Biztech_Orderrequest_Model_Order_Api</order_api>
+                </rewrite>
+                <rewrite>
+                    <order_shipment_api>Biztech_Orderrequest_Model_Order_Shipment_Api</order_shipment_api>
+                </rewrite>
+            </sales>
+        </models>
+        <blocks>
+            <orderrequest>
+                <class>Biztech_Orderrequest_Block</class>
+            </orderrequest>
+            <sales>
+                <rewrite>
+                    <order_view>Biztech_Orderrequest_Block_Order_View</order_view>
+                </rewrite>
+            </sales>
+        </blocks>
+        <helpers>
+            <orderrequest>
+                <class>Biztech_Orderrequest_Helper</class>
+            </orderrequest>
+        </helpers>
+    </global>
+
+    <admin>
+        <routers>
+            <orderrequest>
+                <use>admin</use>
+                <args>
+                    <module>Biztech_Orderrequest</module>
+                    <frontName>orderrequest</frontName>
+                </args>
+            </orderrequest>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <menu>
+            <orderrequest module="orderrequest">
+                <title>Customer Order Comment Management</title>
+                <sort_order>71</sort_order>               
+                <children>
+                    <items module="orderrequest">
+                        <title>Customer Order Comments</title>
+                        <sort_order>0</sort_order>
+                        <action>orderrequest/adminhtml_orderrequest</action>
+                    </items>
+                </children>
+            </orderrequest>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <Biztech_Orderrequest>
+                            <title>Orderrequest Module</title>
+                            <sort_order>10</sort_order>
+                        </Biztech_Orderrequest>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <orderrequest>
+                                            <title>Customer Order Comment Management</title>
+                                        </orderrequest>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <orderrequest>
+                    <file>orderrequest.xml</file>
+                </orderrequest>
+            </updates>
+        </layout>
+        <events>
+            <sales_order_save_after>
+                <observers>
+                    <orderrequest_save_ordercomment>
+                        <type>model</type>
+                        <class>orderrequest/observer</class>
+                        <method>saveOrderCommentAdmin</method>                        
+                    </orderrequest_save_ordercomment>
+                </observers>
+            </sales_order_save_after>
+        </events>
+    </adminhtml>
+    <global>
+        <models>
+            <orderrequest>
+                <class>Biztech_Orderrequest_Model</class>
+                <resourceModel>orderrequest_mysql4</resourceModel>
+            </orderrequest>
+            <orderrequest_mysql4>
+                <class>Biztech_Orderrequest_Model_Mysql4</class>
+                <entities>
+                    <orderrequest>
+                        <table>orderrequest</table>
+                    </orderrequest>
+                </entities>
+            </orderrequest_mysql4>
+        </models>
+        <resources>
+            <orderrequest_setup>
+                <setup>
+                    <module>Biztech_Orderrequest</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </orderrequest_setup>
+            <orderrequest_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </orderrequest_write>
+            <orderrequest_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </orderrequest_read>
+        </resources>
+        <blocks>
+            <orderrequest>
+                <class>Biztech_Orderrequest_Block</class>
+            </orderrequest>
+        </blocks>
+        <helpers>
+            <orderrequest>
+                <class>Biztech_Orderrequest_Helper</class>
+            </orderrequest>
+        </helpers>
+    </global>  
+</config>

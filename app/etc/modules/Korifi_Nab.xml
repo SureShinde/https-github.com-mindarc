@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Korifi_Nab>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Korifi_Nab>
+    </modules>
+</config> 

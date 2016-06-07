@@ -1,0 +1,13 @@
+drwxr-xr-x  13 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   8 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 Batch
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Cache
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 Common
+drwxr-xr-x   7 root     root         4096 Nov  6 06:06 Http
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Inflection
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Iterator
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Log
+drwxr-xr-x   6 root     root         4096 Nov  6 06:06 Parser
+drwxr-xr-x  13 root     root         4096 Nov  6 06:06 Plugin
+drwxr-xr-x   7 root     root         4096 Nov  6 06:06 Service
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Stream

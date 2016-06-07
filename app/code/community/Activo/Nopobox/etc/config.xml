@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Activo Extensions
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Activo Commercial License
+ * that is available through the world-wide-web at this URL:
+ * http://extensions.activo.com/license_professional
+ *
+ * @copyright   Copyright (c) 2014 Activo Extensions (http://extensions.activo.com)
+ * @license     Commercial
+ */
+-->
+<config>
+    <modules>
+        <Activo_Nopobox>
+            <version>0.1.0</version>
+        </Activo_Nopobox>
+    </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <nopobox>
+                    <file>activo/nopobox.xml</file>
+                </nopobox>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <blocks>
+            <nopobox>
+                <class>Activo_Nopobox_Block</class>
+            </nopobox>
+        </blocks>
+        <helpers>
+            <nopobox>
+                <class>Activo_Nopobox_Helper</class>
+            </nopobox>
+            
+            <directory>
+                <rewrite>
+                    <data>Activo_Nopobox_Helper_Directory</data>
+                </rewrite>
+            </directory>
+        </helpers>
+        <models>
+            <nopobox>
+                <class>Activo_Nopobox_Model</class>
+            </nopobox>
+        </models>
+    </global>
+    <adminhtml>
+         <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <activo_nopobox>
+                                            <title>Activo No POBox</title>
+                                        </activo_nopobox>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                   </children>
+               </admin>
+           </resources>
+        </acl>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <activo_nopobox_news>
+                        <type>singleton</type>
+                        <class>nopobox/feed</class>
+                        <method>observe</method>
+                    </activo_nopobox_news>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </adminhtml>
+    <default>
+        <activo_nopobox>
+            <global>
+                <message>PO Box addresses are not allowed. Please use a valid address instead.</message>
+                <restrict_billing>1</restrict_billing>
+                <restrict_shipping>1</restrict_shipping>
+                <messageusebill>We don't ship to PO Box addresses, please use a different address or ship to a different address.</messageusebill>
+                <address2_allow_empty>1</address2_allow_empty>
+            </global>
+            <exclusions>
+                <regions></regions>
+            </exclusions>
+        </activo_nopobox>
+    </default>
+</config>

@@ -1,0 +1,6 @@
+.ma-brand-slider-contain .bx-wrapper { position: relative; }
+.ma-brand-slider-contain  { margin-bottom: 40px;}
+.ma-brand-slider-contain  .brand-title { background: #666; padding: 10px 0 10px 10px; margin-bottom: 20px; }
+.brand-title h2 { color: #fff; text-transform: capitalize; font-weight: normal; line-height: 20px; margin: 0;}
+.ma-brand-slider-contain .bx-wrapper .bx-viewport .item { margin-top: 30px;}
+.ma-brand-slider-contain .bx-wrapper .bx-controls a { margin-top: -40px;}

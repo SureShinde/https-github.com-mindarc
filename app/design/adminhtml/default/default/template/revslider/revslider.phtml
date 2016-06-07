@@ -1,0 +1,1472 @@
+<script type="text/javascript">
+   var g_uniteDirPlagin = "revslider";
+   var g_settingsObj = {};
+</script>
+<?php 
+	$jsUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);      //$urlCaption = $this->getUrl('revslider/adminhtml_revslider/urlCaption');
+	  $urlCaption = $jsUrl.'magentothem/revslider/css/caption.php';
+	  ?>
+<?php   
+	  $helper = Mage::helper('revslider/data'); 
+      $session = Mage::getSingleton('adminhtml/session');
+	 
+    	if($this->getRequest()->getParam('slide_id')) {
+   	$slide_id = $this->getRequest()->getParam('slide_id');
+   }else {
+   	 $slide_id = $session->getSlideId();
+   }
+     $formKey = Mage::getSingleton('core/session')->getFormKey();
+     $mediaUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+	 $jsUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);
+     $imageUrl = $mediaUrl;
+   $rev_slideId = $this->getRequest()->getParam('revslider_id');
+   $revData = Mage::getModel('revslider/revslider')->load($rev_slideId);	
+   //echo "<pre>";  print_r($revData->getData()); die; 
+   $revParams = $helper->RevJsonDecode($revData->getParams());
+      $slideParams = NULL;
+   if(Mage::getModel('revslider/slide')->load($slide_id)) {
+   	$slideParams = Mage::getModel('revslider/slide')->load($slide_id)->getParams();
+   }
+   $slideParams = json_decode($slideParams, true); 
+   $bg_image = $mediaUrl.$slideParams['image_url']; 
+   $bg_external = $slideParams['bg_external'];
+   $imageUrl =  $bg_image;
+   $bg_type = $slideParams['bg_type'];
+   $background = 'background-image:none;';
+   $backgroundClass = 'slide_layers';
+   if($bg_type == 'trans') {
+   	$background = 'background-color: transparent;';
+   	$backgroundClass = 'slide_layers trans_bg';
+   } else if($bg_type == 'image'){
+   	$background = "background-image: url(".$bg_image.");";
+   } else if($bg_type == 'external'){
+   	$background = "background-image: url(".$bg_external.");";
+   } else if($bg_type == 'solid'){
+	$bgSolidPickerProps = 'class="inputColorPicker slide_bg_color disabled" disabled="disabled"';
+   	$bg_color = $slideParams['bg_color'];
+   	$background = "background-color: $bg_color;";
+	$bgSolidPickerProps = 'class="inputColorPicker slide_bg_color" style="background-color:'.$bg_color.'"';
+
+   }
+   //echo "<pre>"; print_r($revParams); die; 
+   $slide_style ="width:". $revParams['grid_width']."px; height: ".$revParams['grid_height']."px; $background";
+   
+   ?>
+<div id="viewWrapper">
+   <div class="edit_slide_wrapper">
+      <div class="editor_buttons_wrapper  postbox unite-postbox mw960" style="max-width: 960px;">
+         <h3 class="box-closed tp-accordion tpa-closed box_closed">
+            <span class="postbox-arrow2">+</span><span>Slider Main Image / Background</span>				
+         </h3>
+         <div class="toggled-content" style="display: none;">
+            <div class="inner_wrapper p10 pb0 pt0 boxsized">
+               <div class="editor_buttons_wrapper_top">
+                  <input type="hidden" id="image_url_upload" media_url ="<?php if($mediaUrl) {echo $mediaUrl;};?>" value="<?php echo $imageUrl;?>"/>
+                  <input type="hidden" name="image_url" id="image_url" value="<?php if($imageUrl) echo $imageUrl;  ?>" />  
+                  <h3 style="cursor:default !important; background:none !important;border:none;box-shadow:none !important;font-size:12px;padding:0px;margin:10px 0px 0px;">Background Source:</h3>
+                  <!-- IMAGE FROM MEDIAGALLERY -->
+                  <input style="float:left" type="radio" name="radio_bgtype" class="bgsrcchanger" data-callid="tp-bgimagewpsrc" data-imgsettings="on" data-bgtype="image" id="radio_back_image" <?php if($bg_type == "image") echo 'checked="checked"'?>>
+                  <label style="float:left;margin-left:5px;margin-top:2px;" for="radio_back_image">Image BG</label>
+                  <!-- THE BG IMAGE CHANGED DIV -->
+                  <div id="tp-bgimagewpsrc" class="bgsrcchanger-div" style="float: left; margin-top: -7px; display: block;">
+                     <a href="javascript:void(0)" id="button_change_image" class="button-primary revblue " style="margin-bottom:5px" original-title="">Change Image</a>
+                  </div>
+                  <!-- IMAGE FROM EXTERNAL -->
+                  <input type="radio" name="radio_bgtype" style="float:left;margin-left:15px;" data-callid="tp-bgimageextsrc" data-imgsettings="on" class="bgsrcchanger" data-bgtype="external" id="radio_back_external"  <?php if($bg_type == "external") echo 'checked="solid"'?>>
+                  <label style="float:left;margin-left:5px;margin-top:2px;" for="radio_back_external">External URL</label>	
+                  <!-- THE BG IMAGE FROM EXTERNAL SOURCE -->
+                  <div id="tp-bgimageextsrc" class="bgsrcchanger-div" style="float: left; margin-top: -7px; display: none;">								
+                     <input type="text" name="bg_external" id="slide_bg_external" value="" class="disabled">
+                     <a href="javascript:void(0)" id="button_change_external" class="button-primary revblue button-disabled" style="margin-bottom:5px" original-title="">Get External</a>
+                  </div>
+                  <!-- TRANSPARENT BACKGROUND -->
+                  <input type="radio" name="radio_bgtype" style="float:left;margin-left:15px;" data-callid="" class="bgsrcchanger" data-bgtype="trans" id="radio_back_trans"  <?php if($bg_type == "trans") echo 'checked="checked"'?>>
+                  <label style="float:left;margin-left:5px;margin-top:2px;" for="radio_back_trans">Transparent</label>
+                  <!-- COLORED BACKGROUND -->
+                  <input type="radio" name="radio_bgtype" style="float:left;margin-left:15px;" data-callid="tp-bgcolorsrc" class="bgsrcchanger" data-bgtype="solid" id="radio_back_solid" <?php if($bg_type == "solid") echo 'checked="solid"'?>>
+                  <label style="float:left;margin-left:5px;margin-top:2px;" for="radio_back_solid">Solid Colored</label>
+                  <!-- THE COLOR SELECTOR -->											
+                  <div id="tp-bgcolorsrc" class="bgsrcchanger-div" style="float: left; margin-top: -5px; display: none;">
+                     <input type="text" name="bg_color" id="slide_bg_color" <?php echo $bgSolidPickerProps; ?> disabled="disabled" value="<?php echo $bg_color; ?>">							
+                  </div>
+                  <!--<a href="javascript:void(0)" id="button_preview_slide" class="button-primary revbluedark" style="float:right;margin-top:-9px !important;" original-title="Preview Slide"><i class="revicon-search-1"></i>Preview Slide</a>-->
+                  <div style="clear:both"></div>
+                  <!-- PREVIEW BUTTON -->
+                  <!-- THE BG IMAGE SETTINGS -->
+                  <div id="tp-bgimagesettings" class="bgsrcchanger-div" style="margin-top: 10px;">
+                     <div id="bg-setting-wrap">
+                        <h3 style="cursor:default !important; background:none !important;border:none;box-shadow:none !important;font-size:12px;padding:0px;margin:17px 0px 0px;">Background Settings:</h3>
+                        <label for="slide_bg_fit">Background Fit:</label>
+                        <?php echo $helper->toBackgroundFit('slide_bg_fit','bg_fit',$slideParams['bg_fit']) ;?>
+                        <input type="text" name="bg_fit_x" style="display: none;  width:60px;margin-right:10px" value="100">
+                        <input type="text" name="bg_fit_y" style="display: none;  width:60px;margin-right:10px" value="100">
+                        <label for="slide_bg_repeat">Background Repeat:</label>
+                        <?php echo $helper->toBackgroundRepeat('slide_bg_repeat','bg_repeat',$slideParams['bg_repeat']) ;?>
+                        <label for="slide_bg_position" id="bg-position-lbl">Background Position:</label>
+                        <div id="bg-start-position-wrapper">
+                           <?php echo  $helper->toBackgroundPostionList('slide_bg_position','bg_position',$slideParams['bg_position']); ?>
+                           <input type="text" name="bg_position_x" style="display: none;" value="0"><input type="text" name="bg_position_y" style="display: none;" value="0">	
+                        </div>
+                     </div>
+                     <div style="clear:both"></div>
+                     <h3 style="cursor:default !important; background:none !important;border:none;box-shadow:none !important;font-size:12px;padding:0px;margin:17px 0px 0px; float: left;">Ken Burns / Pan Zoom Settings:</h3>
+                     <div style="margin-top: 15px; margin-left: 10px; float: left;">
+                        <input type="radio" name="kenburn_effect" value="on"> On&nbsp;&nbsp;<input type="radio" name="kenburn_effect" value="off" checked="checked"> Off
+                     </div>
+                     <div class="clear"></div>
+                     <table id="kenburn_wrapper" style="display: none;">
+                        <tbody>
+                           <tr>
+                              <td>Background</td>
+                              <td></td>
+                              <td></td>
+                              <td style="width: 15px;">&nbsp;</td>
+                              <td></td>
+                              <td>&nbsp;</td>
+                              <td></td>
+                              <td style="width: 15px;">&nbsp;</td>
+                              <td colspan="2"></td>
+                           </tr>
+                           <tr>
+                              <td>Start Position:</td>
+                              <td colspan="2" id="bg-start-position-wrapper-kb">
+                              </td>
+                              <td></td>
+                              <td>Start Fit: (in %)</td>
+                              <td colspan="2"><input type="text" name="kb_start_fit" value="100"></td>
+                              <td></td>
+                              <td>Easing:</td>
+                              <td>
+                                 <?php echo Mage::helper('revslider/data')->toEasingList('kb_easing','kb_easing'); ?>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>End Position:</td>
+                              <td colspan="2">
+                                 <?php echo  Mage::helper('revslider/data')->toBackgroundPostionList('slide_bg_end_position','bg_end_position'); ?>
+                                 <input type="text" name="bg_end_position_x" style="display: none;" value="0"><input type="text" name="bg_end_position_y" style="display: none;" value="0">
+                              </td>
+                              <td></td>
+                              <td>End Fit: (in %)</td>
+                              <td colspan="2"><input type="text" name="kb_end_fit" value="100"></td>
+                              <td></td>
+                              <td>Duration (in ms):</td>
+                              <td><input type="text" name="kb_duration" value="9000"></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+            <div class="clear"></div>
+         </div>
+      </div>
+      <div class="clear"></div>
+      <div class="divide20"></div>
+      <div style="margin-left: -19px;margin-right: -15px;padding: 20px 0 20px 20px;background: #f5f5f5;border-top:1px solid #f1f1f1;border-bottom:1px solid #f1f1f1;">
+         <div id="divLayers" class="<?php echo $backgroundClass; ?>" style="<?php echo $slide_style;?>">
+         </div>
+         <div class="clear"></div>
+         <div class="editor_buttons_wrapper  postbox unite-postbox mw960" style="max-width: 960px;">
+            <div class="toggled-content">
+               <div class="inner_wrapper p10 pb0 pt0 boxsized">
+                  <div class="editor_buttons_wrapper_bottom">
+                     <div style="float:left">
+                        <a href="javascript:void(0)" id="button_add_layer" class="button-primary revblue" original-title=""><i class="revicon-layers-alt"></i>Add Layer</a>
+                        <a href="javascript:void(0)" id="button_add_layer_image" class="button-primary revblue" original-title=""><i class="revicon-picture-1"></i>Add Layer: Image </a>
+                        <a href="javascript:void(0)" id="button_add_layer_video" class="button-primary revblue" original-title=""><i class="revicon-video"></i>Add Layer: Video </a>
+                        <a href="javascript:void(0)" id="button_duplicate_layer" class="button-primary revyellow button-disabled" original-title=""><i class="revicon-picture"></i>Duplicate Layer</a>
+                     </div>
+                     <div style="float:right; ">
+                        <a href="javascript:void(0)" id="button_delete_layer" class="button-primary  revred button-disabled" original-title=""><i class="revicon-trash"></i>Delete Layer</a>
+                        <a href="javascript:void(0)" id="button_delete_all" class="button-primary  revred button-disabled" original-title=""><i class="revicon-trash"></i>Delete All Layers </a>								
+                     </div>
+                  </div>
+               </div>
+               <div class="clear"></div>
+            </div>
+         </div>
+      </div>
+      <div class="clear"></div>
+      <div class="divide20"></div>
+      <div class="layer_props_wrapper">
+         <!-----  Left Layers Form ------>
+         <div class="edit_layers_left">
+            <form name="form_layers" id="form_layers">
+               <input name="form_key" value="<?php echo $formKey; ?>" type="hidden">
+               <script type="text/javascript">
+                  g_settingsObj['form_layers'] = {}
+               </script>
+               <!-- THE GENERAL LAYER PARAMETERS -->
+               <div class="settings_wrapper">
+                  <div class="postbox unite-postbox">
+                     <h3 class="no-accordion tp-accordion"><span class="postbox-arrow2">-</span>
+                        <span>Layer General Parameters </span>
+                     </h3>
+                     <div class="toggled-content tp-closeifotheropen">
+                        <ul class="list_settings">
+                           <li id="end_layer_sap" class="attribute_title" style="">
+                              <span class="setting_text_2 text-disabled" original-title="">Layer Content</span>
+                              <hr>
+                           </li>
+                           <li id="layer_caption_row">
+                              <div id="layer_caption_text" class="setting_text text-disabled" original-title="">Style</div>
+                              <div class="setting_input">
+                                 <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input type="text" class="textbox-caption setting-disabled ui-autocomplete-input" id="layer_caption" name="layer_caption" value="big_black" disabled="disabled" autocomplete="off">
+                              </div>
+                              <div class="settings_addhtml">
+                                 <div id="layer_captions_down" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-arrowthick-1-s"></span></div>
+                                 <a href="javascript:void(0)" id="button_edit_css" class="button-primary revblue" original-title=""><i class="revicon-magic"></i>Edit Style</a><a href="javascript:void(0)" id="button_edit_css_global1" class="button-primary1 revblue1" original-title=""><i class="revicon-palette"></i></a>
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <?php $caption_url = $this->getUrl('revslider/adminhtml_revslider/saveCaption');?>	
+                           <div id="css_editor_wrap" title="Style Editor" style="display:none;">
+                              <input type ="hidden" name="caption_url" id ="caption_url" value ="<?php echo $caption_url; ?>" />
+                              <div class="tp-present-wrapper-parent">
+                                 <div class="tp-present-wrapper">
+                                    <div class="tp-present-caption">
+                                       <div id="css_preview" class="">example</div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <ul class="list_idlehover">
+                                 <li><a href="javascript:void(0)" id="change-type-idle" class="change-type selected"><span class="nowrap">Idle</span></a></li>
+                                 <li><a href="javascript:void(0)" id="change-type-hover" class="change-type"><span class="nowrap">Hover</span></a></li>
+                                 <div style="clear:both"></div>
+                              </ul>
+                              <div id="css-editor-accordion" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+                                 <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-header-active ui-state-active ui-corner-top ui-accordion-icons" role="tab" id="ui-accordion-css-editor-accordion-header-0" aria-controls="ui-accordion-css-editor-accordion-panel-0" aria-selected="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>Simple Editor:</h3>
+                                 <div class="css_editor_novice_wrap ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" id="ui-accordion-css-editor-accordion-panel-0" aria-labelledby="ui-accordion-css-editor-accordion-header-0" role="tabpanel" aria-expanded="true" aria-hidden="false" style="display: block;">
+                                    <table style="border-spacing:0px">
+                                       <tbody>
+                                          <tr class="css-edit-enable css-edit-title">
+                                             <td colspan="4"><input class="css_edit_novice setting-disabled" type="checkbox" name="css_allow" disabled="disabled"> enable  <span id="css_editor_allow"></span></td>
+                                          </tr>
+                                          <tr class="css-edit-enable css-edit-title topborder">
+                                             <td colspan="4"></td>
+                                          </tr>
+                                          <tr class="css-edit-title">
+                                             <td colspan="4">Font</td>
+                                          </tr>
+                                          <tr>
+                                             <td>Family:</td>
+                                             <td>
+                                                <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input class="css_edit_novice setting-disabled ui-autocomplete-input" style="width:160px; line-height:17px;margin-top:3px;" id="font_family" type="text" name="css_font-family" value="" disabled="disabled" autocomplete="off">
+                                                <div id="font_family_down" class="ui-state-default ui-corner-all" style="margin-right:0px"><span class="ui-icon ui-icon-arrowthick-1-s"></span></div>
+                                             </td>
+                                             <td>Size:</td>
+                                             <td>
+                                                <div id="font-size-slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+                                                   <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                   <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a>
+                                                </div>
+                                                <input class="css_edit_novice setting-disabled" type="hidden" name="css_font-size" value="" disabled="disabled">
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>Color:</td>
+                                             <td><input type="text" name="css_color" data-linkto="color" style="width:160px" class="inputColorPicker css_edit_novice w100 setting-disabled" value="" disabled="disabled"></td>
+                                             <td>Line-Height:</td>
+                                             <td>
+                                                <div id="line-height-slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+                                                   <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                   <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a>
+                                                </div>
+                                                <input class="css_edit_novice setting-disabled" type="hidden" name="css_line-height" value="" disabled="disabled">
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>Padding:</td>
+                                             <td>
+                                                <div class="sub_main_wrapper">
+                                                   <div class="subslider_wrapper">
+                                                      <input class="css_edit_novice pad-input sub-input setting-disabled" type="text" name="css_padding[]" value="" disabled="disabled">
+                                                      <div class="subslider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="visibility: hidden;">
+                                                         <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                         <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;">px</a>
+                                                      </div>
+                                                   </div>
+                                                   <div class="subslider_wrapper">
+                                                      <input class="css_edit_novice pad-input sub-input setting-disabled" type="text" name="css_padding[]" value="" disabled="disabled">
+                                                      <div class="subslider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="visibility: hidden;">
+                                                         <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                         <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;">px</a>
+                                                      </div>
+                                                   </div>
+                                                   <div class="subslider_wrapper">
+                                                      <input class="css_edit_novice pad-input sub-input setting-disabled" type="text" name="css_padding[]" value="" disabled="disabled">
+                                                      <div class="subslider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="visibility: hidden;">
+                                                         <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                         <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;">px</a>
+                                                      </div>
+                                                   </div>
+                                                   <div class="subslider_wrapper">
+                                                      <input class="css_edit_novice pad-input sub-input setting-disabled" type="text" name="css_padding[]" value="" disabled="disabled">
+                                                      <div class="subslider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="visibility: hidden;">
+                                                         <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                         <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;">px</a>
+                                                      </div>
+                                                   </div>
+                                                   <div style="clear:both"></div>
+                                                </div>
+                                             </td>
+                                             <td>Weight:</td>
+                                             <td>
+                                                <div id="font-weight-slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+                                                   <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                   <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a>
+                                                </div>
+                                                <input class="css_edit_novice setting-disabled" type="hidden" name="css_font-weight" value="" disabled="disabled">
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>Style:</td>
+                                             <td><input type="checkbox" name="css_font-style" class="css_edit_novice setting-disabled" disabled="disabled"> italic</td>
+                                             <td>Decoration:</td>
+                                             <td>
+                                                <select class="css_edit_novice w100 setting-disabled" style="cursor:pointer" name="css_text-decoration" disabled="disabled">
+                                                   <option value="none">none</option>
+                                                   <option value="underline">underline</option>
+                                                   <option value="overline">overline</option>
+                                                   <option value="line-through">line-through</option>
+                                                </select>
+                                             </td>
+                                          </tr>
+                                          <tr class="css-edit-title noborder">
+                                             <td colspan="4"></td>
+                                          </tr>
+                                          <tr class="css-edit-title">
+                                             <td colspan="4">Background</td>
+                                          </tr>
+                                          <tr>
+                                             <td>Color:</td>
+                                             <td>
+                                                <input type="text" name="css_background-color" style="width:160px;float:left" data-linkto="background-color" class="inputColorPicker css_edit_novice setting-disabled" value="" disabled="disabled">
+                                                <a href="javascript:void(0);" id="reset-background-color"><i class="revicon-ccw editoricon" style="float:left"></i></a>
+                                             </td>
+                                             <td>Transparency:</td>
+                                             <td>
+                                                <div id="background-transparency-slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+                                                   <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                   <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a>
+                                                </div>
+                                                <input class="css_edit_novice setting-disabled" type="hidden" name="css_background-transparency" value="" disabled="disabled">
+                                             </td>
+                                          </tr>
+                                          <tr class="css-edit-title noborder">
+                                             <td colspan="4"></td>
+                                          </tr>
+                                          <tr class="css-edit-title">
+                                             <td colspan="4">Border</td>
+                                          </tr>
+                                          <tr>
+                                             <td>Color:</td>
+                                             <td>
+                                                <input type="text" name="css_border-color-show" data-linkto="border-color" style="width:160px;float:left" class="inputColorPicker css_edit_novice setting-disabled" value="" disabled="disabled">
+                                                <input type="hidden" name="css_border-color" class="css_edit_novice setting-disabled" value="" disabled="disabled">
+                                                <a href="javascript:void(0);" id="reset-border-color"><i class="revicon-ccw editoricon" style="float:left"></i></a>
+                                             </td>
+                                             <td>Width:</td>
+                                             <td>
+                                                <div id="border-width-slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+                                                   <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                   <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a>
+                                                </div>
+                                                <input class="css_edit_novice setting-disabled" type="hidden" name="css_border-width" value="" disabled="disabled">
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>Style:</td>
+                                             <td>
+                                                <select class="css_edit_novice w100 setting-disabled" style="cursor:pointer" name="css_border-style" disabled="disabled">
+                                                   <option value="none">none</option>
+                                                   <option value="dotted">dotted</option>
+                                                   <option value="dashed">dashed</option>
+                                                   <option value="solid">solid</option>
+                                                   <option value="double">double</option>
+                                                </select>
+                                             </td>
+                                             <td>Radius:</td>
+                                             <td>
+                                                <div class="sub_main_wrapper">
+                                                   <div class="subslider_wrapper">
+                                                      <input class="css_edit_novice corn-input sub-input setting-disabled" type="text" name="css_border-radius[]" value="" disabled="disabled">
+                                                      <div class="subslider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="visibility: hidden;">
+                                                         <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                         <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;">px</a>
+                                                      </div>
+                                                   </div>
+                                                   <div class="subslider_wrapper">
+                                                      <input class="css_edit_novice corn-input sub-input setting-disabled" type="text" name="css_border-radius[]" value="" disabled="disabled">
+                                                      <div class="subslider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="visibility: hidden;">
+                                                         <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                         <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;">px</a>
+                                                      </div>
+                                                   </div>
+                                                   <div class="subslider_wrapper">
+                                                      <input class="css_edit_novice corn-input sub-input setting-disabled" type="text" name="css_border-radius[]" value="" disabled="disabled">
+                                                      <div class="subslider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="visibility: hidden;">
+                                                         <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                         <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;">px</a>
+                                                      </div>
+                                                   </div>
+                                                   <div class="subslider_wrapper">
+                                                      <input class="css_edit_novice corn-input sub-input setting-disabled" type="text" name="css_border-radius[]" value="" disabled="disabled">
+                                                      <div class="subslider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="visibility: hidden;">
+                                                         <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div>
+                                                         <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;">px</a>
+                                                      </div>
+                                                   </div>
+                                                   <div style="clear:both"></div>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <div class="css_editor-disable-inputs">&nbsp;</div>
+                                 </div>
+                                 <h3 class="notopradius ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons" style="margin-top:20px" role="tab" id="ui-accordion-css-editor-accordion-header-1" aria-controls="ui-accordion-css-editor-accordion-panel-1" aria-selected="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Advanced Editor:</h3>
+                                 <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-css-editor-accordion-panel-1" aria-labelledby="ui-accordion-css-editor-accordion-header-1" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                                    <textarea id="textarea_edit_expert" rows="20" cols="81" disabled="disabled" class="setting-disabled"></textarea>
+                                 </div>
+                              </div>
+                           </div>
+                           <div id="dialog-change-css" title="Save Styles" style="display:none;">
+                              <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>Overwrite the current selected class "<span id="current-class-handle"></span>" or save the styles as a new class?</p>
+                           </div>
+                           <div id="dialog-change-css-save-as" title="Save As" style="display:none;">
+                              <p>
+                                 Save as class:<br>
+                                 <input type="text" name="css_save_as" value="" disabled="disabled" class="setting-disabled">
+                              </p>
+                           </div>
+                           <div id="css_static_editor_wrap" title="Global Style Editor" style="display:none;">
+                              <div id="css-static-accordion" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+                                 <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-header-active ui-state-active ui-corner-top ui-accordion-icons" role="tab" id="ui-accordion-css-static-accordion-header-0" aria-controls="ui-accordion-css-static-accordion-panel-0" aria-selected="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>Dynamic Styles (Not Editable):</h3>
+                                 <div class="css_editor_novice_wrap ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" id="ui-accordion-css-static-accordion-panel-0" aria-labelledby="ui-accordion-css-static-accordion-header-0" role="tabpanel" aria-expanded="true" aria-hidden="false" style="display: block;">
+                                    <textarea id="textarea_show_dynamic_styles" rows="20" cols="81" disabled="disabled" class="setting-disabled"></textarea>
+                                 </div>
+                                 <h3 class="notopradius ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons" style="margin-top:20px" role="tab" id="ui-accordion-css-static-accordion-header-1" aria-controls="ui-accordion-css-static-accordion-panel-1" aria-selected="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Static Styles:</h3>
+                                 <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-css-static-accordion-panel-1" aria-labelledby="ui-accordion-css-static-accordion-header-1" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                                    <textarea id="textarea_edit_static" rows="20" cols="81" disabled="disabled" class="setting-disabled"></textarea>
+                                 </div>
+                              </div>
+                           </div>
+                           <div id="dialog-change-css-static" title="Save Static Styles" style="display:none;">
+                              <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>Overwrite current static styles?</p>
+                           </div>
+                           <li id="layer_text_row">
+                              <div id="layer_text_text" class="setting_text text-disabled" original-title="">Text&nbsp;/&nbsp;Html</div>
+                              <div class="settings_addhtmlbefore"><a href="javascript:void(0)" id="linkInsertButton" class="disabled">insert button</a></div>
+                              <div class="setting_input">
+                                 <textarea id="layer_text" class="area-layer-params setting-disabled" name="layer_text" disabled="disabled"></textarea>				
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <li id="button_edit_video_row" style="display:none;">
+                              <div class="setting_input">
+                                 <input type="button" id="button_edit_video" value="Edit Video" class="button-primary revblue setting-disabled" original-title="" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <!--<li id="button_change_image_source_row" style="display:none;">
+                              <div class="setting_input">
+                                 <input type="button" id="button_change_image_source" value="Change Image Source" class="button-primary revblue setting-disabled" original-title="" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>-->	
+                           <li id="layer_alt_row" style="display:none;">
+                              <div id="layer_alt_text" class="setting_text text-disabled" original-title="">Alt&nbsp;Text</div>
+                              <div class="setting_input">
+                                 <input type="text" class="area-alt-params setting-disabled" id="layer_alt" name="layer_alt" value="" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <li style="clear:both">
+                              <span class="setting_text_2 text-disabled" original-title="">Align &amp; Position</span>
+                              <hr>
+                           </li>
+                           <li class="align_table_wrapper">
+                              <table id="align_table" class="align_table table_disabled">
+                                 <tbody>
+                                    <tr>
+                                       <td><a href="javascript:void(0)" id="linkalign_left_top" data-hor="left" data-vert="top"></a></td>
+                                       <td><a href="javascript:void(0)" id="linkalign_center_top" data-hor="center" data-vert="top"></a></td>
+                                       <td><a href="javascript:void(0)" id="linkalign_right_top" data-hor="right" data-vert="top"></a></td>
+                                    </tr>
+                                    <tr>
+                                       <td><a href="javascript:void(0)" id="linkalign_left_middle" data-hor="left" data-vert="middle"></a></td>
+                                       <td><a href="javascript:void(0)" id="linkalign_center_middle" data-hor="center" data-vert="middle"></a></td>
+                                       <td><a href="javascript:void(0)" id="linkalign_right_middle" data-hor="right" data-vert="middle"></a></td>
+                                    </tr>
+                                    <tr>
+                                       <td><a href="javascript:void(0)" id="linkalign_left_bottom" data-hor="left" data-vert="bottom"></a></td>
+                                       <td><a href="javascript:void(0)" id="linkalign_center_bottom" data-hor="center" data-vert="bottom"></a></td>
+                                       <td><a href="javascript:void(0)" id="linkalign_right_bottom" data-hor="right" data-vert="bottom"></a></td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </li>
+                           <li id="layer_left_row">
+                              <div id="layer_left_text" class="setting_text text-disabled" data-textoffset="OffsetX" data-textnormal="X" original-title="">X</div>
+                              <div class="setting_input">
+                                 <input type="text" class="text-sidebar setting-disabled" id="layer_left" name="layer_left" value="" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <li id="layer_top_row">
+                              <div id="layer_top_text" class="setting_text text-disabled" data-textoffset="OffsetY" data-textnormal="Y" original-title="">Y</div>
+                              <div class="setting_input">
+                                 <input type="text" class="text-sidebar setting-disabled" id="layer_top" name="layer_top" value="" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <li id="layer_align_hor_row" style="display:none;">
+                              <div id="layer_align_hor_text" class="setting_text text-disabled" original-title="">Hor&nbsp;Align</div>
+                              <div class="setting_input">
+                                 <input type="text" class="text-sidebar setting-disabled" id="layer_align_hor" name="layer_align_hor" value="left" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <li id="layer_align_vert_row" style="display:none;">
+                              <div id="layer_align_vert_text" class="setting_text text-disabled" original-title="">Vert&nbsp;Align</div>
+                              <div class="setting_input">
+                                 <input type="text" class="text-sidebar setting-disabled" id="layer_align_vert" name="layer_align_vert" value="top" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <li id="layer_scale_title_row" style="clear:both;">
+                              <span class="setting_text_2 text-disabled" original-title="">Image Scale (dimensions in pixel)</span>	<a id="reset-scale" href="javascript:void(0);"></a>
+                              <hr>
+                           </li>
+                           <li id="layer_scaleX_row">
+                              <div id="layer_scaleX_text" class="setting_text text-disabled" data-textproportional="Width/Height" data-textnormal="Width" original-title="">Width</div>
+                              <div class="setting_input">
+                                 <input type="text" class="text-sidebar setting-disabled" id="layer_scaleX" name="layer_scaleX" value="" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <li id="layer_scaleY_row">
+                              <div id="layer_scaleY_text" class="setting_text text-disabled" original-title="">Height</div>
+                              <div class="setting_input">
+                                 <input type="text" class="text-sidebar setting-disabled" id="layer_scaleY" name="layer_scaleY" value="" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <li id="layer_proportional_scale_row">
+                              <div id="layer_proportional_scale_text" class="setting_text text-disabled" original-title=""><label for="layer_proportional_scale" class="text-disabled">Scale&nbsp;Proportional</label></div>
+                              <div class="setting_input">
+                                 <input type="checkbox" id="layer_proportional_scale" class="inputCheckbox setting-disabled" name="layer_proportional_scale" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                        </ul>
+                        <div class="clear"></div>
+                     </div>
+                  </div>
+               </div>
+               <!-- THE ANIMATION PARAMETERS -->
+               <?php $animation_url = $this->getUrl('revslider/adminhtml_revslider/saveAnimation');?>	
+               <div class="settings_wrapper">
+                  <div class="postbox unite-postbox">
+                     <input type ="hidden" name="animation_url" id ="animation_url" value ="<?php echo $animation_url; ?>" />
+                     <h3 class="no-accordion tp-accordion tpa-closed"><span class="postbox-arrow2">+</span>
+                        <span>Layer Animation </span>
+                     </h3>
+                     <div class="toggled-content tp-closedatstart tp-closeifotheropen">
+                        <ul class="list_settings">
+                           <!--LAYER START ANIMATION -->
+                           <li id="end_layer_sap" class="attribute_title" style="">
+                              <span class="setting_text_2 text-disabled" original-title="">Preview Transition (Star end Endtime is Ignored during Demo)</span>
+                              <hr>
+                           </li>
+                           <div id="preview_caption_transition">
+                              <div class="preview_caption_wrapper">
+                                 <div id="preview_caption_animateme">LAYER EXAMPLE</div>
+                              </div>
+                              <div id="preview_looper"><i class="revicon-arrows-ccw"></i><span class="replyinfo">ON</span></div>
+                           </div>
+                           <div class="divide10"></div>
+                           <!--LAYER START ANIMATION -->
+                           <li id="end_layer_sap" class="attribute_title" style="">
+                              <span class="setting_text_2 text-disabled" original-title="">Start Transition</span>													
+                              <hr>
+                           </li>
+                           <div class="layer-animations">
+                              <div style="float:left;margin-right:10px;">
+                                 <li id="layer_animation_row">
+                                    <div id="layer_animation_text" class="setting_text text-disabled" original-title="">Start&nbsp;Animation</div>
+                                    <div class="setting_input">
+                                       <?php echo Mage::helper('revslider/data')->toLayerAnimationList('layer_animation','layer_animation'); ?>
+                                    </div>
+                                    <div class="clear"></div>
+                                 </li>
+                              </div>
+                              <a href="javascript:void(0)" id="add_customanimation_in" class="button-primary revblue" original-title=""><i class="revicon-equalizer"></i>Custom Animation</a>
+                              <div class="clear"></div>
+                              <li id="layer_easing_row">
+                                 <div id="layer_easing_text" class="setting_text text-disabled" original-title="">Start&nbsp;Easing</div>
+                                 <div class="setting_input">
+                                    <?php echo Mage::helper('revslider/data')->toLayerEasingList('layer_easing','layer_easing'); ?>					
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                              <li id="layer_speed_row">
+                                 <div id="layer_speed_text" class="setting_text text-disabled" original-title="">Start&nbsp;Speed</div>
+                                 <div class="setting_input">
+                                    <input type="text" class="text-sidebar setting-disabled" id="layer_speed" name="layer_speed" value="" disabled="disabled">
+                                 </div>
+                                 <div class="setting_unit text-disabled">ms</div>
+                                 <div class="clear"></div>
+                              </li>
+                           </div>
+                           <!--LAYER END ANIMATION -->
+                           <li id="end_layer_sap" class="attribute_title" style="">
+                              <span class="setting_text_2 text-disabled" original-title="">End Transition (optional)</span>
+                              <hr>
+                           </li>
+                           <div class="layer-animations">
+                              <div style="float:left;margin-right:10px;">
+                                 <li id="layer_endanimation_row">
+                                    <div id="layer_endanimation_text" class="setting_text text-disabled" original-title="">End&nbsp;Animation</div>
+                                    <div class="setting_input">
+                                       <?php echo Mage::helper('revslider/data')->toEndAnimation('layer_endanimation','layer_endanimation'); ?>
+                                    </div>
+                                    <div class="clear"></div>
+                                 </li>
+                              </div>
+                              <a href="javascript:void(0)" id="add_customanimation_out" class="button-primary revblue" original-title=""><i class="revicon-equalizer"></i>Custom Animation</a>
+                              <div class="clear"></div>
+                              <li id="layer_endeasing_row">
+                                 <div id="layer_endeasing_text" class="setting_text text-disabled" original-title="">End&nbsp;Easing</div>
+                                 <div class="setting_input">
+                                    <!--<select id="layer_endeasing" name="layer_endeasing" disabled="disabled" class="setting-disabled">-->
+                                    <?php echo Mage::helper('revslider/data')->toLayerEasingList('layer_endeasing','layer_endeasing'); ?>
+                                    <!--</select>-->
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                              <li id="layer_endspeed_row">
+                                 <div id="layer_endspeed_text" class="setting_text text-disabled" original-title="">End&nbsp;Speed</div>
+                                 <div class="setting_input">
+                                    <input type="text" class="text-sidebar setting-disabled" id="layer_endspeed" name="layer_endspeed" value="" disabled="disabled">
+                                 </div>
+                                 <div class="setting_unit text-disabled">ms</div>
+                                 <div class="clear"></div>
+                              </li>
+                              <li id="layer_endtime_row">
+                                 <div id="layer_endtime_text" class="setting_text text-disabled" original-title="">End&nbsp;Time</div>
+                                 <div class="setting_input">
+                                    <input type="text" class="text-sidebar setting-disabled" id="layer_endtime" name="layer_endtime" value="" disabled="disabled">
+                                 </div>
+                                 <div class="setting_unit text-disabled">ms</div>
+                                 <div class="clear"></div>
+                              </li>
+                           </div>
+                        </ul>
+                        <div class="clear"></div>
+                     </div>
+                  </div>
+               </div>
+               <!-- END OF ANIMATION PARAMETERS -->
+               <!-- LAYER ANIMATION EDITOR -->
+               <div id="layeranimeditor_wrap" title="Layer Animation Editor" style="display:none;margin-bottom:0px; padding-bottom:0px;">
+                  <div class="tp-present-wrapper-parent">
+                     <div class="tp-present-wrapper">
+                        <div class="tp-present-caption">
+                           <div id="caption_custon_anim_preview" class="" style="visibility: visible; opacity: 0.7900000000002668; top: 58px; left: 258px; -webkit-transform: translate3d(0px, 0px, 1px) scale(0.7900000000002668, 0.7900000000002668); -webkit-transform-origin: 0% 0% 0px;">LAYER EXAMPLE</div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="caption-demo-controll">
+                     <div class="caption-speed-controll">
+                        <input class="css_edit_novice tpshortinput setting-disabled" style="margin-top:3px" name="captionspeed" type="text" value="600" disabled="disabled">ms
+                     </div>
+                     <div class="caption-easing-controll">
+                        <!--<select id="caption-easing-demo" name="caption-easing-demo" class="setting-disabled" disabled="disabled">-->
+                        <?php echo Mage::helper('revslider/data')->toCaptionEasingControllList('caption-easing-demo','caption-easing-demo'); ?>
+                        <!--</select>		-->									
+                     </div>
+                     <div id="caption-inout-controll" class="caption-inout-controll">
+                        <i id="revshowmetheinanim" class="revicon-login reviconinaction"></i><i id="revshowmetheoutanim" class="revicon-logout"></i>Transition Direction
+                     </div>
+                     <div class="clear"></div>
+                     <div style="font-size: 9px;text-align: right;margin-top: 2px;">*Easing, Direction and Speed only for Preview</div>
+                  </div>
+                  <div class="divide20"></div>
+                  <div class="settings_wrapper">
+                     <div class="postbox unite-postbox">
+                        <h3 class="no-accordion tp-accordion">
+                           <span style="font-size:13px;padding-left:4px;"><i class="revicon-equalizer"></i>Layer Animation Settings Panel</span> 
+                           <span style="float: right;"><a href="javascript:void(0);" id="set-random-animation">random</a></span>
+                        </h3>
+                        <table style="border-spacing:0px">
+                           <!-- TRANSITION -->
+                           <tbody>
+                              <tr class="css-edit-title graybasicbg">
+                                 <td colspan="6" style="padding:10px">Transition</td>
+                              </tr>
+                              <tr class="graybasicbg">
+                                 <td>X:</td>
+                                 <td style="padding-bottom:15px">
+                                    <div id="caption-movex-slider" class="rotationsliders"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="movex" type="text" value="0" disabled="disabled">px
+                                 </td>
+                                 <td>Y:</td>
+                                 <td style="padding-bottom:15px">
+                                    <div id="caption-movey-slider" class="rotationsliders"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="movey" type="text" value="0" disabled="disabled">px
+                                 </td>
+                                 <td>Z:</td>
+                                 <td style="padding-bottom:15px">
+                                    <div id="caption-movez-slider" class="rotationsliders"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="movez" type="text" value="0" disabled="disabled">px
+                                 </td>
+                              </tr>
+                              <!-- ROTATION -->												
+                              <tr class="css-edit-title">
+                                 <td colspan="6" style="padding:10px">Rotation</td>
+                              </tr>
+                              <tr>
+                                 <td>X:</td>
+                                 <td style="padding-bottom:15px">
+                                    <div id="caption-rotationx-slider" class="rotationsliders"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="rotationx" type="text" value="0" disabled="disabled">°
+                                 </td>
+                                 <td>Y:</td>
+                                 <td style="padding-bottom:15px">
+                                    <div id="caption-rotationy-slider" class="rotationsliders"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="rotationy" type="text" value="0" disabled="disabled">°
+                                 </td>
+                                 <td>Z:</td>
+                                 <td style="padding-bottom:15px">
+                                    <div id="caption-rotationz-slider" class="rotationsliders"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="rotationz" type="text" value="0" disabled="disabled">°
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table style="border-spacing:0px">
+                           <!-- SCALE && SKEW-->												
+                           <tbody>
+                              <tr class="css-edit-title graybasicbg">
+                                 <td colspan="4" style="padding:10px">Scale</td>
+                                 <td colspan="4" style="padding:10px;padding-left:20px">Skew</td>
+                              </tr>
+                              <tr class="graybasicbg">
+                                 <!-- SCALE X -->																			
+                                 <td style="width:30px">X:</td>
+                                 <td style="width:100px; padding-bottom:15px; ">
+                                    <div id="caption-scalex-slider" class="rotationsliders" style="width:100px !important;"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="scalex" type="text" value="0" disabled="disabled">%
+                                 </td>
+                                 <!-- SCALE Y -->																																
+                                 <td style="width:30px;">Y:</td>
+                                 <td style="width:100px; padding-bottom:15px; ">
+                                    <div id="caption-scaley-slider" class="rotationsliders" style="width:100px;"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="scaley" type="text" value="0" disabled="disabled">%
+                                 </td>
+                                 <td style="width:30px;">X:</td>
+                                 <!-- SKEW X -->																																
+                                 <td style="width:100px; padding-bottom:15px; ">
+                                    <div id="caption-skewx-slider" class="rotationsliders" style="width:100px;"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="skewx" type="text" value="0" disabled="disabled">°
+                                 </td>
+                                 <td style="width:30px">Y:</td>
+                                 <!-- SKEW Y -->																																
+                                 <td style="width:100px; padding-bottom:15px; ">
+                                    <div id="caption-skewy-slider" class="rotationsliders" style="width:100px;"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="skewy" type="text" value="0" disabled="disabled">°
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table style="border-spacing:0px">
+                           <!-- OPACITY -->												
+                           <tbody>
+                              <tr class="css-edit-title">
+                                 <td colspan="2" style="padding:10px">Opacity</td>
+                                 <td colspan="2" style="padding:10px;padding-left:20px">Perspective</td>
+                                 <td colspan="2" style="padding:10px;padding-left:20px">Origin</td>
+                              </tr>
+                              <tr class="">
+                                 <!-- OPACITY -->																								
+                                 <td style="width:30px"></td>
+                                 <td style="width:100px; padding-bottom:15px; ">
+                                    <div id="caption-opacity-slider" class="rotationsliders" style="width:100px !important;"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="captionopacity" type="text" value="0" disabled="disabled">%
+                                 </td>
+                                 <!-- PERSPECTIVE -->																									
+                                 <td style="width:30px;"></td>
+                                 <td style="width:100px; padding-bottom:15px; ">
+                                    <div id="caption-perspective-slider" class="rotationsliders" style="width:100px;"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="captionperspective" type="text" value="0" disabled="disabled">px
+                                 </td>
+                                 <!-- ORIGINX -->																									
+                                 <td style="width:30px;">X:</td>
+                                 <td style="width:100px; padding-bottom:15px; ">
+                                    <div id="caption-originx-slider" class="rotationsliders" style="width:100px;"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="originx" type="text" value="0" disabled="disabled">%
+                                 </td>
+                                 <!-- ORIGINY -->																																						
+                                 <td style="width:30px">Y:</td>
+                                 <td style="width:100px; padding-bottom:15px; ">
+                                    <div id="caption-originy-slider" class="rotationsliders" style="width:100px;"></div>
+                                    <input class="css_edit_novice tpshortinput setting-disabled" name="originy" type="text" value="0" disabled="disabled">%
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div id="dialog-change-layeranimation" title="Save Layer Animation" style="display:none;">
+                  <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>Overwrite the current selected Animation "<span id="current-layer-handle"></span>" or save as a new Animation?</p>
+               </div>
+               <div id="dialog-change-layeranimation-save-as" title="Save as" style="display:none;">
+                  <p>
+                     Save as Animation:<br>
+                     <input type="text" name="layeranimation_save_as" value="" disabled="disabled" class="setting-disabled">
+                  </p>
+               </div>
+               <!-- END OF CUSTOM ANIMATION LAYER EDITOR -->
+               <!-- THE ADVANCED LAYER PARAMETERS -->
+               <div class="settings_wrapper">
+                  <div class="postbox unite-postbox">
+                     <h3 class="no-accordion tp-accordion tpa-closed"><span class="postbox-arrow2">+</span>
+                        <span>Layer Links &amp; Advanced Params </span>
+                     </h3>
+                     <div class="toggled-content tp-closedatstart tp-closeifotheropen">
+                        <ul class="list_settings">
+                           <li class="custom attributes_title" style="">
+                              <span class="setting_text_2 text-disabled" original-title="">Links (optional)</span>
+                              <hr>
+                           </li>
+                           <div class="layer-links">
+                              <li id="layer_image_link_row" style="display:none;">
+                                 <div id="layer_image_link_text" class="setting_text text-disabled" original-title="">Image&nbsp;Link</div>
+                                 <div class="setting_input">
+                                    <input type="text" class="text-sidebar-link setting-disabled" id="layer_image_link" name="layer_image_link" value="" disabled="disabled">
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                              <li id="layer_link_open_in_row" style="display:none;">
+                                 <div id="layer_link_open_in_text" class="setting_text text-disabled" original-title="">Link&nbsp;Open&nbsp;In</div>
+                                 <div class="setting_input">
+                                    <select id="layer_link_open_in" name="layer_link_open_in" disabled="disabled" class="setting-disabled">
+                                       <option value="same" selected="selected">Same Window</option>
+                                       <option value="new">New Window</option>
+                                    </select>
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                              <li id="layer_slide_link_row">
+                                 <div id="layer_slide_link_text" class="setting_text text-disabled" original-title="">Link&nbsp;To&nbsp;Slide</div>
+                                 <div class="setting_input">
+                                    <select id="layer_slide_link" name="layer_slide_link" disabled="disabled" class="setting-disabled">
+                                       <option value="nothing" selected="selected">-- Not Chosen --</option>
+                                       <option value="next">-- Next Slide --</option>
+                                       <option value="prev">-- Previous Slide --</option>
+                                       <option value="scroll_under">-- Scroll Below Slider --</option>
+                                    </select>
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                              <li id="layer_scrolloffset_row" style="display:none;">
+                                 <div id="layer_scrolloffset_text" class="setting_text text-disabled" original-title="">Scroll&nbsp;Under&nbsp;Slider&nbsp;Offset</div>
+                                 <div class="setting_input">
+                                    <input type="text" class="text-sidebar setting-disabled" id="layer_scrolloffset" name="layer_scrolloffset" value="0" disabled="disabled">
+                                 </div>
+                                 <div class="setting_unit text-disabled">px</div>
+                                 <div class="clear"></div>
+                              </li>
+                              <li id="layer_link_id_row" style="display:none;">
+                                 <div id="layer_link_id_text" class="setting_text text-disabled" original-title="">Link&nbsp;ID</div>
+                                 <div class="setting_input">
+                                    <input type="text" class="text-sidebar setting-disabled" id="layer_link_id" name="layer_link_id" value="" disabled="disabled">
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                              <li id="layer_link_class_row" style="display:none;">
+                                 <div id="layer_link_class_text" class="setting_text text-disabled" original-title="">Link&nbsp;Classes</div>
+                                 <div class="setting_input">
+                                    <input type="text" class="text-sidebar setting-disabled" id="layer_link_class" name="layer_link_class" value="" disabled="disabled">
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                              <li id="layer_link_title_row" style="display:none;">
+                                 <div id="layer_link_title_text" class="setting_text text-disabled" original-title="">Link&nbsp;Title</div>
+                                 <div class="setting_input">
+                                    <input type="text" class="text-sidebar setting-disabled" id="layer_link_title" name="layer_link_title" value="" disabled="disabled">
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                              <li id="layer_link_rel_row" style="display:none;">
+                                 <div id="layer_link_rel_text" class="setting_text text-disabled" original-title="">Link&nbsp;Rel</div>
+                                 <div class="setting_input">
+                                    <input type="text" class="text-sidebar setting-disabled" id="layer_link_rel" name="layer_link_rel" value="" disabled="disabled">			
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                           </div>
+                           <div class="clear"></div>
+                           <li id="" class="custom attributes_title" style="">
+                              <span class="setting_text_2 text-disabled" original-title="">Caption Sharp Corners (optional only with BG color)</span>
+                              <hr>
+                           </li>
+                           <div class="layer-links">
+                              <li id="layer_cornerleft_row">
+                                 <div id="layer_cornerleft_text" class="setting_text text-disabled" original-title="">Left&nbsp;Corner</div>
+                                 <div class="setting_input">
+                                    <select id="layer_cornerleft" name="layer_cornerleft" disabled="disabled" class="setting-disabled">
+                                       <option value="nothing" selected="selected">No Corner</option>
+                                       <option value="curved">Sharp</option>
+                                       <option value="reverced">Sharp Reversed</option>
+                                    </select>
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                              <li id="layer_cornerright_row">
+                                 <div id="layer_cornerright_text" class="setting_text text-disabled" original-title="">Right&nbsp;Corner</div>
+                                 <div class="setting_input">
+                                    <select id="layer_cornerright" name="layer_cornerright" disabled="disabled" class="setting-disabled">
+                                       <option value="nothing" selected="selected">No Corner</option>
+                                       <option value="curved">Sharp</option>
+                                       <option value="reverced">Sharp Reversed</option>
+                                    </select>
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                           </div>
+                           <li id="" class="custom attributes_title" style="">
+                              <span class="setting_text_2 text-disabled" original-title="">Advanced Responsive Settings</span>
+                              <hr>
+                           </li>
+                           <div class="layer-links">
+                              <li id="layer_resizeme_row">
+                                 <div id="layer_resizeme_text" class="setting_text text-disabled" original-title=""><label for="layer_resizeme" class="text-disabled">Responsive&nbsp;Through&nbsp;All&nbsp;Levels</label></div>
+                                 <div class="setting_input">
+                                    <input type="checkbox" id="layer_resizeme" class="inputCheckbox setting-disabled" name="layer_resizeme" checked="checked" disabled="disabled">
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                              <li id="layer_hidden_row">
+                                 <div id="layer_hidden_text" class="setting_text text-disabled" original-title=""><label for="layer_hidden" class="text-disabled">Hide&nbsp;Under&nbsp;Width</label></div>
+                                 <div class="setting_input">
+                                    <input type="checkbox" id="layer_hidden" class="inputCheckbox setting-disabled" name="layer_hidden" disabled="disabled">
+                                 </div>
+                                 <div class="clear"></div>
+                              </li>
+                           </div>
+                           <li id="custom_attributes" class="custom attributes_title" style="">
+                              <span class="setting_text_2 text-disabled" original-title="">Attributes (optional)</span>
+                              <hr>
+                           </li>
+                           <li id="layer_id_row">
+                              <div id="layer_id_text" class="setting_text text-disabled" original-title="">ID</div>
+                              <div class="setting_input">
+                                 <input type="text" class="text-sidebar setting-disabled" id="layer_id" name="layer_id" value="" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <li id="layer_classes_row">
+                              <div id="layer_classes_text" class="setting_text text-disabled" original-title="">Classes</div>
+                              <div class="setting_input">
+                                 <input type="text" class="text-sidebar setting-disabled" id="layer_classes" name="layer_classes" value="" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <li id="layer_title_row">
+                              <div id="layer_title_text" class="setting_text text-disabled" original-title="">Title</div>
+                              <div class="setting_input">
+                                 <input type="text" class="text-sidebar setting-disabled" id="layer_title" name="layer_title" value="" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                           <li id="layer_rel_row">
+                              <div id="layer_rel_text" class="setting_text text-disabled" original-title="">Rel</div>
+                              <div class="setting_input">
+                                 <input type="text" class="text-sidebar setting-disabled" id="layer_rel" name="layer_rel" value="" disabled="disabled">
+                              </div>
+                              <div class="clear"></div>
+                           </li>
+                        </ul>
+                        <div class="clear"></div>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+         <!----- End Left Layers Form ------>
+         <div class="edit_layers_right">
+            <div class="postbox unite-postbox layer_sortbox">
+               <h3 class="no-accordion">
+                  <span>Layers Timing &amp; Sorting</span>
+                  <div id="button_sort_visibility" title="Hide All Layers"></div>
+                  <div id="button_sort_time" class="ui-state-active ui-corner-all button_sorttype button-primary revgreen" original-title="">By Time</div>
+                  <div id="button_sort_depth" class="ui-state-hover ui-corner-all button_sorttype button-primary revgreen" original-title="">By Depth</div>
+               </h3>
+               <div id="global_timeline" class="timeline">
+                  <div id="timeline_handle" class="timerdot"></div>
+                  <div id="layer_timeline" class="layertime"></div>
+                  <div class="mintime">0 ms</div>
+                  <div class="maxtime">9000 ms</div>
+               </div>
+               <div class="inside">
+                  <ul id="sortlist" class="sortlist ui-sortable"></ul>
+               </div>
+            </div>
+         </div>
+         <div class="clear"></div>
+      </div>
+   </div>
+   <?php $urlSave = $this->getUrl('revslider/adminhtml_revslider/media'); ?>				
+   <div id="dialog_content" style="display:none">
+    <div id="dialog_insert_button" class="dialog_insert_button" title="Insert Button" style="display:none;">
+		<ul class="list-buttons">
+			<?php 	$arrButtonClasses = $helper->getButtonClasses(); ?>
+			<?php foreach($arrButtonClasses as $class=>$text): ?>
+					<li>
+						<a href="javascript:UniteLayersRev.insertButton('<?php echo $class?>','<?php echo $text?>')" class="tp-button <?php echo $class?> small"><?php echo $text?></a>
+					</li>
+			<?php endforeach;?>
+			</ul>
+	</div>
+      <div id="dialog_video" class="dialog-video ui-dialog-content ui-widget-content" style="display: block; width: auto; min-height: 700px; max-height: none; height: auto;">
+         <!-- Type chooser -->
+         <div id="video_type_chooser" class="video-type-chooser" style="">
+            <div class="choose-video-type" style="float:left">
+               Choose video type
+            </div>
+            <div style="float:left; height:35px;line-height:15px;margin-top:20px;margin-left:30px">
+               <label for="video_radio_youtube">Youtube</label>
+               <input type="radio" checked="" id="video_radio_youtube" name="video_select">
+               <label for="video_radio_vimeo">Vimeo</label>
+               <input type="radio" id="video_radio_vimeo" name="video_select">
+               <label for="video_radio_html5">HTML5</label>
+               <input type="radio" id="video_radio_html5" name="video_select">			
+            </div>
+            <div style="clear:both"></div>
+            <hr>
+            <div style="width:100%;height:15px;"></div>
+         </div>
+         <div class="video_left html5select" id="video-dialog-wrap">
+            <!-- Vimeo block -->
+            <div id="video_block_vimeo" class="video-select-block" style="display: none;">
+               <div class="video-title">
+                  Enter Vimeo ID or URL
+               </div>
+               <input type="text" id="vimeo_id" value="">
+               &nbsp;
+               <input type="button" id="button_vimeo_search" class="button-regular" value="search">
+               <img id="vimeo_loader" src="<?php echo  $jsUrl;?>magentothem/revslider/images/loader.gif" style="display:none">
+               <div class="video_example">
+                  example:  30300114
+               </div>
+            </div>
+            <!-- Youtube block -->
+            <div id="video_block_youtube" class="video-select-block" style="display: block;">
+               <div class="video-title">
+                  Enter Youtube ID or URL:
+               </div>
+               <input type="text" id="youtube_id" value="">
+               &nbsp;
+               <input type="button" id="button_youtube_search" class="button-regular" value="search">
+               <img id="youtube_loader" src="<?php echo  $jsUrl;?>magentothem/revslider/images/loader.gif" style="display:none">
+               <div class="video_example">
+                  example:  cXwQjHRZieI
+               </div>
+            </div>
+            <!-- Html 5 block -->
+            <div id="video_block_html5" class="video-select-block" style="display: none;">
+               <ul>
+                  <li style="width:45%;float:left;">
+                     <div class="video-title">
+                        Poster Image Url:
+                     </div>
+                     <input type="text" id="html5_url_poster" value="">
+                     <span class="video_example">Example: http://video-js.zencoder.com/oceans-clip.png</span>
+                  </li>
+                  <li style="width:45%;float:left;margin-left:4%;">
+                     <div class="video-title">				
+                        Video MP4 Url:
+                     </div>
+                     <input type="text" id="html5_url_mp4" value="">
+                     <span class="video_example">Example: http://video-js.zencoder.com/oceans-clip.mp4</span>
+                  </li>
+                  <li style="clear:both;width:45%;float:left;margin-top:20px;">
+                     <div class="video-title">								
+                        Video WEBM Url:
+                     </div>
+                     <input type="text" id="html5_url_webm" value="">
+                     <span class="video_example">Example: http://video-js.zencoder.com/oceans-clip.webm</span>					
+                  </li>
+                  <li style="width:45%;float:left;margin-left:4%;margin-top:20px;">
+                     <div class="video-title">
+                        Video OGV Url:
+                     </div>
+                     <input type="text" id="html5_url_ogv" value="">
+                     <span class="video_example">Example: http://video-js.zencoder.com/oceans-clip.ogv</span>	
+                  </li>
+               </ul>
+            </div>
+            <div style="clear:both"></div>
+            <div id="divColorPicker" style="display:none;"></div>
+            <!-- Video controls -->
+            <div id="video_hidden_controls" style="margin-top: 20px; display: block;">
+               <hr>
+               <div class="video-title">
+                  Video Size:
+               </div>
+               <div id="video_size_wrapper" class="youtube-inputs-wrapper">
+                  <label for="input_video_fullwidth" class=" float_left mtop_10">
+                  Full Width:
+                  </label>								
+                  <input type="checkbox" class="checkbox_video_dialog float_left mtop_13 " id="input_video_fullwidth">
+                  <div class="float_left mleft_20 mtop_10" id="input_video_width_lbl" style="">Width:</div>
+                  <input type="text" id="input_video_width" style="margin-top: 5px;" class="video-input-small float_left" value="320">
+                  <div class="float_left mleft_20 mtop_10" id="input_video_height_lbl" style="">Height:</div>
+                  <input type="text" id="input_video_height" style="margin-top: 5px;" class="video-input-small float_left" value="240">
+                  <div style="clear:both"></div>
+                  <div id="fullscreenvideofun" class="mtop_20" style="display: block;">
+                     <label for="input_video_cover" class="float_left">
+                     Cover:
+                     </label>				
+                     <input type="checkbox" class="checkbox_video_dialog float_left " id="input_video_cover">
+                     <label for="input_video_dotted_overlay" class="float_left mleft_20" id="input_video_dotted_overlay_lbl" style="display: none;">
+                     Dotted Overlay:
+                     </label>				
+                     <select id="input_video_dotted_overlay" style="float: left; margin-top: -5px; display: none;">
+                        <option value="none" selected="selected">none</option>
+                        <option value="twoxtwo">2 x 2 Black</option>
+                        <option value="twoxtwowhite">2 x 2 White</option>
+                        <option value="threexthree">3 x 3 Black</option>
+                        <option value="threexthreewhite">3 x 3 White</option>
+                     </select>
+                     <label for="input_video_ratio" class="float_left mleft_20" id="input_video_ratio_lbl" style="display: none;">
+                     Aspect Ratio:
+                     </label>				
+                     <select id="input_video_ratio" style="margin-top: -10px; display: none;">
+                        <option value="16:9" selected="selected">16:9</option>
+                        <option value="4:3">4:3</option>
+                     </select>
+                  </div>
+                  <div style="clear:both"></div>
+               </div>
+               <div class="mtop_20">
+                  <hr>
+                  <div class="video-title">
+                     Video Settings:
+                  </div>
+                  <label for="input_video_loop" class=" float_left mtop_10">
+                  Loop Video:
+                  </label>				
+                  <input type="checkbox" class="checkbox_video_dialog float_left mtop_13" id="input_video_loop">
+                  <label for="input_video_autoplay" class="float_left mtop_10 mleft_20">
+                  Autoplay:
+                  </label>
+                  <input type="checkbox" class="checkbox_video_dialog float_left mtop_13" id="input_video_autoplay">
+                  <div id="showautoplayfirsttime" class="float_left" style="display: block;">
+                     <label for="input_video_autoplay_first_time" class="float_left mtop_10 mleft_20">
+                     Only 1st Time:
+                     </label>
+                     <input type="checkbox" class="checkbox_video_dialog float_left mtop_13" id="input_video_autoplay_first_time">
+                  </div>
+                  <div style="clear:both"></div>
+                  <label for="input_video_nextslide" class="float_left mtop_10">
+                  Next Slide On End:
+                  </label>
+                  <input type="checkbox" class="checkbox_video_dialog float_left mtop_13" id="input_video_nextslide">
+                  <label for="input_video_force_rewind" class="float_left mtop_10 mleft_20">
+                  Force Rewind:
+                  </label>
+                  <input type="checkbox" class="checkbox_video_dialog float_left mtop_13" id="input_video_force_rewind">
+                  <div style="clear:both"></div>
+                  <label for="input_video_control" class="float_left mtop_10">
+                  Hide Controls:
+                  </label>				
+                  <input type="checkbox" class="checkbox_video_dialog float_left mtop_13" id="input_video_control">
+                  <label for="input_video_mute" class="float_left mleft_20 mtop_10">
+                  Mute:
+                  </label>				
+                  <input type="checkbox" class="checkbox_video_dialog float_left mtop_13" id="input_video_mute">
+                  <div class="clear"></div>
+               </div>
+               <div class="video-title mtop_20" id="preview-image-video-wrap" style="display: none;">
+                  <hr>
+                  <div class="video-title">
+                     Preview Image:
+                  </div>
+                  <input type="button" id="" class="button-image-select-video button-primary revblue" value="Set" original-title="">
+                  <input type="button" id="" class="button-image-remove-video button-primary revblue" value="Remove" original-title="">
+                  <input type="hidden" class="checkbox_video_dialog float_left" id="input_video_preview" value="">
+                  <div class="clear"></div>
+                  <div style="width:100%;height:10px"></div>
+               </div>
+               <div class="clear"></div>
+               <hr>
+               <div class="video-title mtop_20">
+                  Arguments:
+               </div>
+               <input type="text" id="input_video_arguments" style="width:100%;" value="" data-youtube="hd=1&amp;wmode=opaque&amp;controls=1&amp;showinfo=0;rel=0;" data-vimeo="title=0&amp;byline=0&amp;portrait=0;api=1">
+               <div class="mtop_20">
+               </div>
+               <div class="clear"></div>
+               <div class="add-button-wrapper">
+                  <a href="javascript:void(0)" class="button-primary revblue" id="button-video-add" data-textadd="Add This Video" data-textupdate="Update Video" original-title="">Add This Video</a>
+               </div>
+            </div>
+         </div>
+         <div id="video_content" class="video_right" style="display: none;"></div>
+      </div>
+      <!--<input type="hidden" name ="layer_infor" id="layer_infor" value =""/>-->
+   </div>
+   <?php 
+      $ajax_url = $this->getUrl('revslider/adminhtml_revslider/saveSlide');
+      //$urlCaption = $this->getUrl('revslider/adminhtml_revslider/urlCaption');
+	  $urlCaption = $jsUrl.'magentothem/revslider/css/caption.php';
+      $rev_id = $this->getRequest()->getParam('revslider_id');
+      $layers = Mage::getModel('revslider/slide')->load($slide_id)->getLayers(); 
+      $layerDecode = json_decode($layers,true);
+	  $layerArrays = array();
+		 foreach($layerDecode as $key=>$layer) {
+			$image_layer = $layer['image_url'];
+			if($image_layer) {
+				$layer['image_url'] = $mediaUrl.$image_layer;
+			}
+			$text = $layer['text']; 
+			if(ctype_xdigit($text)) {
+				$text = $helper->hexToStr($text);
+			}
+			$layer['text'] = $text; 
+			$layerArrays[$key] = $layer;
+		}
+		
+      $layerJsons = "";
+      if($layerArrays) {
+      	$layerJsons = json_encode($layerArrays); 
+      	$layerJsons = "'" . addslashes($layerJsons) . "'";
+      }
+	  
+      $captionClass = $helper->getAllClassFromCaption();
+      $jsonCaptions = json_encode($captionClass);
+      $jsonCaptions = "'" . addslashes($jsonCaptions) . "'";
+      $jsonAnimation = Mage::getModel('revslider/animation')->getFullCustomAnimations('obj');
+      $initCssStyles = $helper->RevJsonEncode($helper->getAllCaptionData());
+      ?>
+   <script type="text/javascript">
+      jQuery(document).ready(function() {
+	  
+	  	var urlCssFile = "<?php echo $urlCaption;  ?>"
+		jQuery("head").append("<link>");
+		var css = jQuery("head").children(":last");
+		css.attr({
+		      rel:  "stylesheet",
+		      type: "text/css",
+		      href: urlCssFile,
+			  media:'screen'
+		});
+		
+		//replace current element
+	
+			css.attr({id:'rs-plugin-captions-css'});
+	  
+	  //enable for link 
+	   jQuery('#enable_link').change(function(){
+			var status = jQuery(this).val(); 
+			if(status == 1) {
+			 jQuery('#link').show(); 
+			 jQuery('input[name="link_type"]').show(); 
+			 jQuery('#link_typeslide ').show(); 
+			 jQuery('#link_open_in').show(); 
+			 jQuery('#slide_link').show(); 
+			 jQuery('input[name="link_pos"]').show(); 
+			} else {
+			 jQuery('#link').hide(); 
+			 jQuery('input[name="link_type"]').hide(); 
+			 jQuery('#link_typeslide ').hide(); 
+			 jQuery('#link_open_in').hide(); 
+			 jQuery('#slide_link').hide(); 
+			 jQuery('input[name="link_pos"]').hide(); 
+
+			}
+	   });
+	   
+	   jQuery('input[name="link_type"]').click(function() {
+		   var checked =  jQuery('input[name=link_type]:checked').val();
+		     if(checked == 'regular') {
+				jQuery('#link').show(); 
+				jQuery('#link_open_in').show(); 
+				
+			 } else {
+				jQuery('#link').hide(); 
+				jQuery('#link_open_in').hide(); 
+			 }
+	   });
+	  
+      //save slide button
+       jQuery('.button_save_slide').bind('click',function(){
+      	var radio_bgtype =  jQuery('input[name=radio_bgtype]').filter(':checked').attr('data-bgtype');
+      		console.log(radio_bgtype);
+      	var layers = UniteLayersRev.getLayers();	
+      	if(JSON && JSON.stringify)
+      		layers = JSON.stringify(layers);
+      		
+      	//jQuery('#layer_infor').attr('value',layers);
+      	var ajax_url = '<?php echo $ajax_url;?>';
+      	var jsonData = {};
+      	 var formData = jQuery("#edit_form").serializeArray();
+      	 formData.push({name: 'bg_type', value: radio_bgtype});
+      	 jQuery.each(formData, function() {
+      		 if (jsonData[this.name]) {
+      		 if (!jsonData[this.name].push) {
+      			jsonData[this.name] = [jsonData[this.name]];
+      		 }
+      			jsonData[this.name].push(this.value || '');
+      		 } else {
+      			jsonData[this.name] = this.value || '';
+      		 }
+      	 });
+      	if(JSON && JSON.stringify)
+      				jsonData = JSON.stringify(jsonData);
+      	var rev_id = '<?php echo (int) $rev_id ; ?>';
+      	var slide_id = '<?php echo (int) $slide_id ; ?>';
+      	 new Ajax.Request(ajax_url, {
+      			 parameters: {params:jsonData,layers:layers,revslider_id:rev_id,slide_id:slide_id},
+      			 method:'post',
+      			 requestHeaders: {Accept: 'application/json'},
+      			 onSuccess: function(transport) {
+      				
+      			  }
+      		   });
+      		   return false;
+       });
+	   // save and colose
+	   jQuery('.button_save_close').bind('click',function(){
+      	var radio_bgtype =  jQuery('input[name=radio_bgtype]').filter(':checked').attr('data-bgtype');
+      	var layers = UniteLayersRev.getLayers();	
+      	if(JSON && JSON.stringify)
+      		layers = JSON.stringify(layers);
+      		
+      	//jQuery('#layer_infor').attr('value',layers);
+      	var ajax_url = '<?php echo $ajax_url;?>';
+      	var jsonData = {};
+      	 var formData = jQuery("#edit_form").serializeArray();
+      	 formData.push({name: 'bg_type', value: radio_bgtype});
+      	 jQuery.each(formData, function() {
+      		 if (jsonData[this.name]) {
+      		 if (!jsonData[this.name].push) {
+      			jsonData[this.name] = [jsonData[this.name]];
+      		 }
+      			jsonData[this.name].push(this.value || '');
+      		 } else {
+      			jsonData[this.name] = this.value || '';
+      		 }
+      	 });
+      	if(JSON && JSON.stringify)
+      				jsonData = JSON.stringify(jsonData);
+      	var rev_id = '<?php echo (int) $rev_id ; ?>';
+      	var slide_id = '<?php echo (int) $slide_id ; ?>';
+      	 new Ajax.Request(ajax_url, {
+      			 parameters: {params:jsonData,layers:layers,revslider_id:rev_id,slide_id:slide_id,save_close:1},
+      			 method:'post',
+      			 requestHeaders: {Accept: 'application/json'},
+      			 onSuccess: function(transport) {
+      				window.location =transport.responseText; 
+      			  }
+      		   });
+      		   return false;
+       }); 
+	   
+       
+      jQuery("#button_add_layer_image" ).fancybox({
+      	'width'             : '75%',
+      	'height'            : 885,
+      	'autoScale'         : false,
+      	'transitionIn'      : 'none',
+      	'transitionOut'     : 'none',
+      	'type'              : 'iframe',
+      	'href'              : "<?php echo $urlSave ?>",
+      	'closeBtn' : true,
+      	'beforeClose' : function() {		
+      		UniteLayersRev.newLayerImage();
+      	}
+      	
+      });
+      
+       //change background image
+            jQuery("#button_change_image" ).fancybox({
+                'width'             : '75%',
+                'height'            : 885,
+                'autoScale'         : false,
+                'transitionIn'      : 'none',
+                'transitionOut'     : 'none',
+                'type'              : 'iframe',
+                'href'              : "<?php echo $urlSave ?>",
+                'closeBtn' : true,
+                'beforeClose' : function() {	
+                    var mediaUrl = "<?php echo $mediaUrl ;?>";
+                    var url = mediaUrl+jQuery('#image_url_upload').val();
+                    
+                    if (url) {
+                        jQuery("#divLayers").css("background-image","url("+url+")");
+                        jQuery("#image_url").val(url);
+                    }
+                }
+                
+            });
+			  jQuery("#change_thumb,#page_slide_thumb" ).fancybox({
+					'width'             : '75%',
+					'height'            : 885,
+					'autoScale'         : false,
+					'transitionIn'      : 'none',
+					'transitionOut'     : 'none',
+					'type'              : 'iframe',
+					'href'              : "<?php echo $urlSave ?>",
+					'closeBtn' : true,
+					'beforeClose' : function() {	
+						var mediaUrl = "<?php echo $mediaUrl ;?>";
+						var url = mediaUrl+jQuery('#image_url_upload').val();
+						
+						if (url) {
+							jQuery("#page_slide_thumb").val(url);
+							jQuery('.image_thumbnail').attr('src', url);
+						}
+					}
+					
+				});		
+      
+      <?php if($layerJsons) { ?>
+      //set init layers object
+      UniteLayersRev.setInitLayersJson(<?php echo $layerJsons; ?>);
+	  <?php } ?>
+      UniteLayersRev.setInitCaptionClasses(<?php echo $jsonCaptions;?>);
+	  <?php if($jsonAnimation) { ?>
+      UniteLayersRev.setInitLayerAnim(<?php echo $jsonAnimation;?>);
+	  <?php } ?>
+	  <?php $font = $helper->getArrFontFamilys() ;?>
+      UniteLayersRev.setInitFontTypes(<?php echo $font; ?>);
+      UniteCssEditorRev.setInitCssStyles(<?php echo $initCssStyles; ?>);
+	  UniteCssEditorRev.setCssCaptionsUrl('<?php echo $urlCaption?>');
+      UniteLayersRev.init("9000");
+      UniteCssEditorRev.init();
+      RevSliderAdmin.initGlobalStyles();
+      RevSliderAdmin.setStaticCssCaptionsUrl('../skin/adminhtml/default/default/magentothem/revslider/rs-plugin/css/static-captions.css');
+      });
+   </script>
+      <script type="text/javascript" src="<?php echo  $jsUrl;?>magentothem/revslider/mColorPicker.js"></script>
+	  <script type="text/javascript">
+				  var image = "<?php echo  $jsUrl;?>magentothem/revslider/images/";
+				 jQuery.fn.mColorPicker.defaults.imageFolder= image;
+	  </script>
+   <script type="text/javascript">
+      jQuery(document).ready(function(){
+		<?php if(!$slide_id){ $slide_id=1;} ?>
+		RevSliderAdmin.initEditSlideView(<?php echo $slide_id?>,<?php echo $slide_id;?>);
+		jQuery("#slide_bg_color").attr("data-hex", true).mColorPicker();
+
+      });
+   </script>
+
+</div>

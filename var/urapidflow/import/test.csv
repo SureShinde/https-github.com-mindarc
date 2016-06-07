@@ -1,0 +1,42 @@
+am_shipping_type,auspost_package_type,bag_180_500,bag_180_500_1,bag_90_180,bag_96_180_500,bed_small_medium_large,bottle_100_200_500,bottle_100_250_500ml,bottle_118_500_946_3x78,bottle_120_237_500,bottle_125ml,bottle_125_250_500,bottle_1ltr_5ltr,bottle_200ml,bottle_200_500,bottle_250_1lt,bottle_250_500,bottle_250_500_1ltr,bottle_250_500_1ltr_5ltr,bottle_25_100,bottle_500ml_1ltr_2ltr_5ltr,bottle_500ml_1tr,bottle_50ml_100ml_250ml_1ltr,bottle_50ml_250ml,brand,capsule_80_150,catfood_3x5kgs_8kgs,cat_litter_2kgs_10kgs_15kgs,cat_litter_2_5_10_15,cat_litter_6_15_24_30,chain_size_40_50_55_65,chain_size_55_60_65_70,chews_300_500,collar_colour,color,colour_blue_purple,colour_brown_mockwool,colour_pink_blue_black,colour_red_blue,colour_red_blue_black,colour_silver_latte,condition,cost,country_of_manufacture,cpsp_enable,cpsp_expand_prices,cpsp_show_lowest,cpsp_show_maxregular,cream_50_100,created_at,custom_design,custom_design_from,custom_design_to,custom_layout_update,description,ebay_price,ebay_title,ebizmarts_mark_visited,featured,featured_product,fish_food,free_shipping_discount,futon_natural_green_blue,gift_message_available,group_price,height,image,image_label,ingredients,is_recurring,kong_quest_colour,lead_120x12_120x20_180x25,lead_size_120_180,lead_size_60_120,length,links_exist,links_purchased_separately,links_title,mage_featured_product,manufacturer,meta_description,meta_keyword,meta_title,msrp,msrp_display_actual_price_type,msrp_enabled,name,news_from_date,news_to_date,old_id,options_container,pack_4_6,pack_size_3_6,page_layout,post_blue_grey_red_blk_beige,powder_150_500,powder_1kg_3kgs,powder_200_400_750,powder_375g_900g_5kgs,price,price_type,price_view,protein_source,recurring_profile,samples_title,shampoo,shipment_type,short_description,size,sized_dogcans_400g_700g,size_1x27_2x26_5x35,size_1x36_2x66_5x44,size_1_5_15kg,size_2x26_5x89_11x79,size_2x49_6x35_12x7,size_2x7_6x8,size_2x7_6x8_13x6,size_3x5_18kg,size_6x8_13x6,size_bird_2kgs_10kgs,size_bird_350g_2kgs_10kgs,size_bird_450kgs_2x5kgs,size_catcans_82g_156g,size_catfood_1kg_3kg_10kg_15kg,size_catfood_1k_2x5k_5k_9x07k,size_catfood_1x27_2x26_5x35,size_catfood_1x36kg_2x72kg,size_catfood_1x36_2x66_5x44,size_catfood_1x3kg_3x17kg,size_catfood_1x58kg_6x80kg,size_catfood_1x58kg_6x8kg,size_catfood_1x58k_3x17k_7x03k,size_catfood_1x5kgs_3kgs_20kgs,size_catfood_1x5kgs_3x5kgs,size_catfood_1x5kg_3kg,size_catfood_1x5kg_3kg_6kg,size_catfood_1x5kg_3kg_8kg,size_catfood_1x5_3_7x5,size_catfood_1x6kg,size_catfood_2kgs_10kgs,size_catfood_2kgs_3x5kgs,size_catfood_2kgs_4kgs_10kgs,size_catfood_2kgs_4kgs_15kgs,size_catfood_2kg_5kg,size_catfood_2x55kg_10kg,size_catfood_500g_1x5kg,size_catfood_500g_1x5kg_3kg,size_catfood_850g_2x55kg,size_catfood_850g_2x55kg_10kg,size_catfood_x910kg_4x99kg,size_dogcans_405g_700g,size_dogcans_410g_700g,size_dogfood_15kg_18kg,size_dogfood_1kg_3kg_7x5kg,size_dogfood_1kg_5kg_15kg,size_dogfood_1x58k_4x99k_9x52k,size_dogfood_1x5kgs_7x5kgs,size_dogfood_1x81kg_13x6kg,size_dogfood_1x81kg_5x67kg,size_dogfood_1x8kg_6x8kg,size_dogfood_2kgs_10kgs,size_dogfood_2kgs_4kgs,size_dogfood_2kgs_8kgs,size_dogfood_2kg_12kg,size_dogfood_2kg_14kg,size_dogfood_2x04kg_7x03kg,size_dogfood_2x3kg_12kg,size_dogfood_2x5kg_12x5kg,size_dogfood_2x5kg_7kg_13kg,size_dogfood_2x5kg_7x5kg,size_dogfood_2x5k_12k,size_dogfood_2x6kg_6x2kg_13kg,size_dogfood_2x7kg_13x7kg,size_dogfood_3kgs_10kgs,size_dogfood_3kgs_10kgs_20kgs,size_dogfood_3kgs_14kgs,size_dogfood_3kg_12kg,size_dogfood_3kg_15kg,size_dogfood_3kg_15kg_18kg,size_dogfood_3kg_7kg,size_dogfood_3kg_7kg_15kg,size_dogfood_3kg_7x5kg,size_dogfood_3kg_7x5kg_15kg,size_dogfood_3kg_8kg,size_dogfood_3kg_8kg_15kg,size_dogfood_3kg_9kg_15kg,size_dogfood_3k_7x5k_15k_18x1k,size_dogfood_3k_9k_15k_18k,size_dogfood_3x5kgs_13kgs,size_dogfood_3_7x5_12kg,size_dogfood_4kgs_15kgs,size_dogfood_6x8kg_13x6kg,size_dogfood_7kg_13kg,size_dogfood_7kg_15kg,size_dogfood_7x03kg_13x6kg,size_dogfood_7x5kg_15kg,size_dogfood_8kg_15kg,size_dogfood_8kg_15kg_18kg,size_dogtoy_m_l,size_dogtoy_s_l,size_dogtoy_s_l_xl,size_dogtoy_s_m,size_dogtoy_s_m_l,size_dogtoy_s_m_l_xl_xxl,size_dogtoy_xs_s,size_dogtoy_xs_s_m_l,size_dogwet_100_400,size_food_1x5_3_6_9x07kg,size_m_l_xl_xxl,size_pack_340g_425g_510g,size_pack_340g_510g,size_s_m_l_xl,size_xs_s_m_l_xl,size_xs_s_m_l_xl_xxl,sku,sku_type,small_image,small_image_label,special_from_date,special_price,special_to_date,status,tablets_100_250_500,tax_class_id,test,thumbnail,thumbnail_label,tier_price,updated_at,url_key,url_path,visibility,weight,weight_type,width,product.attribute_set,product.type,product.websites,category.ids,category.path,category.name,product.has_options,product.required_options,stock.is_in_stock,stock.backorders,stock.manage_stock,stock.use_config_manage_stock,stock.is_qty_decimal,stock.use_config_notify_stock_qty,stock.use_config_min_qty,stock.use_config_backorders,stock.use_config_min_sale_qty,stock.use_config_max_sale_qty,stock.stock_status_changed_auto,stock.use_config_enable_qty_inc,stock.enable_qty_increments,stock.use_config_qty_increments,stock.qty,stock.min_qty,stock.min_sale_qty,stock.max_sale_qty,stock.notify_stock_qty,stock.qty_increments,product.configurable_parent_sku,price.final,price.minimal,price.maximum,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, ,,,,,,9/16/2014 1:43,-- Please Select --,,,,"Capstarå¨ is an oral tablet that contains a fast-acting adulticide for the control of adult fleas on dogs and cats.
+
+Nitenpyram, the active ingredient in Capstar, belongs to the chemical class of neonicotinoids which bind and inhibit insect (flea) specific nicotinic acetylcholine receptors. Nitenpyram interferes with normal nerve transmission and leads to the death of the insect (flea).  Nitenpyram does not inhibit acetylcholinesterase.
+
+Indications 
+-Capstar rapidly kills adult fleas on dogs and cats.
+-Capstar also treats flea allergy dermatitis in dogs and cats. Regular treatment reduces the number of flea bites experienced by the animal. Capstar is widely used by dermatologists for this purpose.
+-Capstar has a rapid, prolonged action ‰ÛÒ killing fleas 30 minutes after administration, and for 24 hours thereafter.
+
+Dosage and Administration 
+
+Treatment can begin on any day when fleas are seen on the animal, and repeated on any subsequent day fleas are seen.
+
+
+Dog or cat 
+weight 
+ 
+Capstar dose 
+0.5-11kg
+1 x small (11.4mg) tablet,  on any day when fleas are seen on the animal
+ 
+11.1-57kg
+1 x large (57mg) tablet,  on any day when fleas are seen on the animal
+ 
+>57.1kg
+1 x large (57mg) + 1 x small (11.4mg) tablet for every 11kg more than 57kg, on any day when fleas are seen on the animal
+
+Capstar should be given orally, with or without food, on any day when fleas are seen on the animal. No more than one treatment should be given per day.
+
+If a continuous flea infestation is observed after using Capstar, the attending veterinarian should be consulted for further advice.
+
+Treatment recommendations for flea allergy dermatitis:  Once daily in dogs or cats.
+
+Formulations and Packaging: There are two formulations available: 
+-Capstar for cats and small dogs (11.4mg nitenpyram)
+-Capstar for large dogs (57mg nitenpyram).
+
+Both tablet sizes are available in cardboard boxes with one aluminium blister containing six tablets.
+
+Safety 
+Capstar is safe to use in puppies and kittens from 4 weeks of age, and in pregnant bitches and queens.
+",,,No,No,,,,,,,,/c/a/capstar_large_dog_hr_1.jpg,,,No,,,,,,,,,0,,"24 hour acting tablet to kill fleas, quick killing fleas on my cat,quick killing fleas on my dog","capstar, flea, treatment, tablet, cat, dog, adult, FAD",,,Use config,Use config,Capstar Flea Tablets Large Dogs Up to 57kg 6 Tablets ,,,,Product Info Column,,,No layout updates,,,,,,23.85,,,,,,,,Capstarå¨ is an oral tablet that contains a fast-acting adulticide for the control of adult fleas on dogs and cats.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TEST_SKU1,,/c/a/capstar_large_dog_hr_1.jpg,,,,,Enabled,,Taxable Goods,,,,,8/4/2015 22:33,capstar-flea-tablets-large-dogs-up-to-57kg-6-tablets,capstar-flea-tablets-large-dogs-up-to-57kg-6-tablets.html,"Catalog, Search",0.2,,,Default,simple,base,42,[ROOT],[ROOT],No,No,In Stock,No Backorders,No,Yes,No,Yes,Yes,Yes,Yes,Yes,No,Yes,No,Yes,100,0,1,0,,0,,23.85,23.85,23.85

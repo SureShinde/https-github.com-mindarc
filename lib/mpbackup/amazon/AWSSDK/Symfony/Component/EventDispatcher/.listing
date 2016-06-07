@@ -1,0 +1,13 @@
+drwxr-xr-x   5 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       6576 Feb 24  2015 ContainerAwareEventDispatcher.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Debug
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 DependencyInjection
+-rw-r--r--   1 vpsnettopet psacln       3207 Feb 24  2015 Event.php
+-rw-r--r--   1 vpsnettopet psacln       5581 Feb 24  2015 EventDispatcher.php
+-rw-r--r--   1 vpsnettopet psacln       2999 Feb 24  2015 EventDispatcherInterface.php
+-rw-r--r--   1 vpsnettopet psacln       1581 Feb 24  2015 EventSubscriberInterface.php
+-rw-r--r--   1 vpsnettopet psacln       3903 Feb 24  2015 GenericEvent.php
+-rw-r--r--   1 vpsnettopet psacln       2240 Feb 24  2015 ImmutableEventDispatcher.php
+-rw-r--r--   1 vpsnettopet psacln       1065 Feb 24  2015 LICENSE
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 Tests

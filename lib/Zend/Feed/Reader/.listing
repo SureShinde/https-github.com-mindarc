@@ -1,0 +1,12 @@
+drwxr-xr-x   6 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   7 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Collection
+-rw-r--r--   1 vpsnettopet psacln       1043 Apr  6  2015 Collection.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Entry
+-rw-r--r--   1 vpsnettopet psacln       5750 Apr  6  2015 EntryAbstract.php
+-rw-r--r--   1 vpsnettopet psacln       3056 Apr  6  2015 EntryInterface.php
+drwxr-xr-x  11 root     root         4096 Nov  6 06:06 Extension
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 Feed
+-rw-r--r--   1 vpsnettopet psacln       7572 Apr  6  2015 FeedAbstract.php
+-rw-r--r--   1 vpsnettopet psacln       2636 Apr  6  2015 FeedInterface.php
+-rw-r--r--   1 vpsnettopet psacln       4833 Apr  6  2015 FeedSet.php

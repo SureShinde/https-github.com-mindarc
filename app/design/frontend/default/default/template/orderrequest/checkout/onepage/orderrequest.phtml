@@ -1,0 +1,11 @@
+<?php $flag =   Mage::getStoreConfig('orderrequest/orderrequest_general/enabled');
+    if($flag){    ?>
+<form id="customer-order-request" action="">
+    <div class="customer-order-request">
+        <div class="field customer-order-request">
+            <label for="customer_order_request"><?php echo $this->__("Customer Order Comment"); ?></label>
+            <textarea id="customer_order_request" name="customer_order_request"></textarea>
+        </div>
+    </div>
+</form>
+<?php } ?>

@@ -1,0 +1,201 @@
+<?php
+if ($this->getConfig('enabled') != 1) return false;
+$slides = $this->getBannersequence();
+if (count($slides) < 1)
+    return;
+$path = Mage::getBaseUrl('media');
+?>
+<div id="sequence-theme">
+    <div class="container">
+        <div class="row">
+            <div class="col-sx-12 col-sm-9">
+                <div id="sequence">
+
+                    <?php if ($this->getConfig('next_back')): ?>
+                        <ul class="controls">
+                            <a class="sequence-prev">Prev</a>
+                            <a class="sequence-next">Next</a>
+                        </ul>
+
+                    <?php endif; ?>
+
+                    <ul class="sequence-canvas">
+                        <?php foreach ($slides as $slide): ?>
+                            <?php
+                            $bgImage = null;
+                            $image = null;
+                            $image2 = null;
+                            if ($slide->getFilename()) {
+                                $bgImage = $path . $slide->getFilename();
+                            }
+                            if ($slide->getImage()) {
+                                $image = $path . $slide->getImage();
+                            }
+                            if ($slide->getImage2()) {
+                                $image2 = $path . $slide->getImage2();
+                            }
+                            $description = $slide->getDescription();
+                            $link = $slide->getLink();
+                            $title = $slide->getTitle();
+                            $title2 = $slide->getTitle2();
+                            $animate = $slide->getAnimate();
+                            $effect = $slide->getKindEffect();
+                            switch ($effect) {
+                                case 1:
+                                    ?>
+                                    <li class="<?php echo $animate; ?> slider-1">
+                                        <h2 class="title"><?php echo $title; ?></h2>
+                                        <h3 class="subtitle"><?php echo $title2; ?></h3>
+                                        <div class="intro">
+                                            <?php echo nl2br($description); ?>
+                                        </div>
+                                        <?php if ($bgImage) { ?>
+                                            <img class="slider-bg" src="<?php echo $bgImage; ?>" alt="Image"/>
+                                        <?php } ?>
+                                        <?php if ($image) { ?>
+                                            <img class="model" src="<?php echo $image; ?>" alt="Image"/>
+                                        <?php } ?>
+                                        <?php if ($image2) { ?>
+                                            <img class="model1" src="<?php echo $image2; ?>" alt="Image"/>
+                                        <?php } ?>
+                                        <?php if ($link) { ?>
+                                            <div class="link">
+                                                <a href="<?php echo $link; ?>"><?php echo $this->__('Shop now'); ?></a>
+                                            </div>
+                                        <?php } ?>
+                                    </li>
+                                    <?php
+                                    break;
+                                case 2:
+                                    ?>
+                                    <li class="<?php echo $animate; ?> slider-2">
+                                        <h2 class="title slider2"><?php echo $title; ?></h2>
+                                        <h3 class="subtitle slider2"><?php echo $title2; ?></h3>
+                                        <div class="intro">
+                                            <?php echo nl2br($description); ?>
+                                        </div>
+                                        <?php if ($bgImage) { ?>
+                                            <img class="slider-bg" src="<?php echo $bgImage; ?>" alt="Image"/>
+                                        <?php } ?>
+                                        <?php if ($image) { ?>
+                                            <img class="model slider2" src="<?php echo $image; ?>" alt="Image"/>
+                                        <?php } ?>
+                                        <?php if ($image2) { ?>
+                                            <img class="model1" src="<?php echo $image2; ?>" alt="Image"/>
+                                        <?php } ?>
+                                        <?php if ($link) { ?>
+                                            <div class="link slider2">
+                                                <a href="<?php echo $link; ?>"><?php echo $this->__('Shop now'); ?></a>
+                                            </div>
+                                        <?php } ?>
+                                    </li>
+                                    <?php break;
+                                case 3:
+                                    ?>
+                                    <li class="<?php echo $animate; ?> slider-3">
+                                        <h2 class="title"><?php echo $title; ?></h2>
+                                        <h3 class="subtitle"><?php echo $title2; ?></h3>
+                                        <div class="intro">
+                                            <?php echo nl2br($description); ?>
+                                        </div>
+                                        <?php if ($bgImage) { ?>
+                                            <img class="slider-bg" src="<?php echo $bgImage; ?>" alt="Image"/>
+                                        <?php } ?>
+                                        <?php if ($image) { ?>
+                                            <img class="model" src="<?php echo $image; ?>" alt="Image"/>
+                                        <?php } ?>
+                                        <?php if ($image2) { ?>
+                                            <img class="model1" src="<?php echo $image2; ?>" alt="Image"/>
+                                        <?php } ?>
+                                        <?php if ($link) { ?>
+                                            <div class="link">
+                                                <a href="<?php echo $link; ?>"><?php echo $this->__('Shop now'); ?></a>
+                                            </div>
+                                        <?php } ?>
+                                    </li>
+                                    <?php break;
+                                case 4:
+                                    ?>
+                                    <li class="<?php echo $animate; ?> slider-4">
+                                        <h2 class="title"><?php echo $title; ?></h2>
+                                        <h3 class="subtitle"><?php echo $title2; ?></h3>
+                                        <div class="intro">
+                                            <?php echo nl2br($description); ?>
+                                        </div>
+                                        <?php if ($bgImage) { ?>
+                                            <img class="slider-bg" src="<?php echo $bgImage; ?>" alt="Image"/>
+                                        <?php } ?>
+                                        <?php if ($image) { ?>
+                                            <img class="model" src="<?php echo $image; ?>" alt="Image"/>
+                                        <?php } ?>
+                                        <?php if ($image2) { ?>
+                                            <img class="model1" src="<?php echo $image2; ?>" alt="Image"/>
+                                        <?php } ?>
+                                        <?php if ($link) { ?>
+                                            <div class="link">
+                                                <a href="<?php echo $link; ?>"><?php echo $this->__('Shop now'); ?></a>
+                                            </div>
+                                        <?php } ?>
+                                    </li>
+                                    <?php
+                                    break;
+                                    ?>
+
+
+                                <?php } ?>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php if ($this->getConfig('nav_ctrl')): ?>
+                        <ul class="sequence-pagination">
+                            <?php
+                            $count = 0;
+                            foreach ($slides as $slide):
+                                $count++;
+                                $bgImage = $path . $slide->getFilename();
+                                $title = $slide->getTitle();
+                                ?>
+                                <li><a href="javascript:void(0)"><?php echo $count; ?> </a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+
+
+                </div>
+            </div>
+            <div class="col-sx-12 col-sm-3">
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('block_sequence')->toHtml() ?>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    //<![CDATA[
+    $jq(document).ready(function () {
+        //$jqstatus = $jq(".status");
+        var options = {
+            autoPlay: <?php echo($this->getConfig('auto') ? 'true' : 'false') ?>,
+            autoPlayDelay: <?php echo($this->getConfig('delay') ? $this->getConfig('delay') : 2000) ?>,
+            pauseOnHover: <?php echo($this->getConfig('hover') ? 'true' : 'false') ?>,
+            hidePreloaderDelay: 500,
+            nextButton: true,
+            prevButton: true,
+            pauseButton: true,
+            preloader: true,
+            pagination: true,
+            hidePreloaderUsingCSS: false,
+            animateStartingFrameIn: true,
+            navigationSkipThreshold: 750,
+            preventDelayWhenReversingAnimations: true,
+            customKeyEvents: {
+                80: "pause"
+            }
+        };
+
+        var sequence = $jq("#sequence").sequence(options).data("sequence");
+
+
+    });
+    //]]>
+
+</script>

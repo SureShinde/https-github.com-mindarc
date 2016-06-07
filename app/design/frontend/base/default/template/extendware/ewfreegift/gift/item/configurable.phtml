@@ -1,0 +1,36 @@
+<?php
+$_product    = $this->getProduct();
+$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+$_containerId = 'ewfg-configurable-' . $_product->getId();
+$_jsonConfig = Mage::helper('core')->jsonDecode($this->getJsonConfig());
+if (isset($_jsonConfig['attributes'])) {
+	foreach($_jsonConfig['attributes'] as &$attribute) {
+		foreach ($attribute['options'] as &$option) {
+			$option['price'] = $option['oldPrice'] = 0;
+			unset($option);
+		}
+		unset($attribute);
+	}
+}
+$_jsonConfig['containerId'] = $_containerId;
+$_jsonConfig = Mage::helper('core')->jsonEncode($_jsonConfig);
+?>
+<?php if ($_product->isSaleable() && count($_attributes)):?>
+    <dl id="<?php echo $_containerId; ?>">
+    <?php foreach($_attributes as $_attribute): ?>
+    	<?php $_attributeId = sprintf('%sattribute%s', substr(md5($_product->getId(), 0, 8)), $_attribute->getAttributeId()); ?>
+        <dt><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label></dt>
+        <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+            <div class="input-box">
+                <select name="super_attribute[<?php echo $_attribute->getAttributeId(); ?>]" id="<?php echo $_attributeId; ?>" class="required-entry super-attribute-select">
+                    <option><?php echo $this->__('Choose an Option...') ?></option>
+                  </select>
+              </div>
+        </dd>
+    <?php endforeach; ?>
+    </dl>
+    <script type="text/javascript">
+		var spConfig = new Product.Config(<?php echo $_jsonConfig ?>);
+		var optionsPrice = new Product.OptionsPrice(<?php echo $_jsonConfig ?>);
+    </script>
+<?php endif;?>

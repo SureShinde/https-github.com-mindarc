@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<application>
+	<ftp>
+		<label>FTP</label>
+		<auth>0</auth>
+        <chunkupload>1</chunkupload>
+		<settings>
+			<host>
+				<label>Host name</label>
+				<type>text</type>
+				<required>1</required>
+			</host>
+			<port>
+				<label>Port number</label>
+				<type>text</type>
+				<required>0</required>
+				<note>Port by default - 21</note>
+			</port>
+			<username>
+				<label>Username</label>
+				<type>text</type>
+				<required>1</required>
+			</username>
+			<password>
+				<label>Password</label>
+				<type>password</type>
+				<required>0</required>
+			</password>
+			<ssl>
+				<label>SSL</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</ssl>
+			<passive>
+				<label>Passive mode</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+				<value>1</value>
+			</passive>
+			<path>
+				<label>Path</label>
+				<type>text</type>
+				<required>0</required>
+			</path>
+            <timeout>
+                <label>Timeout</label>
+                <type>text</type>
+                <required>0</required>
+                <note>Please don't change this setting without explicit instructions from extension developers.</note>
+            </timeout>
+            <timeout_disable>
+                <label>Disable Timeout</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <required>0</required>
+                <note>Please don't change this setting without explicit instructions from extension developers.</note>
+                <value>0</value>
+            </timeout_disable>
+			<filepartmaxsize>
+				<label>Max file size</label>
+				<type>text</type>
+				<required>0</required>
+                <note>Please don't change this setting without explicit instructions from extension developers.</note>
+				<value>0</value>
+			</filepartmaxsize>
+            <filechunksize>
+                <label>Chunk size</label>
+                <type>text</type>
+                <required>0</required>
+                <note>Please don't change this setting without explicit instructions from extension developers.</note>
+                <value>0</value>
+            </filechunksize>
+			<uploadmethod>
+				<label>Chunk upload method</label>
+				<type>select</type>
+				<source_model>mpbackup/source_ftpuploadmethod</source_model>
+				<required>0</required>
+				<note>Please don't change this setting without explicit instructions from extension developers.</note>
+			</uploadmethod>
+		</settings>
+	</ftp>
+</application>

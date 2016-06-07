@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Best4Mage_ConfigurableProductsSimplePrices>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Best4Mage_ConfigurableProductsSimplePrices>
+    </modules>
+</config> 

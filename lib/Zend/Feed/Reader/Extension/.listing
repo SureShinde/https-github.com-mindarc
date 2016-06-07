@@ -1,0 +1,13 @@
+drwxr-xr-x  11 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   6 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Atom
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Content
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 CreativeCommons
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 DublinCore
+-rw-r--r--   1 vpsnettopet psacln       4619 Apr  6  2015 EntryAbstract.php
+-rw-r--r--   1 vpsnettopet psacln       4033 Apr  6  2015 FeedAbstract.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Podcast
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Slash
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Syndication
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Thread
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 WellFormedWeb

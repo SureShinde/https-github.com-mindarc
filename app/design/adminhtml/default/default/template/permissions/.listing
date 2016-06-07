@@ -1,0 +1,12 @@
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 .
+drwxr-xr-x  62 vpsnettopet psacln       4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       3567 Nov 21  2014 role_users_grid_js.phtml
+-rw-r--r--   1 vpsnettopet psacln       1859 Nov 21  2014 roleinfo.phtml
+-rw-r--r--   1 vpsnettopet psacln       1485 Nov 21  2014 roles.phtml
+-rw-r--r--   1 vpsnettopet psacln       4917 Nov 21  2014 rolesedit.phtml
+-rw-r--r--   1 vpsnettopet psacln       1107 Nov 21  2014 rolesusers.phtml
+-rw-r--r--   1 vpsnettopet psacln       2597 Nov 21  2014 user_roles_grid_js.phtml
+-rw-r--r--   1 vpsnettopet psacln       2031 Nov 21  2014 userinfo.phtml
+-rw-r--r--   1 vpsnettopet psacln       1272 Nov 21  2014 usernroles.phtml
+-rw-r--r--   1 vpsnettopet psacln       1790 Nov 21  2014 userroles.phtml
+-rw-r--r--   1 vpsnettopet psacln       1426 Nov 21  2014 users.phtml

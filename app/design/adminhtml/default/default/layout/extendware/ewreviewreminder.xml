@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+	<ewreviewreminder_adminhtml_reminder_edit>
+		<update handle="editor"/>
+    </ewreviewreminder_adminhtml_reminder_edit>
+    <ewreviewreminder_adminhtml_history_edit>
+		<update handle="editor"/>
+    </ewreviewreminder_adminhtml_history_edit>
+</layout>

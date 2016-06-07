@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<application>
+	<sftp>
+		<label>SFTP</label>
+		<auth>0</auth>
+		<chunkupload>1</chunkupload>
+		<settings>
+			<host>
+				<label>Host name</label>
+				<type>text</type>
+				<required>1</required>
+			</host>
+			<port>
+				<label>Port number</label>
+				<type>text</type>
+				<required>0</required>
+				<note>Port by default - 22</note>
+			</port>
+			<username>
+				<label>Username</label>
+				<type>text</type>
+				<required>1</required>
+			</username>
+			<password>
+				<label>Password</label>
+				<type>password</type>
+				<required>0</required>
+			</password>
+			<path>
+				<label>Path</label>
+				<type>text</type>
+				<required>0</required>
+			</path>
+			<timeout>
+				<label>Timeout</label>
+				<type>text</type>
+				<required>0</required>
+				<note>Please don't change this setting without explicit instructions from extension developers.</note>
+			</timeout>
+			<filepartmaxsize>
+				<label>Max file size</label>
+				<type>text</type>
+				<required>0</required>
+				<note>Please don't change this setting without explicit instructions from extension developers.</note>
+				<value>0</value>
+			</filepartmaxsize>
+			<filechunksize>
+				<label>Chunk size</label>
+				<type>text</type>
+				<required>0</required>
+				<note>Please don't change this setting without explicit instructions from extension developers.</note>
+				<value>0</value>
+			</filechunksize>
+		</settings>
+	</sftp>
+</application>

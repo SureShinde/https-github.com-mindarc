@@ -1,0 +1,8 @@
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  47 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       2775 Feb 24  2015 CloudTrailClient.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Exception
+-rw-r--r--   1 vpsnettopet psacln      11323 Feb 24  2015 LogFileIterator.php
+-rw-r--r--   1 vpsnettopet psacln       1796 Feb 24  2015 LogFileReader.php
+-rw-r--r--   1 vpsnettopet psacln       5549 Feb 24  2015 LogRecordIterator.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Resources

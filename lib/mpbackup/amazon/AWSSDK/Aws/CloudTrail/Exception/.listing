@@ -1,0 +1,15 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln        786 Feb 24  2015 CloudTrailException.php
+-rw-r--r--   1 vpsnettopet psacln        790 Feb 24  2015 InsufficientS3BucketPolicyException.php
+-rw-r--r--   1 vpsnettopet psacln        790 Feb 24  2015 InsufficientSnsTopicPolicyException.php
+-rw-r--r--   1 vpsnettopet psacln        773 Feb 24  2015 InternalErrorException.php
+-rw-r--r--   1 vpsnettopet psacln        778 Feb 24  2015 InvalidS3BucketNameException.php
+-rw-r--r--   1 vpsnettopet psacln        769 Feb 24  2015 InvalidS3PrefixException.php
+-rw-r--r--   1 vpsnettopet psacln        778 Feb 24  2015 InvalidSnsTopicNameException.php
+-rw-r--r--   1 vpsnettopet psacln        771 Feb 24  2015 InvalidTrailNameException.php
+-rw-r--r--   1 vpsnettopet psacln        787 Feb 24  2015 MaximumNumberOfTrailsExceededException.php
+-rw-r--r--   1 vpsnettopet psacln        777 Feb 24  2015 S3BucketDoesNotExistException.php
+-rw-r--r--   1 vpsnettopet psacln        771 Feb 24  2015 TrailAlreadyExistsException.php
+-rw-r--r--   1 vpsnettopet psacln        774 Feb 24  2015 TrailNotFoundException.php
+-rw-r--r--   1 vpsnettopet psacln        755 Feb 24  2015 TrailNotProvidedException.php

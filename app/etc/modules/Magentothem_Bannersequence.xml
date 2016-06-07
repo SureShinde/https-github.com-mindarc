@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magentothem_Bannersequence>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Magentothem_Bannersequence>
+    </modules>
+</config> 

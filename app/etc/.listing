@@ -1,0 +1,9 @@
+drwxr-xr-x   3 vpsnettopet psacln       4096 Nov  6 06:06 .
+drwxr-xr-x   6 vpsnettopet psacln       4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       6951 Aug 24  2015 Extendware_EWPageCache.php
+-rw-r--r--   1 vpsnettopet psacln       7087 Aug  8  2015 applied.patches.list
+-rw-r--r--   1 vpsnettopet psacln       5258 Nov 21  2014 config.xml
+-rw-r--r--   1 vpsnettopet psacln       2516 Dec  4 05:08 local.xml
+-rw-r--r--   1 vpsnettopet psacln       9089 Nov 21  2014 local.xml.additional
+-rw-r--r--   1 vpsnettopet psacln       2228 Nov 21  2014 local.xml.template
+drwxr-xr-x   3 vpsnettopet psacln       4096 Dec  7 19:19 modules

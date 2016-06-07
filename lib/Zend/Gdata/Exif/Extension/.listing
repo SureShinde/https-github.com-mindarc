@@ -1,0 +1,13 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1747 Apr  6  2015 Distance.php
+-rw-r--r--   1 vpsnettopet psacln       1747 Apr  6  2015 Exposure.php
+-rw-r--r--   1 vpsnettopet psacln       1732 Apr  6  2015 FStop.php
+-rw-r--r--   1 vpsnettopet psacln       1732 Apr  6  2015 Flash.php
+-rw-r--r--   1 vpsnettopet psacln       1762 Apr  6  2015 FocalLength.php
+-rw-r--r--   1 vpsnettopet psacln       1772 Apr  6  2015 ImageUniqueId.php
+-rw-r--r--   1 vpsnettopet psacln       1722 Apr  6  2015 Iso.php
+-rw-r--r--   1 vpsnettopet psacln       1727 Apr  6  2015 Make.php
+-rw-r--r--   1 vpsnettopet psacln       1732 Apr  6  2015 Model.php
+-rw-r--r--   1 vpsnettopet psacln      16868 Apr  6  2015 Tags.php
+-rw-r--r--   1 vpsnettopet psacln       1727 Apr  6  2015 Time.php

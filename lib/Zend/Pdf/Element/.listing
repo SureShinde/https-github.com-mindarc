@@ -1,0 +1,15 @@
+drwxr-xr-x   5 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  16 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       4781 Apr  6  2015 Array.php
+-rw-r--r--   1 vpsnettopet psacln       1969 Apr  6  2015 Boolean.php
+-rw-r--r--   1 vpsnettopet psacln       6378 Apr  6  2015 Dictionary.php
+-rw-r--r--   1 vpsnettopet psacln       4201 Apr  6  2015 Name.php
+-rw-r--r--   1 vpsnettopet psacln       1708 Apr  6  2015 Null.php
+-rw-r--r--   1 vpsnettopet psacln       2321 Apr  6  2015 Numeric.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Object
+-rw-r--r--   1 vpsnettopet psacln       7085 Apr  6  2015 Object.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Reference
+-rw-r--r--   1 vpsnettopet psacln       7821 Apr  6  2015 Reference.php
+-rw-r--r--   1 vpsnettopet psacln       3104 Apr  6  2015 Stream.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 String
+-rw-r--r--   1 vpsnettopet psacln       7924 Apr  6  2015 String.php

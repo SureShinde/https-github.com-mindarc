@@ -1,0 +1,42 @@
+<config>
+    <modules>
+        <MindArc_AutoInstock>
+            <version>1.0.0</version>
+        </MindArc_AutoInstock>
+    </modules>
+    <global>
+        <blocks>
+            <mindarc_autoinstock>
+                <class>MindArc_AutoInstock_Block</class>
+            </mindarc_autoinstock>
+        </blocks>
+        <models>
+            <mindarc_autoinstock>
+                <class>MindArc_AutoInstock_Model</class>
+            </mindarc_autoinstock>
+        </models>
+        <events>
+            <catalog_product_save_after>
+                <observers>
+                    <my_updatestockavailability>
+                        <class>mindarc_autoinstock/observer</class>
+                        <method>updateStockAvailability</method>
+                        <type>singleton</type>
+                    </my_updatestockavailability>
+                </observers>
+            </catalog_product_save_after>
+        </events>
+    </global>
+    <!--<crontab>-->
+        <!--<jobs>-->
+            <!--<updatestockavailabilitycronjob>-->
+                <!--<schedule>-->
+                    <!--<cron_expr>*/15 7-19 * * *</cron_expr>-->
+                <!--</schedule>-->
+                <!--<run>-->
+                    <!--<model>my_updatestockavailability/observer::updateCronAction</model>-->
+                <!--</run>-->
+            <!--</updatestockavailabilitycronjob>-->
+        <!--</jobs>-->
+    <!--</crontab>-->
+</config>

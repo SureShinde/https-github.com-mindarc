@@ -1,0 +1,8 @@
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 .
+drwxr-xr-x   3 vpsnettopet psacln       4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1827 Mar 11  2015 amazons3.xml
+-rw-r--r--   1 vpsnettopet psacln       1226 Jul  1  2014 box.xml
+-rw-r--r--   1 vpsnettopet psacln       1520 Jul  1  2014 dropbox.xml
+-rw-r--r--   1 vpsnettopet psacln       2660 Aug 15  2014 ftp.xml
+-rw-r--r--   1 vpsnettopet psacln       1338 Jul  1  2014 googledrive.xml
+-rw-r--r--   1 vpsnettopet psacln       1421 Jul  1  2014 sftp.xml

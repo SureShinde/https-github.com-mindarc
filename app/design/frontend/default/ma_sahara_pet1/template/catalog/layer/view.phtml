@@ -1,0 +1,124 @@
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+?>
+<?php if($this->canShowBlock()): ?>
+
+<div class="block block-layered-nav">   
+<h1 class="visible-xs" id="cat-id-name"><?php echo $this->getLayer()->getCurrentCategory()->getName() ?></h1>     
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Shop By') ?></span></strong>
+    </div>
+    <div class="block-content hidden-xs">
+        <?php echo $this->getStateHtml() ?>
+        <!--<h1 class="visible-xs" id="cat-id-name"><?php echo $this->getLayer()->getCurrentCategory()->getName() ?></h1>-->
+        <?php if ($this->getLayer()->getState()->getFilters()): ?>
+            <div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></div>
+        <?php endif; ?>
+        <?php if($this->canShowOptions()): ?>
+            <p class="block-subtitle"><?php echo $this->__('Shopping Options') ?></p>
+            <dl id="narrow-by-list">
+                <?php $_filters = $this->getFilters() ?>
+                <?php foreach ($_filters as $_filter): ?>
+                <?php if($_filter->getItemsCount()): ?>
+                    <dt ><?php echo $this->__($_filter->getName()) ?></dt>
+                    <dd><?php echo $_filter->getHtml() ?></dd>
+                <?php endif; ?>
+                <?php endforeach; ?>
+            </dl>
+            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+        <?php endif; ?>
+    </div>
+    <div class="qw-layered-category visible-xs" style="display: none;">
+        <label class="block-filter-type-title"><span><?php echo $this->__('Categories') ?></span><i class="fa fa-angle-down"></i></label>
+        <div class="filter-content-type">
+            <ol></ol>
+        </div>
+    </div>
+    <div class="qw-layered-nav visible-xs">
+    <?php $block_toolbar = Mage::getBlockSingleton('catalog/product_list_toolbar');  ?>
+    <?php $availableOrders = $block_toolbar->getAvailableOrders(); 
+        if(count($availableOrders) > 0):
+    ?>
+        <div class="block-box-filter block-box-sort-by">
+            <label class="block-filter-type-title"><span><?php echo $this->__('Sort') ?></span><i class="fa fa-angle-down"></i></label>
+            <div class="filter-content-type">
+                <ol>
+        <?php foreach($availableOrders as $_key=>$_order): ?>
+                    <li><a href="<?php echo $block_toolbar->getOrderUrl($_key, 'asc') ?>"<?php if($block_toolbar->isOrderCurrent($_key)): ?> class="selected"<?php endif; ?>>
+                    <?php echo $this->__($_order) ?></a>
+                </li>
+        <?php endforeach; ?>
+                </ol>
+            </div>
+        </div>
+    <?php        
+        endif;
+    ?>
+    <?php 
+    if($this->canShowOptions()):
+    ?>
+        <div class="block-box-filter">
+            <label class="block-filter-type-title"><span><?php echo $this->__('Filter') ?></span><i class="fa fa-angle-down"></i></label>
+            <div class="filter-content-type">
+    <?php
+        $_filters = $this->getFilters();
+        foreach ($_filters as $_filter):
+            if($_filter->getItemsCount()):
+    ?>
+            <div class="filter-data filter-<?php echo str_replace(' ','_',strtolower($_filter->getName())) ?>">
+                <label><?php echo $_filter->getName(); ?><i class="fa fa-angle-down"></i></label>
+                <?php if($_filter->getName() == 'Price') { ?>
+                    <ol>
+                        <li>
+                <?php } ?>
+                <?php echo $_filter->getHtml() ?>
+                <?php if($_filter->getName() == 'Price') { ?>
+                        </li>
+                    </ol>
+                <?php } ?>
+            </div>
+            <?php endif;?>
+        <?php 
+        endforeach;
+        ?>
+        <?php if ($this->getLayer()->getState()->getFilters()): ?>
+            <div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear Filters') ?></a></div>
+        <?php endif; ?>
+        </div>
+    </div>
+    <?php 
+    endif;
+    ?>
+    </div>
+    <script type="text/javascript">       
+        jQuery(document).ready(function(){
+            if(jQuery('.filter-category').length){
+                var filterCategory = jQuery('.filter-category ol').html();
+                jQuery('.filter-category').remove();
+                jQuery('.qw-layered-category .filter-content-type ol').html(filterCategory);
+                jQuery('.qw-layered-category').show();
+            }
+
+            jQuery('.block-filter-type-title').click(function(){
+                if(!jQuery(this).hasClass('expand')){
+                    jQuery('.block-filter-type-title.expand').next('.filter-content-type').hide();
+                    jQuery('.block-filter-type-title.expand').removeClass('expand');
+                }
+                jQuery(this).next('.filter-content-type').slideToggle(300);
+                jQuery(this).toggleClass('expand');
+            });
+
+            jQuery('.filter-data label').click(function(){
+                jQuery('.filter-data label').not(this).parent().removeClass('expand');
+                jQuery('.filter-data label').not(this).parent().find('ol').slideUp(300);
+                jQuery(this).parent().toggleClass('expand');
+                jQuery(this).parent().find('ol').slideToggle(300);
+            });
+        });
+    </script>
+</div>
+<?php endif; ?>

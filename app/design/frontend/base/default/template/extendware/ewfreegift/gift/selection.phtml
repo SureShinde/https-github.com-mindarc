@@ -1,0 +1,64 @@
+<?php
+$_products = Mage::helper('ewfreegift')->getPotentialGifts();
+?>
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/product/view/options/js.phtml')->toHtml() ?>
+<?php echo $this->getLayout()->createBlock('core/html_calendar')->setTemplate('page/js/calendar.phtml')->toHtml() ?>
+<script type="text/javascript">
+	Object.extend(Product.Config.prototype, {
+		reloadOptionLabels: function() {},
+		changeSelection: function() {},
+		reloadPrice: function() {}
+	});
+</script>
+
+<div id="ewfg-notice"><?php echo sprintf(Mage::helper('ewfreegift/config')->getUnclaimedGiftsMessage(), $this->getUnclaimedGiftCount()); ?></div>
+<div id="ewfg-overlay" style="display:none">
+	<div id="ewfg-container">
+		<div class="ewfg-header"><span><?php echo $this->__('Select %s Free Gift(s)', $this->getUnclaimedGiftCount())?></span></div>
+		
+		<div id="ewfg-gifts" class="ewfg-gifts">
+			<ul id="ewfg-gifts-grid" class="ewfg-gifts-grid">
+			<?php foreach ($_products as $_product): ?>
+				<li>
+					<form method="post" action="<?php echo $this->getActionUrl()?>" class="ewfg-form">
+						<input type="hidden" name="product_id" value="<?php echo $_product->getId() ?>"/>
+						<div class="ewfg-gift-info">
+							<?php if ($_product->isVisibleInCatalog() === true): ?>
+								<span class="gift-name"><a href="<?php echo $_product->getProductUrl()?>" target="_blank"><?php echo $_product->getName()?></a></span>
+							<?php else: ?>
+								<span class="gift-name"><?php echo $_product->getName()?></span>
+							<?php endif?>
+							<img src="<?php echo $_product->getSmallImageUrl(175, 175) ?>" width="175" height="175"/>
+						</div>
+						<div class="ewfg-gift-options">
+							<?php if ($_product->getTypeId() == 'configurable'): ?>
+								<?php 
+									$block = $this->getLayout()->createBlock('catalog/product_view_type_configurable');
+									$block->setProduct($_product)->setTemplate('extendware/ewfreegift/gift/item/configurable.phtml');
+									echo $block->toHtml();
+								?>
+							<?php elseif ($_product->getTypeId() == 'bundle'): ?>
+								<?php 
+									$block = $this->getLayout()->createBlock('ewfreegift/gift_item_bundle');
+									$block->setProduct($_product)->setTemplate('bundle/catalog/product/view/type/bundle/options.phtml');
+									echo $block->toHtml();
+								?>
+							<?php endif; ?>
+							
+							<?php echo $this->getLayout()->createBlock('ewfreegift/gift_item_options')->setProduct($_product)->toHtml(); ?>
+						</div>
+						<div class="ewfg-gift-cart">
+							<div class="ewfg-gift-buttons">
+								<button type="button" title="<?php echo $this->__('Add to cart')?>" class="button btn-cart add"><span><span><?php echo $this->__('Add to cart')?></span></span></button>
+							</div>
+						</div>
+					</form>
+				</li>
+			<?php endforeach ?>
+			</ul>
+		</div>
+		<div id="ewfg-close">
+			<button type="button" title="<?php echo $this->__('Close Box')?>" class="button close"><span><span><?php echo $this->__('Close Box')?></span></span></button>
+		</div>
+	</div>
+</div>

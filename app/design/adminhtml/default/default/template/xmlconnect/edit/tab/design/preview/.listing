@@ -1,0 +1,15 @@
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 .
+drwxr-xr-x   3 vpsnettopet psacln       4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1769 Nov 21  2014 banner_rotator.phtml
+-rw-r--r--   1 vpsnettopet psacln       9361 Nov 21  2014 catalog_android.phtml
+-rw-r--r--   1 vpsnettopet psacln      11231 Nov 21  2014 catalog_hor_ipad.phtml
+-rw-r--r--   1 vpsnettopet psacln      13021 Nov 21  2014 catalog_ipad.phtml
+-rw-r--r--   1 vpsnettopet psacln      15204 Nov 21  2014 catalog_iphone.phtml
+-rw-r--r--   1 vpsnettopet psacln       5758 Nov 21  2014 home_android.phtml
+-rw-r--r--   1 vpsnettopet psacln       3616 Nov 21  2014 home_hor_ipad.phtml
+-rw-r--r--   1 vpsnettopet psacln       4864 Nov 21  2014 home_ipad.phtml
+-rw-r--r--   1 vpsnettopet psacln       7268 Nov 21  2014 home_iphone.phtml
+-rw-r--r--   1 vpsnettopet psacln       7368 Nov 21  2014 productinfo_iphone.phtml
+-rw-r--r--   1 vpsnettopet psacln       1633 Nov 21  2014 tab_items_android.phtml
+-rw-r--r--   1 vpsnettopet psacln       2146 Nov 21  2014 tab_items_ipad.phtml
+-rw-r--r--   1 vpsnettopet psacln       1930 Nov 21  2014 tab_items_iphone.phtml

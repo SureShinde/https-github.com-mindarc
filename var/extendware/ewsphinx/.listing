@@ -1,0 +1,7 @@
+drwxr-xr-x   3 vpsnettopet psacln       4096 Mar 19 18:33 .
+drwxr-xr-x   5 vpsnettopet psacln       4096 Aug 12  2015 ..
+drwxr-xr-x   2 vpsnettopet psacln      12288 May 19  2015 indexes
+-rw-r--r--   1 vpsnettopet psacln          6 May 19  2015 searchd.pid
+-rw-rw-rw-   1 vpsnettopet psacln       1332 Mar 19 18:33 sphinx.conf
+-rw-r--r--   1 vpsnettopet psacln          0 Mar 19 18:33 stopwords_3.txt
+-rw-r--r--   1 vpsnettopet psacln          0 Mar 19 18:33 wordforms_3.txt

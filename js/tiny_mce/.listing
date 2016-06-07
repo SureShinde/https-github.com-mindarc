@@ -1,0 +1,17 @@
+drwxr-xr-x   7 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  18 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   9 root     root         4096 Nov  6 06:06 classes
+-rw-r--r--   1 vpsnettopet psacln       3464 Nov 21  2014 jquery.tinymce.js
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 langs
+-rw-r--r--   1 vpsnettopet psacln      26931 Nov 21  2014 license.txt
+drwxr-xr-x  40 root     root         4096 Nov  6 06:06 plugins
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 themes
+-rw-r--r--   1 vpsnettopet psacln     207762 Nov 21  2014 tiny_mce.js
+-rw-r--r--   1 vpsnettopet psacln       3230 Nov 21  2014 tiny_mce_dev.js
+-rw-r--r--   1 vpsnettopet psacln     195240 Nov 21  2014 tiny_mce_jquery.js
+-rw-r--r--   1 vpsnettopet psacln     425561 Nov 21  2014 tiny_mce_jquery_src.js
+-rw-r--r--   1 vpsnettopet psacln       5345 Nov 21  2014 tiny_mce_popup.js
+-rw-r--r--   1 vpsnettopet psacln     208052 Nov 21  2014 tiny_mce_prototype.js
+-rw-r--r--   1 vpsnettopet psacln     447572 Nov 21  2014 tiny_mce_prototype_src.js
+-rw-r--r--   1 vpsnettopet psacln     446912 Nov 21  2014 tiny_mce_src.js
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 utils

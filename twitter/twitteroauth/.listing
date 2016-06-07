@@ -1,0 +1,15 @@
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln         11 Nov 22  2014 .gitignore
+-rw-r--r--   1 vpsnettopet psacln       1103 Nov 22  2014 LICENSE
+-rw-r--r--   1 vpsnettopet psacln       5045 Nov 22  2014 README.md
+-rw-r--r--   1 vpsnettopet psacln       1503 Nov 22  2014 callback.php
+-rw-r--r--   1 vpsnettopet psacln        245 Nov 22  2014 clearsessions.php
+-rw-r--r--   1 vpsnettopet psacln        240 Nov 22  2014 config-sample.php
+-rw-r--r--   1 vpsnettopet psacln        748 Nov 22  2014 connect.php
+-rw-r--r--   1 vpsnettopet psacln       1261 Nov 22  2014 html.inc
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 images
+-rw-r--r--   1 vpsnettopet psacln       1360 Nov 22  2014 index.php
+-rw-r--r--   1 vpsnettopet psacln        954 Nov 22  2014 redirect.php
+-rw-r--r--   1 vpsnettopet psacln      11913 Nov 22  2014 test.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 twitteroauth

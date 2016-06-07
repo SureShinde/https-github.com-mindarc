@@ -1,0 +1,147 @@
+<?php
+/**
+ * Mageplace Backup
+ *
+ * @category   Mageplace
+ * @package    Mageplace_Backup
+ * @copyright  Copyright (c) 2014 Mageplace. (http://www.mageplace.com)
+ * @license    http://www.mageplace.com/disclaimer.html
+ */
+
+/** @var Mageplace_Backup_Block_Adminhtml_Backup_Js_Progress $this */
+
+$_progressObject = $this->getProgressObject();
+$_progressObjectArray = $_progressObject->getData();
+
+$_progressItemObject = $this->getProgressItemObject();
+$_progressItemObjectArray = $_progressItemObject->getData();
+?>
+<script>
+    MP.Backup.Progress = Class.create();
+    MP.Backup.Progress.prototype = {
+        <?php foreach ($_progressObjectArray as $key => $value) : ?>
+        '<?php echo $key; ?>': <?php echo Zend_Json::encode($value); ?>,
+        <?php endforeach; ?>
+
+        initialize: function (objJson) {
+            <?php foreach ($_progressObjectArray as $key => $value) : ?>
+            this['<?php echo $key; ?>'] = <?php echo Zend_Json::encode($value); ?>;
+            <?php endforeach; ?>
+
+            for (var prop in objJson) {
+                if (prop != 'items') {
+                    this[prop] = objJson[prop];
+                    continue;
+                }
+
+                if (typeof(objJson[prop]) != 'object') {
+                    continue;
+                }
+
+                var items = [];
+                for (var i = 0; i < objJson[prop].length; i++) {
+                    var objItem = new MP.Backup.Progress.Item(objJson[prop][i]);
+                    if (!objItem.toRawString() || objItem.toRawString() == '<?php echo Mageplace_Backup_Model_Backup_Progress::TEXT_TREE_POINT; ?>') {
+                        continue;
+                    }
+                    items[i] = objItem;
+                }
+                this.setItems(items);
+            }
+        },
+
+        <?php foreach($_progressObjectArray as $key => $value) : ?>
+
+        get<?php echo $methodName = $_progressObject->getMethodName($key); ?>: function () {
+            return this['<?php echo $key; ?>'];
+        },
+
+        set<?php echo $methodName; ?>: function (value) {
+            this['<?php echo $key; ?>'] = value;
+            return this;
+        },
+        <?php endforeach; ?>
+
+
+        isFinished: function () {
+            return this.getFinish() == '1';
+        },
+
+        hasError: function () {
+            return Object.isString(this.getError()) && this.getError() != '';
+        },
+
+        toString: function () {
+            var strItems = '';
+            var items = this.getItems();
+            for (var i = 0; i < items.length; i++) {
+                strItems += items[i].toString();
+            }
+
+            return (this.getText() ? new MP.Backup.Row(this.getText()).toString() : '')
+                + (this.hasError() ? new MP.Backup.Row(this.getError()).setErrorType().toString() : '')
+                + strItems;
+        }
+    };
+
+    MP.Backup.Progress.Item = Class.create();
+    MP.Backup.Progress.Item.prototype = {
+        Row: {},
+        <?php foreach ($_progressItemObjectArray as $key => $value) : ?>
+        '<?php echo $key; ?>': <?php echo Zend_Json::encode($value); ?>,
+        <?php endforeach; ?>
+
+        initialize: function (obj) {
+            this.Row = {};
+            <?php foreach ($_progressItemObjectArray as $key => $value) : ?>
+            this['<?php echo $key; ?>'] = <?php echo Zend_Json::encode($value); ?>;
+            <?php endforeach; ?>
+
+            for (var prop in obj) {
+                this[prop] = obj[prop];
+            }
+
+            this.Row = new MP.Backup.Row(this.getLog(), this.getType());
+        },
+
+        <?php foreach($_progressItemObjectArray as $key => $value) : ?>
+
+        get<?php echo $methodName = $_progressItemObject->getMethodName($key); ?>: function () {
+            return this['<?php echo $key; ?>'];
+        },
+
+        set<?php echo $methodName; ?>: function (value) {
+            this['<?php echo $key; ?>'] = value;
+            return this;
+        },
+        <?php endforeach; ?>
+
+        isError: function () {
+            return MP.Backup.LogLevels.isError(this.getType());
+        },
+
+        isWarning: function () {
+            return MP.Backup.LogLevels.isWarning(this.getType());
+        },
+
+        isInfo: function () {
+            return MP.Backup.LogLevels.isInfo(this.getType());
+        },
+
+        isDebug: function () {
+            return !this.getType() || MP.Backup.LogLevels.isDebug(this.getType());
+        },
+
+        insert: function (area) {
+            this.Row.insert(area);
+        },
+
+        toRawString: function () {
+            return this.getLog();
+        },
+
+        toString: function () {
+            return this.Row.toString();
+        }
+    };
+</script>

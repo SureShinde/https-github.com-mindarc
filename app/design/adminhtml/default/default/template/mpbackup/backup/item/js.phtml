@@ -1,0 +1,47 @@
+<?php
+/**
+ * Mageplace Backup
+ *
+ * @category   Mageplace
+ * @package    Mageplace_Backup
+ * @copyright  Copyright (c) 2014 Mageplace. (http://www.mageplace.com)
+ * @license    http://www.mageplace.com/disclaimer.html
+ */
+
+/** @var Mageplace_Backup_Block_Adminhtml_Backup_Item_Js $this */
+$_backupItem = $this->getBackupItem();
+?>
+<script>
+    MP.Backup.Item = Class.create();
+    MP.Backup.Item.prototype = {
+        <?php foreach($_backupItem as $key => $value) : ?>
+        <?php $value = (is_string($value) ? ($value ? $value : "''") : ($value ? $value : "0")); $_backupItem[$key] = $value; ?>
+        '<?php echo $key; ?>': <?php echo $value; ?>,
+        <?php endforeach; ?>
+
+        initialize: function (obj) {
+            <?php foreach($_backupItem as $key => $value) : ?>
+            this['<?php echo $key; ?>'] = <?php echo $value; ?>;
+            <?php endforeach; ?>
+
+            if (Object.isUndefined(obj)) {
+                return;
+            }
+
+            for (var prop in obj) {
+                this[prop] = obj[prop];
+            }
+        },
+
+        <?php foreach($_backupItem as $key => $value) : ?>
+        get<?php echo ucfirst($key); ?>: function () {
+            return this.<?php echo $key; ?>;
+        },
+
+        <?php endforeach; ?>
+
+        isError: function () {
+            return Object.isString(this.getError()) && this.getError() != '';
+        }
+    };
+</script>

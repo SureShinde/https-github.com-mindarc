@@ -1,0 +1,8 @@
+drwxr-xr-x   2 vpsnettopet psacln       4096 Nov  6 06:06 .
+drwxr-xr-x   9 vpsnettopet psacln       4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       2157 Apr  6  2015 adminhtml.xml
+-rw-r--r--   1 vpsnettopet psacln       7501 Apr  6  2015 api.xml
+-rw-r--r--   1 vpsnettopet psacln      15187 Apr  6  2015 config.xml
+-rw-r--r--   1 vpsnettopet psacln       6129 Apr  6  2015 system.xml
+-rw-r--r--   1 vpsnettopet psacln      11101 Apr  6  2015 wsdl.xml
+-rw-r--r--   1 vpsnettopet psacln      13347 Apr  6  2015 wsi.xml

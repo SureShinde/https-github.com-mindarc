@@ -1,0 +1,10 @@
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   5 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 adminhtml
+-rw-r--r--   1 vpsnettopet psacln        515 Aug 12  2015 ajax.js
+-rw-r--r--   1 vpsnettopet psacln        471 Aug 12  2015 center.js
+-rw-r--r--   1 vpsnettopet psacln        136 Aug 12  2015 core.js
+-rw-r--r--   1 vpsnettopet psacln       2010 Aug 12  2015 guide.js
+-rw-r--r--   1 vpsnettopet psacln      10793 Aug 12  2015 modalbox.js
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 opentip
+-rw-r--r--   1 vpsnettopet psacln        949 Aug 12  2015 widget.js

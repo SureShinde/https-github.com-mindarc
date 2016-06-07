@@ -1,0 +1,100 @@
+<?php
+$enabled_slide = Mage::getStoreConfig('blog/slide/enabled');
+$width_slide = Mage::getStoreConfig('blog/slide/width');
+$numbercolumn_slide = Mage::getStoreConfig('blog/slide/numbercolumn');
+$numberrow = Mage::getStoreConfig('blog/slide/numberrow');
+$speed_slide = Mage::getStoreConfig('blog/slide/speed');
+$auto_slide = Mage::getStoreConfig('blog/slide/auto');
+$show_image = Mage::getStoreConfig('blog/slide/showimage');
+$image_width = Mage::getStoreConfig('blog/slide/widthimage');
+$image_height = Mage::getStoreConfig('blog/slide/heightimage');
+$show_title = Mage::getStoreConfig('blog/slide/showtitle');
+$show_author = Mage::getStoreConfig('blog/slide/showauthor');
+$show_time = Mage::getStoreConfig('blog/slide/showtime');
+$show_shortcontent = Mage::getStoreConfig('blog/slide/showshortcontent');
+$show_readmore = Mage::getStoreConfig('blog/slide/showreadmore');
+if($enabled_slide):
+?>
+<script>
+	$jq(document).ready(function(){
+		$jq('.menu-recent .bxslider').bxSlider({
+			minSlides: <?php if($numbercolumn_slide) echo $numbercolumn_slide; else echo '1'; ?>,
+			maxSlides: <?php if($numbercolumn_slide) echo $numbercolumn_slide; else echo '1'; ?>,
+			slideWidth: <?php if($width_slide) echo $width_slide; else  echo '900'; ?>,
+			slideMargin: 30,
+			infiniteLoop: 0,
+			auto: <?php if($auto_slide) echo 'true'; else echo 'false'; ?>,
+			autoControls: false,
+			pager: false,
+			mode: 'horizontal',
+			speed: <?php if($speed_slide) echo $speed_slide; else echo '100'; ?>,
+			prevText: '<',
+			nextText: '>',
+			pause: 4000,
+			easing: 'jswing',
+			autoHover: true
+		});
+	});
+</script>
+<?php if ($posts = $this->getRecent()):  $i = 1;?>
+	<div class="menu-recent">
+		<?php if(Mage::getStoreConfig('blog/blog/title')){?>
+			<div class="blog-title title-group"><h2><?php echo Mage::getStoreConfig('blog/blog/title');?></h2></div>
+		<?php }?>
+		<ul class="bxslider">
+		<?php if($numberrow > 1){ ?>
+			<?php foreach ($posts as $post): ?>
+				<?php if($i % $numberrow == 1) echo '<li>'; ?>
+					<div class="item-inner">
+						<div class="row">
+							<div class="images col-xs-5">
+								<?php if($show_image) echo '<img width="'.$image_width.'px" height="'.$image_height.'px" src="'.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA). $post->getThumbnailimage().'">'; ?>
+							</div>
+							<div class="des col-xs-7">
+								<?php if($show_title): ?> <a href="<?php echo $post->getAddress(); ?>" ><?php echo '<h3 class="title-blog">'.$post->getTitle().'</h3>' ?></a> <?php endif; ?>
+								<?php $s = $post->getCreatedTime(); $date = strtotime($s); ?>
+								
+								<?php if($show_shortcontent) echo $this->getContentBlogSidebar($post->getShortContent(),70);?>
+								<?php if($show_author) echo '<p>By '.$post->getUser(); if($show_author && $show_time) echo ' - '; if($show_time) echo date("d M Y", $date).'</p>'; ?>
+								
+								<?php if($show_readmore): ?> <p><a href="<?php echo $post->getAddress(); ?>">Read more >></a></p> <?php endif; ?>
+							</div>
+						</div>
+						
+						
+						
+					</div>
+					<?php if($i % $numberrow == 0)echo '</li>'; $i++; ?>
+				<?php endforeach; ?>
+					
+					
+			<?php if($i % $numberrow != 1)echo '</li>'; ?>
+		<?php } else{ ?>
+			<?php foreach ($posts as $post): ?>
+				<li>
+					<div class="item-inner">
+						<div class="row">
+							<div class="images col-xs-5">
+								<?php if($show_image) echo '<img  width="'.$image_width.'px" height="'.$image_height.'px"  src="'.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA). $post->getThumbnailimage().'">'; ?>
+							</div>
+							<div class="des col-xs-7">
+								<?php if($show_title): ?> <a href="<?php echo $post->getAddress(); ?>" ><?php echo '<h3 class="title-blog">'.$post->getTitle().'</h3>' ?></a> <?php endif; ?>
+								<?php $s = $post->getCreatedTime(); $date = strtotime($s); ?>
+								
+								<?php if($show_shortcontent) echo $this->getContentBlogSidebar($post->getShortContent(),120);?>
+								<?php if($show_author) echo '<p>By '.$post->getUser(); if($show_author && $show_time) echo ' - '; if($show_time) echo date("d M Y", $date).'</p>'; ?>
+								<?php if($show_readmore): ?> <p><a href="<?php echo $post->getAddress(); ?>">Read more >></a></p> <?php endif; ?>
+							</div>
+						</div>
+						
+						
+					</div>
+					
+				</li>
+			<?php endforeach; ?>
+		<?php } ?>
+		</ul>
+	</div>
+<?php endif;
+endif;
+?>

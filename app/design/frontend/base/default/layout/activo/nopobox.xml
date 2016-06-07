@@ -1,0 +1,1 @@
+<?xml version="1.0"?><layout version="0.1.0">    <checkout_onepage_index>        <reference name="head">            <block type="nopobox/message" name="nopobox.message" before="-" />        </reference>    </checkout_onepage_index></layout>

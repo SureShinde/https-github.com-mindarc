@@ -1,0 +1,16 @@
+drwxr-xr-x   8 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  16 vpsnettopet psaserv      4096 Feb 29 19:13 ..
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 .cache
+-rw-r--r--   1 vpsnettopet psacln        176 Nov 21  2014 .htaccess
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 Maged
+-rw-r--r--   1 vpsnettopet psacln     440103 Nov 19 03:08 cache.cfg
+-rw-r--r--   1 vpsnettopet psacln         22 Nov 21  2014 config.ini
+-rw-r--r--   1 vpsnettopet psacln        492 Aug 28  2015 connect.cfg
+-rw-r--r--   1 vpsnettopet psacln       1150 Nov 21  2014 favicon.ico
+-rw-r--r--   1 vpsnettopet psacln       1644 Nov 21  2014 index.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 js
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 lib
+-rw-r--r--   1 vpsnettopet psacln       4616 Nov 21  2014 mage.php
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 skin
+-rw-r--r--   1 vpsnettopet psacln       1042 Nov 21  2014 target.xml
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 template

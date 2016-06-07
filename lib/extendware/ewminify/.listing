@@ -1,0 +1,12 @@
+drwxr-xr-x   5 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   5 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln      43622 Apr  6  2015 FirePHP.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 HTTP
+-rw-r--r--   1 vpsnettopet psacln      11294 Apr  6  2015 JSMin.php
+-rw-r--r--   1 vpsnettopet psacln      47263 Apr  6  2015 JSMinPlus.php
+-rw-r--r--   1 vpsnettopet psacln       1558 Apr  6  2015 LICENSE.txt
+drwxr-xr-x   5 root     root         4096 Nov  6 06:06 Minify
+-rw-r--r--   1 vpsnettopet psacln      20844 Apr  6  2015 Minify.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Solar
+-rw-r--r--   1 vpsnettopet psacln    6329759 Apr  6  2015 closurecompiler.jar
+-rw-r--r--   1 vpsnettopet psacln     891148 Apr  6  2015 yuicompressor.jar

@@ -1,0 +1,115 @@
+<?php
+/**
+ * Mageplace Backup
+ *
+ * @category	Mageplace
+ * @package		Mageplace_Backup
+ * @copyright	Copyright (c) 2011 Mageplace. (http://www.mageplace.com)
+ * @license		http://www.mageplace.com/disclaimer.html
+ */
+?>
+<?php
+/*
+ * @var $this Mageplace_Backup_Block_Adminhtml_Profile_Edit_Tables
+ */
+$row = 0;
+?>
+<button onclick="checkAll(1)" type="button"><?php echo Mage::helper('mpbackup')->__("Check All"); ?></button>
+<button onclick="checkAll(0)" type="button"><?php echo Mage::helper('mpbackup')->__("Uncheck All"); ?></button>
+<button onclick="checkAll(2)" type="button"><?php echo Mage::helper('mpbackup')->__("Reverse"); ?></button>
+&nbsp;&nbsp;
+<button class="tableSpaceButton" onclick="calculateTableSpaceSelected()" type="button"><?php echo Mage::helper('mpbackup')->__("Calculate Disk Space"); ?></button>
+<br /><br />
+<?php if(($tables = $this->getDBTables()) && !empty($tables)): ?>
+	<?php foreach($tables as $table): ?>
+		<div class="mpbackup-dbtable-row mp-row-<?php echo $row; ?>">
+			<input type="checkbox" name="mpbackuptable[]" value="<?php echo $table['name']; ?>"	<?php echo ($table['checked'] ? 'checked="true"' : ''); ?>/>
+			<?php echo $table['name']; ?>
+            <span class="tableSpaceButton" id ="<?php echo $table['name']; ?>" onclick="calculateTableSpace('<?php echo $table['name'];?>')"> [Calculate Disk Space]</span><br />
+		</div>
+		<?php $row = 1 - $row; ?>
+	<?php endforeach; ?>
+<?php endif; ?>
+
+<script type="text/javascript">
+function checkAll(checkType)
+{
+	var checkType = (new Number(checkType)).valueOf();
+	$$('input[name="mpbackuptable[]"]').each(function(el) {
+		if(!el.checked && (checkType == 1)) {
+			el.checked = true;
+		} else if(el.checked && (checkType == 0)) {
+			el.checked = false;
+		} else if(checkType == 2) {
+			el.checked = !el.checked;
+		}
+	});
+}
+
+function calculateTableSpace(tablename)
+{
+    var param = {tname: tablename};    
+    new Ajax.Request(
+		'<?php echo $this->getUrl('*/*/gettablesize'); ?>',
+		{
+			method: 'post',			
+			parameters: param,
+			onSuccess: function(response) {
+                if ($('sizeOf'+tablename)) {
+                    $('sizeOf'+tablename).remove();
+                }                                 
+                
+				var size = document.createElement('span');  
+                size.id = 'sizeOf'+tablename;
+                size.className = 'tableSize'
+                size.appendChild(document.createTextNode('\t\t['+response.responseText+']'));                                
+                
+                $(tablename).insert({'after' : size});
+			}
+		}
+	);
+}
+
+function calculateTableSpaceSelected(tablename)
+{
+	var tables = new Array();
+	$$('input[name="mpbackuptable[]"]').each(function(el) {
+		if(el.checked) {
+			tables.push(el.value);
+		}
+	});
+	
+	if(tables.length < 1) {
+		alert("<?php echo Mage::helper('mpbackup')->__("Select tables to calculate disk space"); ?>");
+		return;
+	}
+	
+    new Ajax.Request('<?php echo $this->getUrl('*/*/gettablesize'); ?>',
+		{
+			method: 'post',			
+			parameters: {tnames: tables.join('`')},
+			onSuccess: function(response) {
+                var json = response.responseText.evalJSON();
+				if(!json) {
+					return;
+				}
+				
+				for(tablename in json) {
+					if ($('sizeOf'+tablename)) {
+						$('sizeOf'+tablename).remove();
+					}                                 
+					
+					var size = document.createElement('span');  
+					size.id = 'sizeOf'+tablename;
+					size.className = 'tableSize'
+					size.appendChild(document.createTextNode('\t\t['+json[tablename]+']'));                                
+					
+					$(tablename).insert({'after' : size});					
+				}
+				
+			}
+		}
+	);
+	
+}
+</script>

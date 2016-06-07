@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package>
+    <name>Tb_Extratabs</name>
+    <version>0.0.1</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">OSL</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Organize product page information, display static blocks data in tabular form with easy to use interface.</summary>
+    <description>&lt;h2&gt;OVERVIEW&lt;/h2&gt;&#xD;
+Tb ExtraTabs let you Organize product page information in easy way, display static blocks data and additional data in tabular form controlled by admin interface. You can add Product description, Additional information, Product reviews, Product tags, Related products, Up sell products, Product custom attribute tabs through admin configuration options. Additionally you can also add dynamic tabs based on content of cms blocks or products attributes.&#xD;
+&lt;br /&gt;&#xD;
+&lt;br /&gt;&#xD;
+&lt;h2&gt;Installation / Configuration&lt;/h2&gt;&#xD;
+&lt;br /&gt;&#xD;
+&lt;ul&gt;&#xD;
+&lt;li&gt;Enable &gt;&gt; Enable or disabled ExtraTabs on product view page.&lt;/li&gt;&#xD;
+&lt;li&gt;Add Static blocks &gt;&gt; In order to display static block in tabs save static block with the indentifier &#x201C;extratab_&#x201D; prefix, like extratab_shipping-info. Block title will be use as Tab title.&lt;/li&gt;&#xD;
+&lt;li&gt;Custom Product Attribute Tabs &gt;&gt; Add custom product attributes in tabs by select option from  Product Attribute list (Only that attribute will show in this list which has &#x201C;Catalog Input Type for Store Owner&#x201D; as Text Field or Text Area selected). Tab Title &gt;&gt; Enter tab title for this attribute tab.&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+</description>
+    <notes>Initial release.</notes>
+    <authors><author><name>Rehan Mobin</name><user>rehanmobin</user><email>m.rehan.mobin@gmail.com</email></author></authors>
+    <date>2014-06-21</date>
+    <time>16:59:13</time>
+    <contents><target name="magelocal"><dir name="Tb"><dir name="Extratabs"><dir name="Adminhtml"><dir name="Model"><dir name="System"><dir name="Config"><dir name="Source"><file name="Attributes.php" hash="0e6c0ec1c4368c34dcff6a75ac3d53e2"/></dir></dir></dir></dir></dir><dir name="Block"><dir name="Product"><dir name="View"><file name="Tabs.php" hash="ff37a7b5294be7246d94b1de5f74a36a"/></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="30a8400518166ad565a21f16440e28ac"/></dir><dir name="etc"><file name="adminhtml.xml" hash="b5dfe2be9f82d6712f0099233fc0142f"/><file name="config.xml" hash="cab6ff374a2f9f103a57cb0715d7bced"/><file name="system.xml" hash="911bf4c70a505860a1283bf41ada8ec8"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Tb_Extratabs.xml" hash="970a5ff5d1c9eedddc76b6020f051f7c"/></dir></target><target name="magedesign"><dir name="frontend"><dir name="default"><dir name="default"><dir name="layout"><file name="extratabs.xml" hash="f04cf9fb4a339d229d9048096c8118fa"/></dir><dir name="template"><dir name="extratabs"><dir name="product"><dir name="list"><file name="related.phtml" hash="e74c6aa9621c7babb39db465946b6a5c"/></dir><dir name="view"><file name="attributes.phtml" hash="c184b99a88f08fa50704c399a37fcfbc"/><file name="attributetab1.phtml" hash="b2ce90576d102b8bc14abe52c3761c25"/><file name="attributetab2.phtml" hash="8cd682cb634d3b5c36154bfb77f37f64"/><file name="attributetab3.phtml" hash="16aa322585be656ff2c0cad192b31218"/><file name="description.phtml" hash="4e920e324b0a0d366127a3ad99e2328d"/><file name="tab_review.phtml" hash="4acf578c8f47470dfaaf7624745d54b8"/></dir></dir><file name="tabs.phtml" hash="40698198b13f255dfac4dfdb7b7e250b"/></dir></dir></dir></dir></dir></target><target name="mageskin"><dir name="frontend"><dir name="default"><dir name="default"><dir name="css"><file name="extratabs.css" hash="f6995f1892e00fbe3c3f7f21901ebace"/></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

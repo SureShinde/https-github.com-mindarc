@@ -1,0 +1,11 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   9 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       3517 Nov 21  2014 Cookie.js
+-rw-r--r--   1 vpsnettopet psacln       2914 Nov 21  2014 Dispatcher.js
+-rw-r--r--   1 vpsnettopet psacln       2372 Nov 21  2014 JSON.js
+-rw-r--r--   1 vpsnettopet psacln        674 Nov 21  2014 JSONP.js
+-rw-r--r--   1 vpsnettopet psacln       2824 Nov 21  2014 JSONRequest.js
+-rw-r--r--   1 vpsnettopet psacln       6893 Nov 21  2014 Quirks.js
+-rw-r--r--   1 vpsnettopet psacln       7849 Nov 21  2014 URI.js
+-rw-r--r--   1 vpsnettopet psacln        243 Nov 21  2014 VK.js
+-rw-r--r--   1 vpsnettopet psacln       2195 Nov 21  2014 XHR.js

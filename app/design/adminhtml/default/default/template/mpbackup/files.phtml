@@ -1,0 +1,106 @@
+<?php
+/**
+ * Mageplace Backup
+ *
+ * @category	Mageplace
+ * @package		Mageplace_Backup
+ * @copyright	Copyright (c) 2011 Mageplace. (http://www.mageplace.com)
+ * @license		http://www.mageplace.com/disclaimer.html
+ */
+?>
+<?php
+/**
+ * @var $this Mageplace_Backup_Block_Adminhtml_Profile_Edit_Files
+ */
+$row = 0;
+$dirs = $this->getDirs();
+$files = $this->getFiles();
+?>
+<script type="text/javascript">
+var current_path = "<?php echo $this->getCurrentDir(); ?>";
+</script>
+<table width="100%">
+<tr>
+	<td width="60%" style="padding: 2px; border: 1px solid #ccc">
+		<div class="entry-edit-head">
+			<div class="entry-edit-head">
+				<h4 class="icon-head head-edit-form fieldset-legend">
+					<?php echo Mage::helper('mpbackup')->__("Current dir: "); ?>
+					<button onclick="getDirContent('')" type="button"><?php echo Mage::helper('mpbackup')->__("ROOT"); ?></button>
+					<!--a href="javascript:void(0);" onclick="getDirContent('')"><?php echo Mage::helper('mpbackup')->__("ROOT"); ?></a-->
+					<?php $pathForGo=''; foreach($this->getCurrentDirArray() as $dirElem): $pathForGo.=addslashes($this->getDirSeparator()).$dirElem;?>
+					<?php if(!$dirElem) continue; ?>
+					<?php echo $this->getDirSeparator(); ?>
+					<button onclick="getDirContent('<?php echo $pathForGo; ?>')" type="button"><?php echo $dirElem; ?></button>
+					<!--a href="javascript:void(0);" onclick="getDirContent('<?php echo $pathForGo; ?>')"><?php echo $dirElem; ?></a-->
+					<?php endforeach; ?>
+				</h4>
+				<br />
+			</div>
+		</div>
+		
+		<?php if(!empty($dirs) || !empty($files)): ?>
+		<div>
+		<button onclick="excludeAll()" type="button"><?php echo Mage::helper('mpbackup')->__("Exclude All"); ?></button>
+		<button class="fileSpaceButton" onclick="calculateAllFilesSpace()" type="button"><?php echo Mage::helper('mpbackup')->__("Calculate Disk Space"); ?></button><br /><br />
+		</div>
+		<?php endif; ?>
+		
+		<?php if($this->getCurrentDir()): ?>
+		<div>
+		<button onclick="getDirContent('<?php echo $this->getCurrentDir(); ?>', 1)" type="button"><?php echo Mage::helper('mpbackup')->__("Up"); ?></button>
+		<button onclick="getDirContent('')" type="button"><?php echo Mage::helper('mpbackup')->__("ROOT"); ?></button>
+		<br />
+		</div>
+		<?php endif; ?>
+		
+		<?php if(!empty($dirs)): ?>
+			<?php foreach($dirs as $diritem): ?>
+				<dir class="mp-row-<?php echo $row; ?>">
+				<input type="checkbox" name="dir"
+					value="<?php echo $diritem['pathname']; ?>"
+					onclick="excludeItem(this)"
+					<?php echo ($diritem['checked'] ? 'checked="true"' : ''); ?>/>
+					<a href="javascript:void(0);" onclick="getDirContent('<?php echo addslashes($diritem['pathname']); ?>')"><?php echo $diritem['filename']; ?></a>
+                    <span class="fileSpaceButton" id ="<?php echo str_replace('\\', '_',$diritem['pathname']); ?>" onclick="calculateDirSpace('<?php echo addslashes(substr($diritem['pathname'], 1));?>', this, '<?php echo str_replace('\\', '_',$diritem['pathname']); ?>' )"> [Calculate Disk Space]</span><br />
+				</dir>
+				<?php $row = 1 - $row; ?>
+			<?php endforeach; ?>
+		<?php endif; ?>
+		
+		<?php if(!empty($files)): ?>
+			<?php foreach($files as $fileitem): ?>
+				<dir class="mp-row-<?php echo $row; ?>">
+				<input type="checkbox" name="file"
+					value="<?php echo $fileitem['pathname']; ?>"
+					onclick="excludeItem(this)"
+					<?php echo ($fileitem['checked'] ? 'checked="true"' : ''); ?>/>
+					<?php echo $fileitem['filename']; ?>
+                    <span class="fileSpaceButton" id ="<?php echo str_replace('\\', '_',$fileitem['pathname']); ?>" onclick="calculateFileSpace('<?php echo addslashes(substr($fileitem['pathname'], 1));?>', this, '<?php echo str_replace('\\', '_',$fileitem['pathname']); ?>')"> [Calculate Disk Space]</span><br />
+					</dir>
+				<?php $row = 1 - $row; ?>
+			<?php endforeach; ?>
+		<?php endif; ?>
+	</td>
+	<td style="padding: 2px; border: 1px solid #ccc">
+		<div class="entry-edit-head">
+			<div class="entry-edit-head">
+				<h4 class="icon-head head-edit-form fieldset-legend">
+					<?php echo Mage::helper('mpbackup')->__("Excluded Files and Directories"); ?>
+				</h4>
+			</div>
+		</div>
+		<br />
+
+		<?php $exclitems = $this->getExcludedItemsSortedArray(); ?>		
+		<button onclick="includeItems()" type="button"><?php echo Mage::helper('mpbackup')->__("Remove Selected"); ?></button>
+		<button onclick="includeAll()" type="button"><?php echo Mage::helper('mpbackup')->__("Remove All"); ?></button>
+		<br /><br />
+		<div id="selected-items">
+		<?php foreach($exclitems as $exclitem): ?>
+			<div><input type="checkbox" name="excluded" value="<?php echo $exclitem; ?>" /><?php echo $exclitem; ?></div>
+		<?php endforeach; ?>
+		</div>
+	</td>
+</tr>
+</table>

@@ -1,0 +1,130 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<div class="col-xs-12 hidden-sm">
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('above_footer')->toHtml() ?>
+</div>
+<div class="footer-static-container">
+    <div class="container">
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_static_2')->toHtml() ?>
+    </div>
+</div>
+
+<div class="ma-footer-container">
+    <div class="container">
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_static')->toHtml() ?>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_static_mobile')->toHtml() ?>
+        <div class="visible-xs" id="mobile-cards">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('pay_ment')->toHtml() ?>
+        </div>
+        <div class="footer">
+            <div class="row">
+                <div class="hidden-xs col-md-8">
+                    <?php echo $this->getChildHtml("footer_links") ?>
+                    <span><?php echo $this->getCopyright() ?></span>
+                    <?php echo $this->getChildHtml("store_switcher") ?>
+                </div>
+                <div class="hidden-xs">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('pay_ment')->toHtml() ?>
+                </div>
+                <div class="visible-xs">
+                    <span><?php echo $this->getCopyright() ?></span>
+                </div>
+            </div>
+        </div>
+        <div id="back-top" class="hidden-xs"></div>
+    </div>
+</div>
+<script>
+    jQuery(document).ready(function () {
+        jQuery('a:contains(SALE)');
+        jQuery('a:contains(SALE)').css({'font-weight': 'normal'});
+        jQuery('a:contains(SALE)').css({'font-weight': 'bold', 'color': '#028D9E'});
+    });
+
+    (function ($) {
+        $(document).ready(function () {
+//            The below $(function(){}); does the same thing as the above $(document).ready(function(){});
+//            $(function () {
+                // $("#accordion").accordion({
+                //     header: "h2",
+                //     collapsible: true,
+                //     active: false,
+                //     animate: 100,
+                //     heightStyle: "content"
+                // });
+//            });
+            // Read More/Description Hider Toggle
+            $('.visible-xs.about-desc-button').on('click', function () {
+                $('.visible-xs.about-desc').toggleClass('showing');
+                $('.visible-xs.about-desc').toggleClass('gradientback');
+                if ($('.visible-xs.about-desc').hasClass('showing')) {
+                    $(this).text('Show Less');
+                } else {
+                    $(this).text('Read More');
+                }
+            });
+
+            // Mobile only script
+            if ($(window).width() < 768) {
+              // Categories page - hider function
+                  $('dd ol').hide();
+                  $('dl#narrow-by-list dt').on('click', function () {
+                      $('dd ol').slideToggle(100);
+                  });
+
+                  var height = 'auto';
+                  $('#sequence .slider-bg').each(function () {
+                      height = Math.max(height, $(this).height());
+                  });
+                  $('#sequence').height(height);
+
+                $('.block-footer-links .footer-title').click(function(){
+                    $('.footer-content-list').slideUp(300);
+                    if(!$(this).hasClass('active')){
+                        $(this).addClass('active')
+                        $(this).next().slideDown(300);
+                    }else{
+                        $(this).removeClass('active');
+                    }
+                });
+            }
+        });
+        $(window).load(function () {
+            var height = 0;
+
+            $('#sequence .slider-bg').each(function () {
+                height = Math.max(height, $(this).height())
+            });
+            $('#sequence').height(height);
+            $('.ui-accordion-header').click(function() {
+                $(this).find('.fa').toggleClass('fa-angle-down');
+                $(this).find('.fa').toggleClass('fa-angle-up');
+            });
+        });
+    })(jQuery);
+</script>

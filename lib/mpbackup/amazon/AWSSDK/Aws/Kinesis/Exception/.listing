@@ -1,0 +1,9 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   5 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln        771 Feb 24  2015 ExpiredIteratorException.php
+-rw-r--r--   1 vpsnettopet psacln        771 Feb 24  2015 InvalidArgumentException.php
+-rw-r--r--   1 vpsnettopet psacln        780 Feb 24  2015 KinesisException.php
+-rw-r--r--   1 vpsnettopet psacln        767 Feb 24  2015 LimitExceededException.php
+-rw-r--r--   1 vpsnettopet psacln        799 Feb 24  2015 ProvisionedThroughputExceededException.php
+-rw-r--r--   1 vpsnettopet psacln        767 Feb 24  2015 ResourceInUseException.php
+-rw-r--r--   1 vpsnettopet psacln        773 Feb 24  2015 ResourceNotFoundException.php

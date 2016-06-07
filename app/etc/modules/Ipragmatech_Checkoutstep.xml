@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Ipragmatech_Checkoutstep>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Ipragmatech_Checkoutstep>
+    </modules>
+</config>

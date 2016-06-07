@@ -1,0 +1,2 @@
+color,description,name,price,price_view,sku,short_description,status,tax_class_id,visibility,collar_colour,product.attribute_set,product.type,stock.qty,weight,stock.qty_increments,stock.notify_stock_qty,stock.is_in_stock
+Black,Test simple,md test simple,20,As low as,md_test_simple,Test simple,Enabled,none,"Catalog, Search",Red,again,simple,10,1,2,1,In Stock

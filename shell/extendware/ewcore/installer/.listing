@@ -1,0 +1,5 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln        166 Aug 12  2015 config.xml.example
+-rw-r--r--   1 vpsnettopet psacln       1203 Aug 12  2015 enable_module.php
+-rw-r--r--   1 vpsnettopet psacln       5415 Aug 12  2015 licenser.php

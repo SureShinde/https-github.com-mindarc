@@ -1,0 +1,8 @@
+drwxr-xr-x   7 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   6 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Crypt
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 File
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 Math
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 Net
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 System
+-rw-r--r--   1 vpsnettopet psacln        110 Jul  1  2014 openssl.cnf

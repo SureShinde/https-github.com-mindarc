@@ -1,0 +1,39 @@
+.customer-order-request.field {
+    border: 1px solid #d9dde3;
+    border-width: 0 1px 1px;
+    padding: 10px 30px 15px;
+}
+
+.customer-order-request.field > label {
+    font-weight: bold;
+    color: #666;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.customer-order-request.field > textarea {
+    width: 98%;
+    min-height: 80px;
+    padding: 1%;
+}
+
+.customer-order-view-addrequest.field {
+    padding: 10px 30px;
+}
+
+.customer-order-view-addrequest.field > label {
+    font-weight: bold;
+    color: #666;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.customer-order-view-addrequest.field > textarea {
+    width: 98%;
+    min-height: 80px;
+}
+
+#save-order-request{
+    float: right;
+    margin-right: 37px;
+}

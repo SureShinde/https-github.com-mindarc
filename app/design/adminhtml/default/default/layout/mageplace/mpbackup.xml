@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Mageplace Backup
+*
+* @category      Mageplace
+* @package       Mageplace_Backup
+* @copyright     Copyright (c) 2014 Mageplace. (http://www.mageplace.com)
+* @license       http://www.mageplace.com/disclaimer.html
+*/
+-->
+<layout>
+	<adminhtml_mpbackup_profile_new>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>css/mpbackup/profile.css</name>
+			</action>
+		</reference>
+	</adminhtml_mpbackup_profile_new>
+
+	<adminhtml_mpbackup_profile_edit>
+		<update handle="adminhtml_mpbackup_profile_new"/>
+	</adminhtml_mpbackup_profile_edit>
+
+
+	<adminhtml_mpbackup_backup_create>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>css/mpbackup/backup.css</name>
+			</action>
+			<action method="addItem">
+				<type>skin_js</type>
+				<name>js/mpbackup/backup.js</name>
+			</action>
+		</reference>
+
+		<reference name="content">
+			<block type="mpbackup/adminhtml_backup_create" name="mpbackup_backup_create">
+				<block type="mpbackup/adminhtml_backup_js_init" name="mpbackup_backup_js_init">
+					<block type="mpbackup/adminhtml_backup_js_step" name="mpbackup_backup_js_step"/>
+					<block type="mpbackup/adminhtml_backup_js_item" name="mpbackup_backup_js_item"/>
+					<block type="mpbackup/adminhtml_backup_js_loglevel" name="mpbackup_backup_js_loglevel"/>
+					<block type="mpbackup/adminhtml_backup_js_finish" name="mpbackup_backup_js_finish"/>
+					<block type="mpbackup/adminhtml_backup_js_progress" name="mpbackup_backup_js_progress"/>
+				</block>
+			</block>
+		</reference>
+	</adminhtml_mpbackup_backup_create>
+</layout>

@@ -1,0 +1,7 @@
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   8 root     root         4096 Nov  6 06:06 ..
+drwxr-xr-x   3 root     root         4096 Nov  6 06:06 Analyzer
+-rw-r--r--   1 vpsnettopet psacln       5392 Apr  6  2015 Analyzer.php
+-rw-r--r--   1 vpsnettopet psacln       4469 Apr  6  2015 Token.php
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 TokenFilter
+-rw-r--r--   1 vpsnettopet psacln       1550 Apr  6  2015 TokenFilter.php

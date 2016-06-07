@@ -1,0 +1,6 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  13 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln        851 Feb 24  2015 Inflector.php
+-rw-r--r--   1 vpsnettopet psacln        574 Feb 24  2015 InflectorInterface.php
+-rw-r--r--   1 vpsnettopet psacln       1965 Feb 24  2015 MemoizingInflector.php
+-rw-r--r--   1 vpsnettopet psacln       1771 Feb 24  2015 PreComputedInflector.php

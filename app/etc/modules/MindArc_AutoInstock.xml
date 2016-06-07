@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MindArc_AutoInstock>
+            <active>true</active>
+            <codePool>local</codePool>
+        </MindArc_AutoInstock>
+    </modules>
+</config>

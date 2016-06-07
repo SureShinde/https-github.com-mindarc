@@ -1,0 +1,8 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1120 Feb 24  2015 AliasFactory.php
+-rw-r--r--   1 vpsnettopet psacln       4122 Feb 24  2015 CompositeFactory.php
+-rw-r--r--   1 vpsnettopet psacln       1605 Feb 24  2015 ConcreteClassFactory.php
+-rw-r--r--   1 vpsnettopet psacln        426 Feb 24  2015 FactoryInterface.php
+-rw-r--r--   1 vpsnettopet psacln        639 Feb 24  2015 MapFactory.php
+-rw-r--r--   1 vpsnettopet psacln       2157 Feb 24  2015 ServiceDescriptionFactory.php

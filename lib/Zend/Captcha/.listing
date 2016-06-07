@@ -1,0 +1,10 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x  67 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       2047 Apr  6  2015 Adapter.php
+-rw-r--r--   1 vpsnettopet psacln       4092 Apr  6  2015 Base.php
+-rw-r--r--   1 vpsnettopet psacln       2027 Apr  6  2015 Dumb.php
+-rw-r--r--   1 vpsnettopet psacln       1138 Apr  6  2015 Exception.php
+-rw-r--r--   1 vpsnettopet psacln       2221 Apr  6  2015 Figlet.php
+-rw-r--r--   1 vpsnettopet psacln      15294 Apr  6  2015 Image.php
+-rw-r--r--   1 vpsnettopet psacln       6790 Apr  6  2015 ReCaptcha.php
+-rw-r--r--   1 vpsnettopet psacln       9717 Apr  6  2015 Word.php

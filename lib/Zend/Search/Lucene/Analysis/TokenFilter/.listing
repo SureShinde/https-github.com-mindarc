@@ -1,0 +1,6 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   4 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln       1662 Apr  6  2015 LowerCase.php
+-rw-r--r--   1 vpsnettopet psacln       2067 Apr  6  2015 LowerCaseUtf8.php
+-rw-r--r--   1 vpsnettopet psacln       2121 Apr  6  2015 ShortWords.php
+-rw-r--r--   1 vpsnettopet psacln       3584 Apr  6  2015 StopWords.php

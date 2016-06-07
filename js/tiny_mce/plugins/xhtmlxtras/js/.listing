@@ -1,0 +1,9 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   5 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln        541 Nov 21  2014 abbr.js
+-rw-r--r--   1 vpsnettopet psacln        559 Nov 21  2014 acronym.js
+-rw-r--r--   1 vpsnettopet psacln       3471 Nov 21  2014 attributes.js
+-rw-r--r--   1 vpsnettopet psacln        541 Nov 21  2014 cite.js
+-rw-r--r--   1 vpsnettopet psacln       1356 Nov 21  2014 del.js
+-rw-r--r--   1 vpsnettopet psacln       7159 Nov 21  2014 element_common.js
+-rw-r--r--   1 vpsnettopet psacln       1356 Nov 21  2014 ins.js

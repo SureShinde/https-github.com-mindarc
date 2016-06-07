@@ -1,0 +1,11 @@
+drwxr-xr-x   2 root     root         4096 Nov  6 06:06 .
+drwxr-xr-x   5 root     root         4096 Nov  6 06:06 ..
+-rw-r--r--   1 vpsnettopet psacln        765 Feb 24  2015 AuthorizationErrorException.php
+-rw-r--r--   1 vpsnettopet psacln        735 Feb 24  2015 EndpointDisabledException.php
+-rw-r--r--   1 vpsnettopet psacln        723 Feb 24  2015 InternalErrorException.php
+-rw-r--r--   1 vpsnettopet psacln        773 Feb 24  2015 InvalidParameterException.php
+-rw-r--r--   1 vpsnettopet psacln        735 Feb 24  2015 NotFoundException.php
+-rw-r--r--   1 vpsnettopet psacln        758 Feb 24  2015 PlatformApplicationDisabledException.php
+-rw-r--r--   1 vpsnettopet psacln        772 Feb 24  2015 SnsException.php
+-rw-r--r--   1 vpsnettopet psacln        784 Feb 24  2015 SubscriptionLimitExceededException.php
+-rw-r--r--   1 vpsnettopet psacln        770 Feb 24  2015 TopicLimitExceededException.php

@@ -1,0 +1,40 @@
+/* Extra Tabs */
+.extra-tabs {width: 100%; overflow: hidden; margin: 0!important; padding-top: 2px;}
+.extra-tabs li {
+    float: left;
+    list-style: none;
+    border: solid 1px #ddd;
+    margin-left: 2px;
+    background-color: #eee;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+}
+.extra-tabs li.first {margin-left: 0;}
+.extra-tabs a {
+    display: block;
+    padding: .91em 22px;
+    font-size: 1em;
+    line-height: 1.5em;
+    text-transform: uppercase;
+    color: #888;
+    text-decoration: none;
+    position: relative;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+.extra-tabs li:hover {background-color: #fff;}
+.extra-tabs .active {background-color: #fff; border-color: #ddd; border-bottom-color: #fff;}
+.extra-tabs .active a,
+.extra-tabs li:hover a {color: #222;}
+.extra-tabs-content {
+    padding: 1.5em;
+    border: solid 1px #ddd;
+    margin-top: -1px;
+    font-size: 1em;
+    color: #4c4c4c;
+    line-height: 1.5em;
+}
+.extra-tabs-content h2 { display:none; font-size:12px; font-weight:bold; }
+.extra-tabs-content .box-collateral{padding: 0; border: none;}
